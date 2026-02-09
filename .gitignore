@@ -1,0 +1,28 @@
+# Don't track content of these folders #
+########################################
+lib/
+game/cache/
+game/saves/
+renpy/
+
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+*.rpyc
+*.rpymc
+
+
+# The log file and other misc things #
+######################################
+log.txt
+errors.txt
+traceback.txt
+files.txt
+

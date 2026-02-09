@@ -1,0 +1,7682 @@
+label chapter3:
+    $ townEvents.append("linaTown")
+    $ currentSeason = "autumn"
+    
+    scene bg black with fade
+    
+    n "Chapter 3"
+    n "A few weeks later"
+    
+    scene bg cafe autumn day with dissolve
+    
+    play music "audio/music/mere - coffeeLoveLoopInstrumental.exe.ogg" fadein 1.0
+
+    show box with Dissolve(.2):
+        ypos 0
+        
+    n "You decide stop by the cafe on your way to class. They must have updated their menu because you can smell cinnamon and pumpkin spice in the air."
+    n "Fitting for the changing color of the leaves outside as autumn takes its hold."
+        
+    show mishka neutral at center with dissolve:
+        xzoom -1
+        #xpos -440
+        ypos y_mishka
+
+    mishka @ say "Hello [name]! Would you like to try the spice of pumpkin latte? It's part of our fall menu thing."
+
+    player "Actually I was eyeing that cinnamon roll."
+
+    show mishka standing tongueout
+    
+    mishka @ say "Oh lucky you, it's our last one! They sell out very quickly!"
+    
+    show mishka neutral standing
+
+    player "They must be good if everyone wants one!"
+    
+    show mishka happy
+
+    mishka @ say "Yes, fully of sugar and sweetness! When I first came to America I had no concept of a 'cinnamon roll' but it soon became a favorite of mine hehe!"
+    
+    show mishka neutral standing
+
+    player "I'll take it to go please. I have to be in class in a few minutes."
+    
+    show mishka neutral standing wink 2
+
+    mishka @ say "Gotchya!"
+    
+    show mishka neutral standing -
+
+    n "Mishka places the pastry in a bag and slides it over to you as you swipe your card through the machine."
+    
+    show mishka none
+    show mishka neutral
+
+    mishka @ say "Spasibah! Have great day!"
+    
+    n "The door to the cafe opens and the clacking of high heels approaches the counter in a hurry."
+    
+    show mishka neutral standing
+    
+    show margaret neutral at offscreenright:
+        ypos y_margaret
+    
+    #hide mishka with dissolve
+
+    #add sound effect of bell as anyone enters the cafe
+    
+    pause .2
+
+    show margaret neutral:
+        xpos 900
+        ypos y_margaret
+    show mishka:
+        xoffset -425
+    with move
+
+    margaret @ say "Oh, hello there, [name]! I guess we're both cutting it short on time before class today, aren't we?"
+    
+    player "Good morning Ms. Ellen. Sorry but Coffee Zone is worth being late for!"
+    
+    show mishka anxious smile
+    
+    mishka @ say "Heh, it's nothing special, really..."
+    
+    margaret @ say "I wouldn't be here right now if it wasn't!"
+    
+    show mishka neutral standing
+    
+    margaret @ say "We're just having a quiz today so this gives students some extra time to prepare."
+    
+    player "Err, quiz?"
+
+    show margaret sad
+
+    margaret @ say "Oh, did you forget?"
+    
+    show margaret neutral
+    
+    margaret @ say "You should be fine, as long as you've been keeping up with your reading."
+    
+    show margaret happy
+    
+    margaret @ say "Now if you'll excuse me, I'm going to get one of those delicious cinnamon buns. What better way to start autumn, right?"
+    #margaret @ say "Why, I'd kill for them! Figuratively, of course!"
+    
+    show mishka sad
+
+    mishka @ say "Sorry ma'am, I just sold the last one to [name] here..."
+
+    show margaret sad
+
+    margaret @ say "Seriously?"
+    margaret @ say "Damn, I was really counting on that cinnamon bun to get me through today..."
+
+    menu:
+        margaret "{cps=0}Damn, I was really counting on that cinnamon bun to get me through today...{/cps=0}"
+        "Offer Miss Ellen your cinnamon roll":
+            $ ellenPoints += 2
+            $ gaveCinRoll = True
+            $ badEnd += 1
+            
+            player "Well... I could give you mine. I don't really mind."
+            
+            show mishka happy
+
+            show margaret neutral
+            
+            mishka @ say "Aww how sweet of you!"
+
+            margaret @ say "Oh my goodness, I'm flattered but a teacher could never accept such a gift from a student!"
+            
+            show mishka neutral standing
+
+            player "No really, I just remembered I'm not supposed to eat sugary things when I'm on these pills so..."
+
+            show margaret intrigued 
+            
+            margaret @ say "Hmm..."
+
+            n "Miss Ellen looks around."
+            
+            show margaret melancholy
+
+            margaret @ say "Well, I suppose I could, just this once..."
+
+            player "Don't worry, I'm not gonna tell on you or anything."
+            player "Here you go."
+
+            n "You hand over the bag."
+            
+            show margaret neutral
+
+            margaret @ say "Aww, thanks [name]!"
+
+            n "Miss Ellen gives you a warm smile and leans in close enough to whisper into your ear."
+
+            margaret @ say "Don't worry about the quiz today~"
+
+            n "Miss Ellen waves to you as she takes a bite of the cinnamon roll."
+
+            margaret @ say "See you in class!"
+
+            hide margaret with dissolve
+
+            player "Yeah, I guess I should get going too. Later, Mishka!"
+
+            mishka @ say "Dah skorovuh!"
+
+            stop music fadeout 1.3
+
+            scene bg lecturehall with fade
+            
+            play music "audio/music/mere - retrograde slowed.ogg" fadein .5
+
+            show box with Dissolve(.2):
+                ypos 0
+
+            show margaret neutral at center with dissolve:
+                ypos y_margaret
+
+            margaret @ say "Good morning class! I hope you studied well for today's quiz!"
+
+            n "Ms. Ellen hands out papers to everyone, giving you a warm smile as she hands you yours."
+
+            if literatureSkill >= 2:
+                n "You probably could have aced this quiz anyway, but the extra assurance from your bribe doesn't hurt."
+                n "You work through the quiz normally in case she decides to go back on her word."
+                n "When you're finished you walk up and turn it in."
+            else:
+                n "It's a good thing you bribed her with that cinnamon roll, otherwise you'd fail this quiz for sure."
+                n "Feels a bit dishonest though..."
+                n "Looking over the questions, you have no idea how to answer most of them."
+                n "You just write something that kinda makes sense and turn it in when you're done."
+
+        "Don't offer Miss Ellen your cinnamon roll":
+            show mishka neutral standing
+            
+            player "Better luck next time."
+
+            n "You take a bite out of your cinnamon roll while Miss Ellen glares at you."
+
+            margaret @ say "Yes well... I'll see you in class, [name]."
+
+            hide margaret with dissolve
+
+            n "She storms out of the cafe without even getting a coffee."
+            
+            #show mishka hopeful
+            
+            n "You glance at Mishka who just shrugs."
+
+            player "Guess I better go too. Later, Mishka!"
+            
+            show mishka happy
+
+            mishka @ say "Dah skorovuh!"
+            
+            stop music fadeout 1.0
+
+            scene bg lecturehall with fade
+            
+            play music "audio/music/mere - retrograde slowed.ogg" fadein .5
+
+            show margaret neutral at center with dissolve:
+                ypos y_margaret
+
+            show box with Dissolve(.2):
+                ypos 0
+
+            margaret @ say "Good morning class! I hope you studied well for today's quiz!"
+
+            n "Ms. Ellen hands out papers to everyone, glaring at you as she hands you yours."
+            
+            hide margaret with dissolve
+            
+            n "She isn't still mad about the cinnamon roll thing, is she?"
+            n "Hopefully she doesn't take it out on your grades."
+
+            if literatureSkill >= 2:
+                n "The answers come to you fairly quickly as you go through the quiz, thanks to the time you spent studying."
+                n "You feel confident as you walk up and hand in your quiz."
+            else:
+                n "After looking over the quiz and realizing you're not prepared to answer any of these questions, you begin to regret not giving up your cinnamon roll this morning."
+                n "You do the best you can and sheepishly turn it in."
+                
+    show margaret neutral at center with dissolve:
+        ypos y_margaret
+            
+    margaret @ say "...Is that everyone's?"
+    
+    show margaret melancholy
+    
+    margaret @ say "Very good, what do you say we call it a day?"
+    
+    show margaret neutral
+    
+    margaret @ say "I don't want to overload your brains too much, that's what midterms are for!"
+    margaret @ say "Which are coming up in two weeks by the way!"
+    margaret @ say "Be sure to start studying for it sooner rather than later!"
+    margaret @ say "That's all I have for you. Class dismissed!"
+    
+    stop music fadeout 1.0
+    
+    scene bg campus autumn day with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    play music "audio/music/vylet - Pancake.ogg" fadein .5
+    
+    n "Getting out of your first class of the day early sucks because you have to loiter around waiting for your next class."
+    n "The minutes pass by and students gradually pour out from the buildings surrounding you."
+    n "One of those students notices your idleness and makes a beeline for you."
+    
+    show claire flannel happy at center with dissolve:
+        ypos y_claire
+        matrixcolor BrightnessMatrix(0.05)
+        
+    claire @ say "[name]!!! Ohmygosh you waited out here for me???"
+    
+    player "Huh?"
+    
+    menu:
+        player "{cps=0}Huh?{/cps}"
+        "Of course!":
+            $ clairePoints += 1
+            
+            player "Of course! I wanted to walk you to class today."
+            
+            claire @ say "You're such a sweetheart!!"
+            claire @ say "Shall we go then?"
+            
+            n "Claire holds out her paw and you grab hold of it."
+            n "You can hardly keep up with her long strides and the tightness of her grip cuts off the circulation in your hand as she practically drags you along toward French."
+            
+        "It's just coincidence":
+            player "I just got out of class early, that's all."
+            
+            claire @ say "Don't play coy with me, I can tell you just wanted to walk me to French!"
+            claire @ say "Ya know all ya had to do was ask!"
+            
+            n "Claire grabs hold of your hand, the tightness of her grip cutting off circulation as she practically drags you to your next class."
+            
+    scene bg classroom with fade
+    
+    play music "audio/music/mere - retrograde.ogg" fadein .5
+
+    show box with Dissolve(.2):
+        ypos 0
+
+    show celestine neutral at center with dissolve:
+        ypos y_celestine
+        
+    celestine @ say "Bonjour, étudiants!"
+    celestine @ say "Today we'll be getting some more practice with passé composé et imparfait tenses!"
+    celestine @ say "Let's see who's been studying!"
+    celestine @ say "How would you say this in French?"
+    celestine @ say "\"I was doing my homework.\""
+    celestine @ say "Care to tell us, [name]?"
+    
+    menu:
+        celestine "{cps=0}Care to tell us, [name]?{/cps}"
+        "Je faisais mes devoirs.":
+            $ frenchSkill += 1
+        
+            player "Je faisais mes devoirs."
+            
+            celestine @ say "Very good!"
+            celestine @ say "Note that we use je instead of j'ai, which we would use if we wanted to say \"I did my homework\" or \"I have done my homework.\""
+            celestine @ say "See the difference? Anyway, moving on..."
+        "J’ai fini mes devoirs.": 
+            player "J’ai fini mes devoirs."
+            
+            celestine @ say "Hmm, not quite. You've used the passé form here, which would be like saying \"I did my homework\" or \"I have done my homework.\""
+            celestine @ say "I asked specifically for \"I was doing my homework\" which would be \"Je faisais mes devoirs.\""
+            celestine @ say "Note that we use je instead of j'ai. See the difference? Anyway, moving on..."
+        "J’ai faisais mes devoirs.":
+            player "J’ai faisais mes devoirs."
+        
+            celestine @ say "Hmm, not quite. You've used the passé form here, which would be like saying \"I did my homework\" or \"I have done my homework.\""
+            celestine @ say "I asked specifically for \"I was doing my homework\" which would be \"Je faisais mes devoirs.\""
+            celestine @ say "Note that we use je instead of j'ai. See the difference? Anyway, moving on..."
+            
+    n "Mrs. Celestine rambles about grammatical rules for the rest of the class duration."
+    
+    stop music fadeout 1.0
+        
+    scene bg campus autumn day with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+    
+    play music "audio/music/Vylet Pony - There's a Menu Theme Nestled Within Us All.ogg" fadein .5    
+    
+    n "After class you met up with Ava as usual."
+    
+    show ava casual happy at center:
+        ypos y_ava
+        xoffset 400
+        matrixcolor BrightnessMatrix(0.05)
+    show claire flannel happy at center:
+        ypos y_claire
+        xoffset -400
+        xzoom -1
+        matrixcolor BrightnessMatrix(0.05)
+    with dissolve
+    
+    ava @ say "...You two have any plans after class?"
+    
+    claire @ say "Mmmh nope! Why?"
+    
+    show ava casual excited
+    
+    ava @ say "I wanted to see if you wanted to go out shooting with me!"
+    
+    show claire flannel derp
+    show ava casual happy
+    
+    claire @ say "I would but I didn't bring my gun!"
+    
+    show claire happy
+    show ava casual unamused
+    
+    ava @ say "I meant with cameras."
+    
+    show ava casual happy
+    
+    ava @ say "I'll even let you borrow one!"
+    ava @ say "I just love shooting in autumn, it's my favorite season."
+    
+    show ava casual whimsical
+    
+    ava @ say "The leaves are so pretty, especially at sunset~"
+    
+    #show ava casual happy
+    
+    player "I'd love to join you but I've got a doctor's appointment later today."
+    
+    show ava casual concerned
+    show claire flannel surprised earsup
+    
+    ava @ say "Aww, hopefully it's nothing serious?"
+    
+    claire @ say "Yeah, we can't have our [name] dyin' on us!"
+    
+    player "Just a checkup."
+    
+    show claire flannel happy
+    show ava casual happy
+    
+    ava @ say "Well, if you ever have a moment to go shooting, just let me know!"
+    
+    player "I will. See you two later!"
+    
+    show ava casual excited
+    
+    ava @ say "See ya!"
+    
+    show claire flannel derp
+    
+    claire @ say "Byeee~"
+    
+    hide claire
+    hide ava
+    with dissolve
+    
+    n "You wave goodbye as Claire and Ava head to their next classes."
+    
+    stop music fadeout 1.0
+    
+    scene bg hospital with fade
+    
+    play music "audio/music/Vylet Pony - Cozy Pone.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+    
+    n "After checking in to the hospital, a nurse did the routine blood pressure and temperature tests, then left you alone to wait for the doctor."
+    n "Your muscles tense up as your mind wanders, fearing the worst."
+    n "What if the doctor comes in and tells you you only have a few months left to live?"
+    n "You haven't felt like you were gonna pass out in weeks but something still feels off."
+    
+    show kitsuragi at center with dissolve:
+        ypos y_kitsuragi
+        
+    kitsuragi @ say "Hello [name]. Feeling any better since your last visit?"
+    
+    player "Yeah. I'm not getting dizzy randomly anymore."
+    
+    kitsuragi @ say "Good."
+    
+    player "Still kinda feel like a zombie sometimes though."
+    
+    kitsuragi @ say "Like a... zombie?"
+    
+    player "Yeah like shambling around not really aware of my surroundings, where I'm going or how I got there."
+    
+    kitsuragi @ say "Interesting..."
+    
+    n "She clicks her pen and writes something in her notepad. By 'interesting', she means 'concerning.'"
+    
+    kitsuragi @ say "Well you haven't dropped dead yet so that's a good sign."
+    kitsuragi @ say "In fact, we weren't able to find a single trace of CORVID in you."
+    kitsuragi @ say "Whatever's ailing you is something completely different."
+    
+    n "Did you hear her right? You *don't* have CORVID-91 like every other human in the last hundred years? You can hardly believe it."
+    
+    player "You mean I'm *not* dying?"
+    
+    "The doctor shrugs."
+    
+    kitsuragi @ say "Hell if I know. All I know is it ain't from CORVID."
+    kitsuragi @ say "Could be something genetic or some rare human disease. Kinda hard to predict when human medical sciences are 40 years out of date."
+    kitsuragi @ say "The good news is we have tons of options for anthromorph-agnostic medications to help with your symptoms."
+    
+    n "She writes something in her notepad and tears the page out, handing it to you."
+    
+    kitsuragi @ say "We'll get you started on opalozine and see how it affects you then move on from there."
+    kitsuragi @ say "It's a controlled dose but if your symptoms get worse or if you notice any side effects, stop taking it immediately and call me."
+    
+    n "You're almost too excited by the fact you're not dying of CORVID to acknowledge you might be dying of something else."
+    
+    kitsuragi @ say "Hey! Are you listening?"
+    
+    player "Huh? Oh yeah, read warning on label, take new pill, call if I start frothing at the mouth or pissing blood."
+    
+    kitsuragi @ say "That's the gist of it."
+    kitsuragi @ say "That's really all I've got for you for now."
+    kitsuragi @ say "Enjoy your life, just don't do anything stupid."
+    
+    menu:
+        kitsuragi "{cps=0}Enjoy your life, just don't do anything stupid.{/cps}"
+        "I will.":
+            player "Thanks, I will."
+            player "Enjoy my life that is."
+            player "But also probably do something stupid."
+            
+            kitsuragi @ say "Just remember you're not a cat, you only live once. Make the most of it."
+            
+        "I won't":    
+            player "Thanks, I won't."
+            player "Do anything stupid that is."
+            player "I'll try and enjoy my life haha."
+            
+            kitsuragi @ say "That's all I can ask of you."
+            
+    hide kitsuragi with dissolve
+    
+    n "The doctor sees you to the exit and you hang around the pharmacy to pick up your pills, giving you plenty of time to reflect on everything."
+    n "Apparently you have similar symptoms to CORVID-91 but you tested negative for it. Could it have been a false negative?"
+    n "No, the doctor seems too sure that's not the case. Is it some new strain that's not detectable by known methods?"
+    n "Would it even still be CORVID then if it's that different? She said there wasn't a trace of it in you."
+    n "Doesn't it go against basic virology for something to be so contagious when the whole target population is dead?"
+    n "Other anthromorphs don't carry it, and you were vaccinated against the only strain you'd been in contact with. Your parents caught it shortly after you were born but it's not supposed to infect infants."
+    n "Maybe it really is some random disease like when your stomach hurts for a little too long and it'll go away eventually."
+    
+    stop music fadeout 1.0
+    
+    scene bg codadorm autumn day with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+    
+    n "With your pills in hand, you returned to your dorm for the evening but you're still too giddy to go to sleep."
+    n "You legit thought you might be dying and were ready to give up on everything, but now you have a future to look forward to."
+    n "It suddenly hits you that things are going pretty well for the first time in your life. You're in an Ivy League university, you've got friends, your bills are paid... what more could you ask for?"
+    n "That's it, you can't just lie in bed when you're so full of positive energy. You've gotta go for a /nightwalk/"
+    
+    scene bg campus autumn night with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    play music "audio/ambient/outdoors night crickets.ogg" fadein .4
+    
+    call nightWalks from _call_nightWalks_1
+    
+    scene bg black with fade
+    
+    n "The following day..."
+    
+    scene bg campus autumn day with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    play music "audio/ambient/morning birds.ogg" fadein .4
+    
+    n "Another day in history class where Rose is a bitch to you? Who could have guessed!"
+    n "At least you got let out early and can prepare for statistics. There were a few homework problems you should double check."
+    n "It can wait until after you get a snack at a vending machine though."
+    
+    scene bg schoolhallways autumn day with dissolve
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    play music "audio/music/vylet - Oak Library.ogg" fadein .4
+    
+    n "You went ahead and made your way to the math building. The snacks stocked here are pretty decent and you need to be here anyway."
+    n "Except some jackass is standing in front of the vending machine and apparently can't make up his mind."
+    n "Seriously, it's been like two minutes and fourteen seconds and he still hasn't moved."
+    
+    player "Hey buddy, gonna buy a snack sometime today?"
+    
+    n "The person tenses up and mumbles something."
+    
+    rori @ say "S-sorry, I'll just be a second."
+    
+    player "What the...? Rori?"
+    
+    n "The ram turns his head around to face you."
+    
+    show rori anxious at center with dissolve:
+        ypos y_rori
+    
+    rori @ say "Huh? Oh hey [name]!"
+    
+    player "Dude hurry up and buy something already, I'm gonna be late for class at this rate."
+    player "Wait, what are you doing?"
+    
+    n "You just now notice a wire coming from Rori's sleeve that's plugged into the card swiper on the machine."
+    
+    player "Are you... hacking?"
+    
+    show rori sassy
+    
+    rori @ say "Shh!"
+    rori @ say "It's not hacking!"
+    
+    show rori smirk lookingaway
+    
+    rori @ say "I'm just tricking the machine into giving me what I want."
+    
+    player "Sounds like hacking to me."
+    
+    show rori concerned
+    
+    rori @ say "Maybe it would be if it was actually working."
+    
+    show rori angry neutral
+    
+    rori @ say "I can't believe the random code I pulled off github doesn't function as advertised!"
+    
+    player "Inconceivable!"
+    
+    n "Rori pulls on his hoodie and reveals a tiny computer thing he's concealing."
+    
+    show rori armscrossed sleepy
+    
+    rori @ say "Maybe my blueberry pi just doesn't have enough RAM to crack the security code."
+    rori @ say "Poor thing's swap partition is probably choking to death."
+    rori @ say "I knew I should have gotten the 4GB model."
+    
+    show rori none
+    show rori armscrossed
+    
+    n "Rori sighs and unplugs the wire from the card slot."
+    
+    rori @ say "Whatever. I've spent enough time here looking suspicious. I'll just pay for snacks like a normie."
+    
+    n "Rori tries swiping his card but the machine gives an error."
+    
+    show rori none
+    show rori anxious
+    
+    rori @ say "Aw what? Don't tell me I bricked it."
+    
+    menu:
+        rori "{cps=0}Aw what? Don't tell me I bricked it.{/cps}"
+        "LOL":
+            player "It would be funny if you did."
+            
+            rori @ say "Gosh I hope not. I don't wanna get caught vandalizing one of these. It'd cost a fortune to replace it!"
+            
+            player "Relax, I don't think anyone noticed you. These things break all the time."
+        "Let me try it":
+            player "Maybe it just doesn't like your card. Let me try mine."
+            
+            n "You slap your card against it and it gives the same error. Using the chip reader and magnetic strip yield the same result."
+            
+            player "Yup you borked it."
+        "You're going to jail":
+            player "RIP, you're going to jail for this."
+            
+            show rori at shudder
+            
+            rori @ say "D-don't say that!"
+            
+    show rori armscrossed asleep
+            
+    n "Rori sighs and leans his back against the machine. He slips down it until he's sitting on the floor."
+    
+    rori @ say "I just wanted to get free snacks for a special someone."
+    
+    if roriPoints > 3:
+        player "You don't have to get me anything, you know."
+        
+        rori @ say "I'm not talking about you."
+    
+    else:
+        player "Oh?"
+        player "You know you don't have to constantly give someone gifts to impress them."
+        
+    show rori armscrossed embarrassed2    
+    
+    rori @ say "You wouldn't get it."
+    
+    n "Man, he is really sulking."
+    
+    stop music fadeout 2.0
+    
+    hide rori with dissolve
+    
+    menu:
+        "Sit next to him":
+            $ roriPoints += 1
+            
+            play music "audio/music/vylet - floating.ogg"
+            
+            n "You drop down to the floor along side him."
+            n "You end up shoulder to shoulder with him, trying not to be an obstruction to the foot traffic of students who look at you weird, but they're all math autists so who cares what they think."
+            n "A sudden tingling sensation runs up your arm, followed by some ticklish feeling on your face like whiskers touching your cheeks."
+            n "You look down and see a small fuzzy critter with a big bulging eye staring up at you."
+            n "It lets out a squeak before jumping off you and into Rori's hooves."
+            
+            player "What the fuck?"
+        "Remain standing":
+            play music "audio/music/vylet - floating.ogg" 
+            
+            n "You remain on your feet, resolute and dignified."
+    
+            player "Come on man, you look like a kid throwing a tantrum down there. At least stand up."
+    
+            n "Rori seems to ignore you, instead drawing circles on the floor with a hoof."
+            
+            player "Please don't be this autistic, you're obstructing the hallway traffic."
+            
+            n "Rori slowly starts to rise back to his feet. Wait, what the hell is he holding?"
+            
+    show rori neutral rat at center with dissolve:
+        ypos y_rori
+            
+    player "Is that the rat from the other week?"
+    
+    show rori rat smile
+    
+    rori @ say "Yup. His eye is messed up so I made a cute little eyepatch for him."
+    
+    player "You befriended him?"
+    
+    rori @ say "It wasn't hard. I just kept giving him food."
+    
+    show rori rat worried
+    
+    rori @ say "That's why I was trying to hack the vending machine."
+    
+    player "You should have said something!"
+    player "Based Robinhood stealing from the rich and giving to the poor starving rats."
+    
+    show rori rat supersmug
+    
+    rori @ say "Heh I don't think he's starving anymore, not with how much I feed him."
+    
+    show rori rat neutral
+    
+    player "What's his name?"
+    
+    rori @ say "I don't know, I didn't think to ask."
+    rori @ say "How about... Guts?"
+    
+    player "Is that a Berzerk reference?"
+    #player "Because he has one eye?"
+    
+    rori @ say "Yes."
+    rori @ say "He's had a rough life and only has one eye so it fits."
+    
+    player "Nice to meet you, Guts."
+    
+    show rori rat silly
+    
+    rori @ say "I think he remembers you."
+    
+    player "He better, after all the trouble I went through to get those pretzels for him."
+    
+    ###have a line that says if you gave your money to the hobo or to lina then you don't have any to buy a snack
+    
+    show rori rat neutral
+    
+    player "Do you come here just to see him?"
+    
+    rori @ say "I have a class here earlier in the day. I just check up on him if he happens to be under the vending machine."
+    
+    player "That reminds me, I should get to class now."
+    
+    show rori rat smile 
+    
+    rori @ say "Okay! Take care!"
+    
+    player "See you guys later."
+    
+    n "You hold out a finger for Guts to inspect and you give him a little chin rub."
+    
+    stop music fadeout 2.0
+    
+    scene bg campus autumn day with fade
+    
+    #play music "audio/music/vylet - sailing away.ogg" fadein .5
+    play music "audio/music/vylet - diaries i kept.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+    
+    show gunner neutral at center with dissolve:
+        ypos y_gunner
+        xoffset -600
+        xzoom -1
+    
+    show ava at offscreenright:
+        ypos y_ava
+    show claire at offscreenright:
+        ypos y_claire
+    
+    n "After class, Gunner tagged along with you as usual, but Rori was nowhere to be found."
+    n "Instead you're joined by your Tuesday/Thursday friends."
+    
+    pause .2
+    
+    show ava typical happy:
+        ypos y_ava
+        xoffset -950
+    show claire sweater happy:
+        ypos y_claire
+        xoffset -850
+    with move
+    
+    claire @ say "Look Ava, cute boys at 10 o'clock!"
+    
+    show ava typical suggestive
+    
+    ava @ say "Where? Oh you mean these two?"
+    
+    show ava typical happy
+    show claire sweater surprised earsup
+    
+    claire @ say "Who else!"
+    
+    show claire none
+    show claire sweater happy
+    show gunner determined
+    
+    gunner @ say "Hello ladies~"
+    
+    player "Watch out Gunner, these two are out for blood."
+    
+    show gunner optimistic
+    show ava typical smug
+    
+    ava @ say "Ah yes, fluffy bunnies and secretary birds, two of the deadliest predators."
+    
+    player "I've seen Attack of the Killer Rabbits, I know what you're capable of."
+    
+    show claire sweater suggestive
+    
+    claire @ say "It's true, we can be vicious~"
+    claire @ say "I wouldn't mind taking a bite out of you in particular, [name]~"
+    claire @ say "I bet humans taste delicious~"
+    
+    show ava typical unimpressed
+    
+    ava @ say "Claire everyone knows rabbits are herbivores."
+    
+    show claire sweater flustered
+    
+    claire @ say "Don't act like you're not curious about what humans taste like too!"
+    
+    show claire sweater happy
+    show gunner itsover
+    
+    gunner @ say "Ahem."
+    
+    show gunner optimistic
+    
+    gunner @ say "Speaking of lunch, I was gonna suggest we all go out somewhere to eat."
+    
+    show ava typical excited
+    
+    ava @ say "That's a great idea! I just had back to back exams so I'm starving!"
+    
+    show ava typical happy
+    show claire sweater flustered
+    
+    claire @ say "I just ate but I could go for seconds!"
+    
+    if intoFatChicks == True:
+        player "Hnnnnng."
+    
+    show claire happy
+    show gunner annoyed
+        
+    gunner @ say "Of course you could."
+    
+    show gunner optimistic
+    
+    gunner @ say "I know a good Thai place in town if you're down."
+    
+    claire @ say "Ooh I love Thai food!"
+    
+    player "Sounds good to me."
+    
+    ava @ say "Yeah but let's hurry before the weekend crowds come."
+    
+    show gunner eyesclosed catface
+    
+    gunner @ say "Lines won't be a problem, I know the owner of the restaurant."
+    
+    show gunner cheeky1
+    
+    gunner @ say "Last time I had to wait longer than 10 seconds I simply threatened to have my dad's goons burn down his establishment and I've never had any problems since."
+    
+    show ava pose concerned
+    show claire sweater surprised earsup
+    
+    ava @ say "..."
+    
+    show gunner optimistic
+    
+    gunner @ say "I'll text my roommate Rori and see if he wants to come along!"
+    
+    stop music fadeout 2.0
+    
+    scene bg town summer day with fade
+    
+    #play music "audio/music/vylet - I Wish I Could Tell You.ogg" fadein .5
+    play music "audio/music/vylet - Destiny Station.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    show ava typical happy at center:
+        ypos y_ava
+        xoffset 300
+    show claire sweater happy at center:
+        ypos y_claire
+        xoffset 650
+    show rori neutral at center:
+        ypos y_rori
+        xzoom -1
+        xoffset -325
+    show gunner neutral at center:
+        ypos y_gunner
+        xoffset -775
+        xzoom -1
+        
+    with dissolve
+    
+    n "Gunner brought you to a lively restaurant in town and Rori joined up with you on the way."
+    n "He was right, the seating was quick for your group despite the long line. He got you an outdoors table, fitting for such a pleasant day."
+    n "After ordering drinks, you retreated to the restroom to take care of some business."
+    #n "Your bitcoin/shitcoins aren't doing so good."
+    
+    show ava pose smug
+    show claire sweater suggestive 
+    show gunner cheeky1
+    show rori supersmug
+    
+    n "When you returned, your group of friends eyed you with sinister expressions."
+    
+    player "What? Why do you all look so smug?"
+    
+    show ava typical suggestive
+    
+    ava @ say "You took so long we decided to go ahead and order for you!"
+    
+    show ava typical smug
+    
+    player "Really? Nothing too expensive I hope..."
+    
+    ava @ say "Quite the contrary! ...If you can finish it, that is."
+    
+    n "You raise a brow and are about to ask what she meant when the waitress arrives and sets everyone's meals on the table."
+    
+    show ava typical happy
+    show claire sweater giggle
+    show rori neutral
+    show gunner neutral
+    
+    #show waitress at center with dissolve
+    
+    waitress "Aaaand for you we have the spicy ramen bowl challenge! Remember, it's only free if you manage to finish it all on your own!"
+    waitress "Please sign here so we're not liable for any damages to your short term or long term health. Good luck!"
+    
+    n "She hands you a pen and paper, which you absentmindedly sign, confused as to why you have to sign something just to have hot sauce in your pasta."
+    
+    waitress "Thank you~ And here's the one for you too!"
+    
+    n "The waitress hands the pen and a similar paper to Gunner before setting down his bowl."
+    
+    waitress "Try not to die!"
+    
+    n "She does a little bow and heads back inside."
+    
+    show claire sweater happy
+    show rori armscrossed anxious
+    
+    rori @ say "Yeesh, it's making my eyes water already. I can even taste it from all the way over here!"
+    
+    show rori armscrossed neutral
+    show gunner charming
+    
+    gunner @ say "Hahaha sorry [name] but I swear it wasn't my idea! Ava thought it would be funny to order it for you and well, I didn't want you to suffer alone!"
+    
+    show gunner neutral
+    show ava typical whimsical
+    
+    ava @ say "I was only half serious!"
+    
+    show ava typical happy
+    
+    claire @ say "You can have some of what I got if it's too spicy for you [name]."
+    
+    #player "It's fine. I mean, how spicy can it be? It smells pretty good in fact."
+    player "It's fine. Humans evolved to eat this kinda stuff. In fact, it smells pretty good!"
+    
+    show ava typical concerned
+    
+    ava @ say "You sure? I don't wanna be responsible for killing ya."
+    
+    player "Yeah! I mean, I didn't have any restaurants like this where I grew up but I always enjoyed spicy food. They probably just hype it up for marketing. How hot could it be?"
+    
+    show ava typical happy
+    show gunner determined
+    
+    gunner @ say "I guess we're about to find out!"
+    
+    n "Gunner grabs his chopsticks, fumbling with them for a bit trying to grab a slice of beef on top of the noodles."
+    
+    show gunner pissed
+    
+    gunner @ say "Goddammit... fuck... almost... dangit... Where's a fork when you need one? Ah screw it."
+    
+    n "He stabs the meat with a chopstick and puts it in his mouth while the whole squad watches with curiosity and anticipation."
+    
+    show gunner frown1
+    show rori neutral lookingaway
+    
+    rori @ say "Well. He's not dead yet."
+    
+    n "Gunner finishes chewing and swallows."
+    
+    gunner @ say "Huh. That was... not so ba-"
+    
+    show gunner gruff
+    
+    n "He suddenly wheezes and reaches for his drink, downing half the cup before setting it down."
+    
+    show gunner uncomfy
+    
+    gunner @ say "Okay it doesn't hit you at first but when it does it's like getting hot brass down your shirt."
+    gunner @ say "Still not the spiciest I ever had though."
+
+    show ava typical neutral
+    show rori none
+    show rori armscrossed neutral
+    
+    ava @ say "I think it's supposed to get spicier the further down you go."
+    
+    #player "A real 9 circles of hell, I'm sure."
+    
+    show claire sweater derp
+    
+    claire @ say "Alright [name], your turn!"
+    
+    show claire sweater happy
+    show ava typical happy
+    
+    n "Unlike Gunner, you actually know how to use chopsticks and pick up a clump of noodles to slurp. It doesn't taste any different than the generic spicy ramen you could find at any grocery store."
+    
+    player "Heh, easy."
+    
+    show rori concerned
+    
+    n "And then it hits you."
+    n "You cough uncontrollably for a few seconds as you frantically reach for your drink, taking a few sips until the fire in your mouth has been extinguished."
+    
+    player "Ack! You were right, it does have a delayed kick to it."
+    
+    gunner @ say "I told you! Here Rori, have some of this."
+    
+    show rori none
+    show rori armscrossed
+    show claire sweater giggle
+    
+    rori @ say "What? No way! Keep your peppers off my lemongrass tofu!"
+    
+    show ava typical smug
+    
+    ava @ say "What's the matter, don't think you can finish it all on your own?"
+    
+    show gunner wink frown
+    show claire sweater happy
+    show rori armscrossed neutral
+    
+    gunner @ say "I'm sure I could, I just dunno if the discount is gonna be worth being bathroom-bound all day tomorrow."
+    
+    n "You silently take another, smaller bite. You're already sweating."
+    
+    show ava typical overjoyed
+    
+    ava @ say "Look, [name] can do it just fine!"
+    
+    show ava typical happy
+    show gunner uncomfy
+    
+    gunner @ say "Yeah but look how much he's sweating though!"
+    
+    player "We humans evolved to eat food like this not out of necessity but out of pure dumbfuckery and stubbornness."
+    
+    show claire sweater leaning suggestive
+    
+    #n "The group snickers at your self-deprecating joke."
+    n "As Ava takes a bite out of her meal, Claire leans in and whispers something to her, causing her feathers to floof up and almost makes her choke on her food."
+    
+    show claire sweater giggle
+    show ava profile embarrassed
+    
+    ava @ say "Whaaaat? Claire oh my gosh no!"
+    
+    gunner @ say "What? What did she say?"
+    
+    show ava pose shy
+    
+    ava @ say "Nothing hahaha nothing!"
+    
+    show claire sweater flustered
+    
+    claire @ say "All I'm sayin' is that he's competitive! He'd totally be down for it!"
+    
+    show gunner gruff
+    
+    gunner @ say "What???"
+    
+    show claire sweater derp
+    
+    claire @ say "I just said there should be a prize for whoever finishes their spicy bowl first!"
+    
+    show ava typical annoyed
+    
+    ava @ say "Claire shush!"
+    
+    show gunner cheeky1
+    
+    n "Gunner's ears perk up."
+    
+    player "What sort of prize?"
+    
+    show claire sweater giggle
+    
+    n "Claire giggles and winks at you."
+    
+    claire @ say "Whatever you want bby~"
+    
+    show ava pose shy
+    
+    ava @ say "She suggested something rather... spicy."
+    ava @ say "Which I'm not gonna do."
+    
+    show claire sweater surprised earsup
+    
+    claire @ say "But there has to be a priiiiiize!"
+    
+    show claire happy -earsup
+    show ava pose annoyed
+    
+    ava @ say "There already is one! The bowl is free if you finish it!"
+    
+    show claire sweater derp
+    
+    claire @ say "There needs to be one for whoever does it first!"
+    
+    show ava pose angry
+    
+    ava @ say "Well I'm not gonna suck the winner's dick just because they can eat spicy food!"
+    
+    gunner @ say "OwO"
+    
+    show rori armscrossed yawn lookingaway blush
+    
+    rori @ say "Man, girls are crazy."
+    
+    show gunner cheeky1
+    
+    gunner @ say "I know right, isn't it awesome?"
+    
+    show rori armscrossed neutral -lookingaway
+    show claire sweater giggle
+    
+    claire @ say "How about just holding his hand? Or is that still too lewd for you?"
+    
+    show ava pose shy
+    
+    ava @ say "Well... I guess I can do that."
+    
+    show gunner motivated
+    show ava pose concerned
+    
+    gunner @ say "Sounds like we've got a competition then, [name]!"
+    
+    player "Can I choose who I hold hands with when I win?"
+    
+    n "Your friends all look to each other and mutter in agreement."
+    
+    gunner @ say "Yeah, I don't see why not. Other than the fact that you *won't* be winning this."
+    
+    show gunner eyesclosed catface
+    show ava typical smug
+    
+    gunner @ say "Hope you won't be too jealous when I walk home holding Ava's wing~"
+    
+    default holdingHands = "No one"
+    
+    menu:
+        gunner "{cps=0}Hope you won't be too jealous when I walk home holding Ava's wing~{/cps}"
+        "Do it for Ava":
+            $ avaPoints += 2
+            $ holdingHands = "Ava"
+            
+            show gunner frown1
+            show ava typical excited
+            
+            player "Maybe in another one of your lives catboy, because tonight *I'll* be the one walking her home."
+            
+            show ava typical happy
+            show claire sweater laughing
+            
+            claire @ say "Gee Ava, how come you get *two* cuties competing for you?"
+            
+            show claire sweater happy
+            
+            if avaPoints > 4:
+                show ava profile smug
+            
+                ava @ say "Maybe I'm just that irresistable!"
+                
+                show ava typical smug
+                
+                ava @ say "Do your best you two~"
+            else:
+                show ava typical smug
+            
+                ava @ say "I dunno but this should be fun to watch!"
+                
+                show ava typical whimsical
+                
+                ava @ say "Just try not to die, you two."
+                
+        "Do it for Rori":
+            $ roriPoints += 2
+            $ holdingHands = "Rori"
+            
+            show gunner frown1
+        
+            player "Nah, I'm gonna win and hold hooves with Rori all the way back to the dorms."
+            
+            show ava typical enamored
+            show claire sweater happy
+            show rori armscrossed surprised
+            
+            rori @ say "*Bleat!*"
+            
+            show ava typical happy
+            show rori armscrossed concerned blush
+            
+            rori @ say "W-why me?"
+            
+            player "Because you're cute and those hooves were made for holding human hands."
+            
+            if roriPoints > 4:
+                show rori cheery blush
+                
+                rori @ say "Well, I guess we can hold hands just this once..."
+                
+                n "Rori tries to hide his smile but you can see it in his eyes, he wants you to win."
+            else:
+                show rori none
+                show rori worried
+                
+                rori @ say "If you say so..."
+            
+            claire @ say "D'awww you two are so adorable!"
+            
+            gunner @ say "..."
+            gunner @ say "Whatever floats your boat bro."
+        "Do it for Claire":
+            $ clairePoints += 2
+            $ holdingHands = "Claire"
+            
+            show gunner frown1
+            show claire sweater surprised earsup
+            
+            player "Nah, I'm gonna win and hold Claire's paw all the way back to her dorm."
+            
+            show ava typical concerned
+            
+            if clairePoints > 4:
+                show claire none
+                show claire sweater suggestive
+                
+                claire @ say "You can hold my paws in my dorm too, all the way til morning~"
+                
+                show ava typical embarrassed
+                
+                ava @ say "Claire! You perv!"
+                
+                claire @ say "Who's gonna be the pervert when you'll be watching us?"
+                
+                show ava typical agitated
+                
+                ava @ say "If [name] wins I'm locking you out of our dorm."
+            else:
+                show claire none
+                show claire sweater overjoyed
+                
+                claire @ say "R-really?!"
+                
+                player "At least to your dorm. Maybe further."
+                
+                show claire sweater suggestive
+                
+                claire @ say "Oh yeah, we're definitely going further~"
+            
+        "Play the reverse card":
+            $ avaPoints += 1
+            $ holdingHands = "Gunner"
+            $ gunnerPoints -= 1
+            
+            show gunner frown1
+        
+            player "The only hand you'll be holding is mine after I win."
+            
+            show gunner disgusted
+            
+            n "Gunner nearly spits out his drink."
+            
+            show gunner hissing
+            
+            gunner @ say "Say what?!"
+            
+            show ava pose smug
+            
+            #n "Ava snickers"
+            
+            #ava @ say "Ooh now I don't know who to root for~"
+            ava @ say "Ooh now that would be fun to see~"
+            
+            show claire sweater happy
+            
+            claire @ say "My favorite crack ship."
+            
+            show rori armscrossed laugh eyeopen
+            
+            rori @ say "You'll never be able to make gay jokes again, Gunner."
+            
+            show rori armscrossed neutral lookingaway
+            
+            #gunner @ say "If anything, I'll become even more homophobic if I have to hold [name]'s hand."
+            
+            show gunner eyesclosed smile
+            show rori armscrossed sleepy
+            show ava typical unimpressed
+            show claire sweater surprised earsup
+            
+            gunner @ say "Do not underestimate my homophobia."
+            
+            claire @ say "He's too powerful!"
+        
+        "I literally don't care":
+            $ avaPoints -= 1
+            $ clairePoints -= 1
+            $ roriPoints -= 1
+            $ ellenPoints +=1
+            $ rosePoints +=1
+            $ holdingHands = "No one"
+            
+            show gunner frown1
+            show ava typical happy
+            show claire sweater happy
+        
+            player "I don't care about holding anyone's hand, I'm just doing this to make you lose, catboy."
+            
+            show gunner determined
+            
+            gunner @ say "A man with nothing to fight for but the sake of fighting. I don't know wether to admire you or pity you."
+            
+            player "Both works."
+            
+            gunner @ say "Both it is."
+            
+    show ava typical happy
+    show claire sweater happy
+    show rori armscrossed neutral
+    show gunner motivated
+    
+    gunner @ say "Enough talking! Let's get this competition started already!"
+
+    n "You and Gunner dig into your bowls, haphazardly taking large bites to get through it quicker."
+    n "Gunner is getting better at using the chopsticks, grabbing whole clumps of noodles at once."
+    n "Your tongue stings and soon your water runs out. You take to chewing on ice cubes to dull the pain."
+    
+    show claire sweater giggle
+    
+    claire @ say "Look at 'em go!"
+    
+    ava @ say "Are you two alright? [name], you are *drenched* in sweat right now."
+    
+    n "You give a thumbs up and do your best to smile through your suffering."
+    
+    show claire sweater happy
+    
+    show gunner disgusted
+    
+    gunner @ say "Roriii!"
+    gunner @ say "Lemme have your drink! I'll give you a thousand dollars for it!"
+    
+    rori @ say "Hm. No."
+    
+    gunner @ say "Whaaaaat?! Come on! Two thousand?"
+    
+    n "Gunner is panting like a dog and tears are running down his cheeks."
+    
+    gunner @ say "Five grand? That's all I brought with me!"
+    
+    show rori armscrossed silly
+    
+    rori @ say "Sorry but I'm enjoying watching you suffer too much."
+    
+    n "The pain is unbearable at this point. Your mouth is on fire and you're feeling woozy."
+    n "Should you press on?"
+    
+    show rori armscrossed neutral
+    
+    menu:
+        n "{cps=0}Should you press on?{/cps}"
+        "Keep going":
+            $ spicyVictory = True
+            
+            n "No, you're not giving up. You can do this. You must assert your dominance!"
+            n "You're nearing the bottom of the bowl now. Gunner is struggling with his last few bites."
+            n "Your vision goes blurry and your hands tremble but you do not yield."
+            n "Your very existence is pain but you've learned to live with it. Embrace it. You just have to swallow one more time."
+
+            show claire sweater surprised earsup
+            
+            claire @ say "Oh my gosh he actually did it!"
+            
+            player "I-"
+            
+            stop music fadeout 1.0
+            
+            scene bg black
+
+            pause .65
+            
+            scene bg hospital with fade
+            
+            show box with Dissolve(.2):
+                ypos 0
+            
+            play music "audio/music/vylet - camelia.ogg" fadein 1.5
+            
+            n "Urgh... you feel like death. Every breath you take hurts. Your mouth is numb but you can feel your intestines are punishing you for your hubris."
+            n "You can't remember a thing after winning your little contest. You must have passed out."
+            
+            show kitsuragi at center with dissolve:
+                ypos y_kitsuragi
+            
+            kitsuragi @ say "Hello again [name]. I wish I could say it's nice to see you again, but the story your friends told me when they dragged you here has left me appalled by your stupidity."
+            
+            player "It was worth it."
+            
+            kitsuragi @ say "I'm sure it was."
+            #kitsuragi "Anyway, you may be dying but you could at least try not to reduce your lifespan any further."
+            #kitsuragi "I guess my speech about not doing anything stupid fell upon deaf ears."
+            kitsuragi @ say "I guess my advice about not doing anything stupid fell upon deaf ears."
+            
+            player "How long am I gonna be stuck here this time?"
+            
+            kitsuragi @ say "Now that you're awake you're free to go. Take this to the pharmacy, they'll give you some pills to settle your stomach."
+            
+            n "She hands you a note that just says BUTTHURT with three underlines."
+            
+            kitsuragi @ say "Now get out of my hospital."
+            
+            hide kitsuragi with dissolve
+            
+            n "The doctor leaves the room, leaving you to ponder your life decisions and muster the energy to get up, trying not to put undue stress on your abdomen."
+            n "When you reach the hospital lobby you're surprised to see your friends there waiting for you."
+            
+            show ava typical happy at center:
+                ypos y_ava
+                xoffset 300
+            show claire sweater happy at center:
+                ypos y_claire
+                xoffset 650
+            show rori neutral at center:
+                ypos y_rori
+                xzoom -1
+                xoffset -325
+            show gunner neutral at center:
+                ypos y_gunner
+                xoffset -775
+                xzoom -1
+                
+            with dissolve
+            
+            show gunner cheeky1
+
+            gunner @ say "Looks like the legend is back among the living!"
+            
+            show rori concerned
+            
+            rori @ say "[name]! Are you okay?"
+            
+            show claire sweater pose laughing
+            
+            claire @ say "We were afraid we like, totally killed you! Ksksksksks!"
+            
+            show claire sweater happy
+            show ava typical annoyed
+            
+            ava @ say "You didn't have to do all that just to impress us you know!"
+            #ava @ say "But it was still impressive..."
+            
+            show ava typical happy
+            
+            player "But it was impressive, was it not?"
+            
+            if holdingHands == "No one":
+                ava @ say "Mmh, I suppose it was... for a human!"
+                
+                player "What's that supposed to mean?"
+                
+                ava @ say "Oh nothing~"
+                ava @ say "We're just glad you survived!"
+                
+                player "Me too. I think I'm gonna be out of commission for the next few days though."
+                
+                claire @ say "That's alright! Come on, let's walk you home~"
+                
+                player "You all didn't have to wait on me you know."
+                
+                gunner @ say "What and just leave you here to die alone? Not a chance!"
+                
+                rori @ say "We shouldn't have even ordered that stupid dish for you."
+                
+                claire @ say "Yeahhh our bad. We didn't think it would be like \"go to the hospital\" levels of spicy!"
+                
+                player "It's alright guys, I had a good time."
+                
+                ava @ say "So did we!"
+                ava @ say "You should have seen the looks on your faces!"
+                
+                gunner @ say "Hey in our defense those spices are specifically designed to be used as torture devices!"
+                
+                ava @ say "Birds can eat them just fine!"
+                ava @ say "You mammals are so silly~"
+                
+                rori @ say "It's true, birds have no receptors to taste capsaicin."
+                
+                claire @ say "She may be able to handle the peppers but can she handle *my* spiciness?~"
+                
+                ava @ say "I don't think anybody can~"
+                
+                claire @ say "Ksksksks I'll take that as a compliment~"
+                
+                n "Eventually you manage to corral your friend group out of the hospital and stop them from making a scene."
+                n "Your gut still hurts but you have no regrets."
+                n "You'll be out of commission for at least a day or two. Hopefully you didn't just cause permanent damage to your digestive tract."
+                
+                stop music fadeout 2.0
+                
+            else:
+                player "Now where's my prize?"
+                
+                n "You hold out your hand expectantly."
+                
+                show claire none
+                show claire sweater happy
+                show rori neutral
+            
+                if holdingHands == "Ava":
+                    show ava typical shy
+                    show gunner frown1
+                    
+                    ava @ say "After all the trouble you went through, I suppose you deserve it~"
+                    
+                    show gunner uncomfy
+                    
+                    if avaPoints > 4:                    
+                        show ava typical overjoyed
+                    
+                        n "Ava smiles and wraps her wing around your arm."
+                    else:
+                        n "Ava takes your hand in her wing. Her feathers are so soft, you can't resist stroking them with your thumb."
+                        
+                        show ava typical agitated
+                        
+                        ava @ say "Hey, watch the plumage! They only go in one direction."
+                        
+                        player "Woops sorry."
+                        
+                        show ava typical happy
+                        
+                        n "You hastily straighten out her feathers."
+                        
+                    show gunner itsover
+                        
+                    gunner @ say "It should have been meeeeee!"
+                    
+                    player "I have two hands, you can hold my free one."
+                    
+                    show gunner annoyed
+                    
+                    gunner @ say "Not what I meant!"
+                    
+                    show ava typical smug
+                    
+                    ava @ say "Better luck next time!"
+                    
+                    show claire sweater pose suggestive
+                    
+                    claire @ say "And if you strike out again, I know a lonely bunny gal who could keep you company~ Ksksksksks!"
+                    
+                    show gunner frown1
+                    
+                    n "Gunner shudders."
+                    
+                    gunner @ say "Ugh. We gonna go back home or stand in the hospital lobby all night?"
+                    
+                    show rori armscrossed worried
+                    
+                    rori @ say "Yeah, we should head home. It's gotten pretty late."
+                    
+                    show rori armscrossed surprised
+                    
+                    rori @ say "Plus we're kind of making a scene here."
+                    
+                    show rori armscrossed neutral
+                    show ava typical whimsical
+                    
+                    ava @ say "Come on, let's get outta here."
+                    
+                    show ava typical happy
+                    
+                    stop music fadeout 2.0
+                    
+                    scene bg black with fade
+                    
+                    n "Basking in the glory of holding Ava's wing, you make your departure from the hospital with your entourage of fluffy companions."
+                        
+                    if avaPoints > 3:    
+                        scene bg codadorm autumn day with fade
+                        
+                        n "Ava leaned on you as you walked back towards campus."
+                        n "Almost like she likes you or something. Weird."
+                    
+                    n "It even seemed like she wanted to stay with you a while longer but your tummy hurts too much and you just want to sleep it off."
+                    
+                if holdingHands == "Claire":
+                    claire @ say "Oh yeah I almost forgot!"
+                    
+                    n "Claire grabs hold of your hand like she's trying to break it."
+                    
+                    player "Ow! Ease up some."
+                    
+                    claire @ say "Sorry, I got a little too excited."
+                    
+                    n "She relaxes her grip just slightly. You wouldn't be able to break free even if you wanted to."
+                    
+                    ava @ say "Totally not desperate at all. Nope, not one bit."
+                    
+                    if clairePoints > 4:
+                        claire @ say "I'm never letting go!"
+                        
+                        player "I guess this is my life now."
+                        
+                        ava @ say "Try not to sound so excited, [name]!"
+                        
+                        claire @ say "Are you not happy to hold my paw...?"
+                        claire @ say "I thought this is what you wanted."
+                        
+                        player "I literally risked my life for this moment, why wouldn't I want this?"
+                        
+                        claire @ say "Ohmygosh you're right! You *could* have died!!"
+                        
+                        ava @ say "Don't be so dramatic."
+                        
+                        claire @ say "All just to hold this little bunny's paw?"
+                        
+                        gunner @ say "\"Little?\""
+                        
+                        claire @ say "Well I'm all yours now, [name]! Take us back to your dorm and I'll show you what hand holding is all about~"
+                        
+                        rori @ say "Maybe don't say that super loud in a public setting?"
+                        
+                        player "Alright, how about we all just head outside?"
+                        player "Oh and your paw is very nice to hold by the way."
+                        
+                        n "You feel Claire's weight tug on you as her body goes limp. Her knees tremble, yet she maintains her grasp on your hand."
+                        n "She fans her blushing face with her free paw."
+                        
+                        claire @ say "Y-yeah it is pretty hot in here, don't you think? *Gulp* haha I feel like I'm about to faint...!"
+                        
+                        ava @ say "Good thing we're in a hospital in case you do."
+                        
+                        gunner @ say "Come on guys, exit's this way."
+                        
+                    else:
+                        claire @ say "Don't be jealous~"
+                        claire @ say "Well, it's okay to be a little jealous! Who *wouldn't* wanna hold a human male's hand?"
+                    
+                        gunner @ say "Me."
+                        
+                        claire @ say "You don't know what you're missing out on~"
+                        
+                        ava @ say "What's it like?"
+                        
+                        claire @ say "It's like a fine leather that's warm to the touch and fits perfectly in my paw with a firm yet gentle grasp!"
+                        
+                        rori @ say "That does sound kinda nice..."
+                        
+                        gunner @ say "If you guys are done gushing over your human hand fetish, can we please go home?"
+                        
+                        claire @ say "I could gush more but yeah I'd rather head to [name]'s dorm ASAP."
+                    
+                    n "You and your crew of fluffy companions file out of the hospital and headed back toward campus."
+                    n "Claire was giddy the whole way but the pain in your stomach began to flare up after walking so much."
+                    n "She practically begged to stay with you when you reached your dorm but the others managed to pry her off you so you could rest."
+                    
+                    stop music fadeout 2.0
+                    
+                if holdingHands == "Rori":
+                    show rori worried
+                
+                    n "Rori looks around shyly before nervously grabbing onto your pinkie finger."
+                    
+                    player "What is that? You call that hand holding?"
+                    
+                    show rori asleep
+                    
+                    rori @ say "Ack! Sorry!"
+                    rori @ say "I've never held someone's hand before!"
+                    
+                    show rori concerned
+                    
+                    claire @ say "Aww, you're taking away his hand holding virginity!"
+                    
+                    show rori neutral blushing
+                    
+                    rori @ say "D-don't say it like that!"
+                    
+                    n "You pull Rori's hand closer and interweave your fingers between his hoof-finger things."
+                    
+                    show rori smirk blush
+                    
+                    rori @ say "O-o-oh my goshhh t-this is really happening...!"
+                    
+                    if roriPoints > 3:
+                        player "Don't be shy, you know you want this."
+                        
+                        show rori smug blushing
+                        
+                        rori @ say "Maybe, just a little..."
+                    
+                        gunner @ say "LOL he wants more than just some hand holding."
+                    else:
+                        player "See? That's not so bad, now is it?"
+                        
+                        show rori concerned blushing
+                        
+                        n "You can feel how tense Rori is through his hand."
+                        
+                        rori @ say "Y-yeah, just two bros holding hands because of some silly bet! Nothing else to it!"
+                        
+                        gunner @ say "Holy cope lmao"
+                        
+                    show rori surprised
+                        
+                    rori @ say "Shut up! Don't ruin this moment!"
+                    
+                    show rori smirk blush
+                        
+                    gunner @ say "Okay bro, chill."
+                    
+                    show ava typical excited
+                    
+                    ava @ say "Well I think you two look pretty cute together!"
+                    
+                    if avaPoints > 3:
+                        show ava typical shy
+                        
+                        n "She mutters something under her breath."
+                        
+                        ava @ say "But me and [name] would be even cuter..."
+                    
+                    show ava typical happy
+                    show rori flattered blushing
+                        
+                    rori @ say "Heh, thanks."
+                        
+                    player "Shall we head back to the dorms then?"
+                    
+                    show rori cheery blush
+                    
+                    rori @ say "Ba-a-a-ah! Of course!"
+                    
+                    if roriPoints > 3:
+                        show rori flattered blushing
+                        
+                        rori @ say "But could we maybe take the scenic route? It's a nice night out and..."
+                        
+                        player "And you wanna hold my hand a little longer. Gotchya."
+                        
+                        show rori happy
+                        
+                        rori @ say "Something like that...!"
+                        
+                        show rori neutral
+                        show claire sweater suggestive
+                        
+                        claire @ say "D'awww~"
+                        
+                        show gunner disgusted
+                        
+                        gunner @ say "Ick."
+                        
+                    stop music fadeout 2.0
+                        
+                    scene bg black with fade
+                    
+                    n "Rori eventually got more comfortable holding your hand as you walked back to your dorm."
+                    n "It became so natural that he didn't want to let go."
+                    n "But all good things must come to an end. You thought about inviting him to stay for a sleepover but your tummy had started hurting again and you just wanted to rest."
+                        
+                    
+                if holdingHands == "Gunner":
+                    show gunner frown1
+                    
+                    gunner @ say "... You're serious?"
+                    
+                    player "I didn't dominate you in our competition to *not* hold your paw."
+                    
+                    show claire sweater pose suggestive earsup
+                    
+                    claire @ say "Come on, a deal's a deal, Gunner!"
+                    
+                    show ava typical overjoyed
+                    
+                    ava @ say "Haha yeah just do it! It'll be really funny haha OvO"
+                    
+                    show rori armscrossed silly
+                    
+                    rori @ say "What's the matter Gunner? Afraid you'll turn gay?"
+                    
+                    show gunner annoyed
+                    show ava typical happy
+                    show claire none
+                    show claire sweater happy
+                    
+                    gunner @ say "Shut up, there's nothing gay about holding your homie's hand."
+                    
+                    n "The cat snatches your hand, trying his best to act nonchalant about it but he can't hide the disgusted look on his face."
+                    n "His claws dig into your flesh. He's trying to get you to let go but he underestimates your stubbornness."
+                    
+                    player "Great! How about we go for a walk through campus now?"
+                    
+                    gunner @ say "Really bro?"
+                    
+                    n "Rori snickers and pulls out his phone, snapping a pic of you and your catty cohort with a loud shutter sound."
+                    
+                    gunner @ say "DELETE THAT!"
+                    
+                    rori @ say "lol no"
+                    
+                    n "Gunner lunges to grab Rori's phone but you restrain him."
+                    
+                    player "Bad kitty!"
+                    
+                    n "He hisses at you while the rest of the group laughs. Eventually he settles down and accepts his defeat."
+                    
+                    show ava overjoyed
+                    
+                    ava @ say "You two are so cute together! You should hold hands more often~"
+                    
+                    show ava happy
+                    show claire sweater suggestive
+                    
+                    claire @ say "Yeah Ava's definitely gonna be writing fanfiction about this later."
+                    
+                    show ava typical angry
+                    
+                    ava @ say "I am not!"
+                    
+                    show gunner itsover
+                    
+                    gunner @ say "The things I put up with to have a chance with a hot secretary bird."
+                    
+                    show gunner displeased
+                    show ava typical enamored
+                    show claire sweater giggle
+                    
+                    claire @ say "Yaoi is so fucking hot."
+                    
+                    show rori armscrossed smile blush
+                    
+                    rori @ say "...Bet."
+                    
+                    show gunner frown1
+                    show claire sweater happy
+                    show rori armscrossed neutral
+                    
+                    gunner @ say "I have no idea why girls are so into this sort of thing."
+                    
+                    player "Because if one guy is hot then two guys is twice as hot."
+                    
+                    gunner @ say "Yeah but two guys *together???* What does the woman even get out of this?"
+                    
+                    show ava typical suggestive
+                    
+                    ava @ say "I'll cut you a deal Gunner, anything you do with [name] while holding hands, I'll do with you~"
+                    
+                    show ava typical smug
+                    
+                    gunner @ say "Yeah? Well I don't think [name] is gonna let me bend him over and-"
+                    
+                    show ava typical shocked
+                
+                    ava @ say "Before you finish that statement let me be clear that I'm just joking around...!"
+                    
+                    n "Well? Should you draw out this \"\"\"purely hypothetical\"\"\" scenario to fulfill Ava's desires?"
+                    
+                    menu:
+                        n "{cps=0}Well? Should you draw out this \"\"\"purely hypothetical\"\"\" scenario to fulfill Ava's desires?{/cps}"
+                        "Aw hell no!":
+                            $ rejectedAvasproposal = True
+                        
+                            n "Aw hell no, you're not letting Ava's indecisiveness decide your actions!"
+                            n "You won't indulge in her degenerate fantasies, to play the role of the bottom in some college chick's gay porno ideas. That bird needs to pick a side already!"
+                            
+                            player "Oh suuuure, let me suck Gunner's dick so he can get some beak later."
+                            
+                            show gunner cheeky1
+                            show ava typical enamored
+                            show claire sweater surprised earsup
+                            show rori worried noblush
+                            
+                            gunner @ say "You'd do that? For me...?"
+                            
+                            player "Hell no!"
+                            #player "I'm like an ozone molecule, I form strong bonds in pairs, not trios!"
+                            
+                            #rori @ say "Ozone is O3, not O2."
+                            
+                            #player "Well fuck, there goes my college student tier analogy."
+                            
+                            #player "Ever heard of pairbonding?"
+                            #gunner @ say "Well right now it looks like you're pairbonded to *me*"
+                            
+                            player "I don't want any part of this isosceles love triangle shipwreck-in-progress!"
+                            
+                            claire @ say "That's right! Human males are for pairbonding only!"
+                            
+                            show ava typical concerned
+                            
+                            n "Ava looks a bit disappointed but quickly stows it away."
+                            
+                            show claire sweater happy -earsup
+                            show rori neutral
+                            show gunner frown1
+                            show ava typical shy
+                            
+                            ava @ say "H-hey it was just a funny thought that popped into my head is all! No need to get so defensive!"
+                            
+                            show gunner itsover
+                            
+                            n "Gunner shakes his head, seemingly achieving some sense of clarity."
+                            
+                            gunner @ say "[name]'s right, I could never allow my dick to be touched by another man, not even for guaranteed bird sexo. That would be hella gay."
+                            # I just don't swing that way."
+                            
+                            show gunner determined
+                            
+                            gunner @ say "Besides..."
+                            
+                            show gunner wink catface
+                            
+                            n "Gunner snaps his paw and winks at Ava."
+                            
+                            show ava typical happy
+                            
+                            gunner @ say "I don't need a cheap trick like that to win in the end~"
+                            
+                            show gunner neutral
+                            
+                            gunner @ say "Sometimes you have to lose the battle and hold your bro's hand to win the war."
+                            
+                            ava @ say "Hmm..."
+                            
+                            show ava typical whimsical
+                            
+                            ava @ say "In that case, may the best man win!"
+                            
+                            show claire sweater laughing
+                            
+                            claire @ say "I call dibs on the loser!"
+                            
+                            show claire sweater happy
+                            show gunner frown1
+                            
+                            gunner @ say "...Now I definitely have to win."
+                            
+                            show gunner neutral
+                            
+                            gunner @ say "Come on, let's get out of here before anybody important sees me like this."
+                            
+                            scene bg black with dissolve
+                            
+                            n "You made your way back to campus, holding Gunner's paw the whole time. You revelled in how uncomfortable it made him and thwarted his attempts to escape."
+                            n "Only when you reached your dorm did you mercifully release him."
+                        "Just a smooch":
+                            n "You don't know if you're ruining your chances with Ava or boosting them but you're doing this for the memes."
+                            
+                            show ava typical shocked
+                            show gunner gruff
+                            show claire sweater surprised earsup
+                            show rori armscrossed worried
+                            
+                            player "Best I can do tonight is a smooch."
+                            
+                            n "Gunner turns his eyes toward Ava, then back to you, then back to Ava before finally coming to a stop looking at you with a mixture of apprehension and gratitude."
+                            
+                            show gunner frown1
+                            
+                            gunner @ say "...For real?"
+                            
+                            player "I mean we're already holding hands."
+                            player "What's one little kiss gonna do?"
+                            player "Aside from giving these fujoshis a nice show that is?"
+                            
+                            show ava typical motivated
+                            
+                            ava @ say "Yes... Ha ha ha... {u}yes{/u}!"
+                            
+                            show gunner displeased
+                            
+                            gunner @ say "Ughhh you drive a hard bargain!"
+                            
+                            show gunner itsover
+                            
+                            gunner @ say "This is a classic strong-arming technique I read about in \"The Art of the Deal\" where you try and turn someone's homies into homos."
+                            
+                            show gunner determined
+                            
+                            gunner @ say "And to that I say no deal."
+                            
+                            show claire sweater happy -earsup
+                            show ava typical neutral
+                            show rori armscrossed neutral
+                            
+                            ava @ say "Aww..."
+                            
+                            player "Don't worry, he'll come around to the idea."
+                            
+                            show claire sweater suggestive
+                            
+                            claire @ say "Shoulda bargained better."
+                            
+                            show claire sweater suggestive earsup
+                            
+                            claire @ say "Offer him a blowie next time!"
+                            
+                            show ava typical angry
+                            show claire none
+                            show claire sweater giggle
+                            
+                            ava @ say "Claire please."
+                            
+                            show claire happy
+                            
+                            claire @ say "What? That's just common business sense! There's a whole chapter about it in \"The Art of the Deal!\""
+                            
+                            show ava typical concerned
+                            show gunner displeased
+                            
+                            gunner @ say "Too late, my decision is final!"
+                            
+                            show gunner frown1
+                            
+                            gunner @ say "Now let's get out of here before anybody important sees me like this."
+                            
+                            scene bg black with dissolve
+                            
+                            n "You made your way back to campus, holding Gunner's paw the whole time. You revelled in how uncomfortable it made him and thwarted his attempts to escape."
+                            n "Only when you reached your dorm did you mercifully release him."
+                            
+                            
+                        "Suggest a compromise":
+                            $ rejectedAvasproposal = True
+                        
+                            player "What? Why do I have to be the bottom?"
+                            player "If Ava wants us so bad she can bottom for both of us."
+                            
+                            ava @ say "T-that...!"
+                            
+                            show ava typical suggestive
+                            show claire sweater surprised earsup
+                            show rori armscrossed concerned blush
+                            
+                            ava @ say "...Could actually be arranged~"
+                            
+                            show ava typical embarrassed
+                            
+                            ava @ say "Purely in a hypothetical sense of course! As a philosophical exercise!"
+                            
+                            claire @ say "Holy shit they're actually planning a threesome."
+                            
+                            rori @ say "I know, it's insane."
+                            
+                            show ava typical angry
+                            
+                            ava @ say "Quiet you two! We're merely discussing the complex social dynamics of intersecting bonding rituals!"
+                            
+                            show claire sweater giggle
+                            
+                            claire @ say "Who gets your beak and who gets your tailfeathers?"
+                            
+                            ava @ say "It's none of your business!"
+                            
+                            n "You feel Gunner's paw grip tightly around your hand, trembling. You'd almost forgotten that you were bound to him in this way."
+                            n "Seeing you two forced to act as an inseperable pair sure is doing a number on Ava, huh?"
+                            
+                            show claire sweater laughing
+                            
+                            claire @ say "Fine, keep your secrets! I'll just ask them directly which they'd prefer!"
+                            
+                            show ava reaching embarrassed
+                            
+                            ava @ say "W-wait!"
+                            
+                            show claire sweater suggestive
+                            
+                            claire @ say "Well? Which would it be, [name]?"
+                            
+                            menu:
+                                claire "{cps=0}Well? Which would it be, [name]?{/cps}"
+                                "Beak":
+                                    $ beakOrTailfeathers = "Beak"
+                                
+                                    n "This conversation is rapidly approaching critical levels of awkwardness. This is definitely not the topic you should be discussing in a hospital lobby at 9PM."
+                                    n "You can barely utter out the word."
+                                    
+                                    claire @ say "Don't try and weasel out of this one, you knew what you were getting into when you suggested a compromise!"
+                                    
+                                    show gunner itsover
+                                    
+                                    player "B... Beak."
+                                "Tailfeathers":
+                                    $ beakOrTailfeathers = "Tailfeathers"
+                                    
+                                    n "This conversation is rapidly approaching critical levels of awkwardness. This is definitely not the topic you should be discussing in a hospital lobby at 9PM."
+                                    n "You can barely utter out the word."
+                                    
+                                    claire @ say "Don't try and weasel out of this one, you knew what you were getting into when you suggested a compromise!"
+                                    
+                                    show gunner itsover
+                                    
+                                    player "T... Tailfeathers."
+                            
+                            claire @ say "There, I just got you some new fanfic material~"
+                            
+                            show ava typical shy
+                            
+                            ava @ say "Haha y-yeah just some harmless fanfiction..."
+                            
+                            show claire sweater happy
+                            show gunner displeased
+                            show rori none
+                            show rori armscrossed neutral
+                            
+                            n "Gunner appears to be stumped, weighing his options and chances carefully. He suddenly clears his throat and speaks up."
+                            
+                            show ava typical concerned
+                            
+                            gunner @ say "Okay enough of the hypothetical bullshit."
+                            gunner @ say "There will be no threesomes unless it's with me, Ava, and Ava's long lost twin sister."
+                            gunner @ say "It's all or nothing with me. No compromises."
+                            
+                            show rori armscrossed neutral lookingaway
+                            
+                            rori @ say "Wow, that's actually... kinda based of you."
+                            
+                            show rori armscrossed sleepy
+                            
+                            rori @ say "Or at least it would be if I didn't know you're just afraid of seeing [name]'s dick."
+                            
+                            show gunner determined
+            
+                            gunner @ say "Each piece has its role in the grand scheme of things."
+                            gunner @ say "I know there's at least one timeline where maximizing my homophobia stat gets me a waifu."
+                            
+                            player "Hey, if it works good for you."
+                            
+                            show ava typical whimsical
+                            
+                            n "Ava finally manages to shake off her horny stupor and feel shame after getting turned down."
+                            
+                            ava @ say "Haha it was all just a fun hypothetical to ponder anyway! *Yaaawn* is anybody else sleepy? I think we should all forget about this and go to bed."
+                            
+                            gunner @ say "Agreed."
+                            
+                            scene bg black with dissolve
+                            
+                            n "You made your way back to campus, holding Gunner's paw the whole time. You revelled in how uncomfortable it made him and thwarted his attempts to escape."
+                            n "Only when you reached your dorm did you mercifully release him."
+                            
+                n "It was nice to hold someone's hand all the way back to your dorm though. Makes you feel special."
+                n "You should find a way to do it without accepting stupid challenges and tearing up your guts."
+                n "The rest of your weekend is spent huddled in a fetal position in bed, recovering from the tummy ache of the century. You won, but at what cost?"
+                
+                stop music fadeout 2.0
+                
+                jump chapter3AfterWeekend
+                            
+                            
+        "Concede":
+            n "You can't... You just can't go on."
+            n "This isn't worth it."
+            n "You're feeling woozy and tears are streaming down your cheeks. Is this really worth it?"
+            n "If you take one more bite, you're pretty sure you'll be out of commission for the rest of the weekend."
+            n "Maybe it's time to give up."
+            
+            player "That's it, no more."
+            
+            n "You sit there, brain fried from the traumatic spices, suckling on an ice cube as Gunner finishes his bowl and claims victory."
+            
+            show gunner motivated
+            
+            gunner @ say "AHAHAHAHA YESSSS"
+            gunner @ say "THROUGH THE FIRE AND FLAMES, I EMERGE VICTORIOUS!"
+            gunner @ say "*Inhales*"
+            
+            show gunner pissed
+            
+            gunner @ say "AAAAAAAAAAAAAAAAAAA!!!!"
+            
+            n "The waitress comes by and refills your drinks. Gunner chugs his in one go."
+            
+            gunner @ say "EVEN THE WATER BURNS!!!"
+            
+            show ava reaching concerned
+            
+            ava @ say "You alright, big guy?"
+            
+            gunner @ say "Not really but whatever."
+            gunner @ say "I am in"
+            gunner @ say "so much pain right now."
+            gunner @ say "But it'll be worth it to hold your wing."
+            
+            show ava typical shy
+            
+            n "Ava stifles a giggle."
+            
+            ava @ say "Oh pft. Fine. I said I would, and I guess you do kinda deserve it."
+            
+            rori @ say "You put up a good fight, [name]. It just wasn't meant to be."
+            
+            claire @ say "You put on a good show too!"
+            
+            show ava typical suggestive
+            
+            ava @ say "You boys looked so silly~"
+            ava @ say "Mind if I try a bite, [name]?"
+            
+            show ava typical smug
+            
+            player "You sure? It's kinda spicy."
+            
+            ava @ say "Oh I think I can handle it~"
+            
+            n "Ava reacher over with her fork and takes a stab at your red hot molten lava in a bowl."
+            n "You watch in horror as she takes a big bite and swallows it."
+            
+            show ava typical neutral
+            
+            ava @ say "Hmm. Kinda bland if you ask me."
+            
+            gunner @ say "The fuck?"
+            gunner @ say "How can you eat something so spicy? Are you Mexican or something?"
+            
+            show ava profile whimsical
+            
+            ava @ say "Breee~ A magician never reveals her secrets!"
+            
+            show rori armscrossed neutral lookingaway
+            
+            rori @ say "Birds don't have receptors of capsaicin, so they can't taste spicy foods."
+            
+            show ava profile smug
+            
+            ava @ say "Ya got me! Hehe it was fun watching you guys struggle with something so mild!"
+            
+            show gunner disgusted
+            
+            gunner @ say "Well I'm glad we could offer some amusement for the night."
+            gunner @ say "I am never doing this again."
+            
+            player "Same."
+            
+            scene bg black with dissolve
+            
+            n "The rest of the night was a blur. You felt like you were going to pass out a few times but you managed to hold it together."
+            n "Gunner was kind enough to pay for your meal but not kind enough to avoid gloating as he held Ava's wing on the way back to campus."
+            
+            stop music fadeout 2.0
+            
+            scene bg codadorm autumn day with fade
+            
+            play music "audio/ambient/morning birds.ogg" fadein .4
+            
+            show box with Dissolve(.2):
+                ypos 0
+            
+            n "You wake up feeling dizzy, almost kinda hungover."
+            n "Your poor intestines are still groaning in pain even after you made several trips to the bathroom."
+            n "Last night was not worth the trouble just to lose."
+            
+            if holdingHands == "Ava":
+                call phone_start from _call_phone_start_53 
+
+                call message_start("Ava", "Hey [name]! You doing alright?", "avaavi.png") from _call_message_start_70 
+                call message("Ava", "Thought I'd check in on you", "avaavi.png") from _call_message_391 
+
+                call reply_message("Yeah, jsut hating every moment of existence.") from _call_reply_message_290 
+                
+                call message("Ava", "Oof, sorry about last night", "avaavi.png") from _call_message_392 
+                call message("Ava", "I thought for sure you'd win!", "avaavi.png") from _call_message_393 
+                
+                call reply_message("Really? I guess we both underestimated Gunner") from _call_reply_message_291 
+                
+                call message("Ava", "He's pretty determined, you gotta give him that!", "avaavi.png") from _call_message_394 
+                call message("Ava", "Better luck next time~", "avaavi.png") from _call_message_395 
+                
+                call reply_message("yeah lol") from _call_reply_message_292 
+                
+                call phone_end from _call_phone_end_62
+                
+                n "You're getting pretty tired of this love triangle bullshit."
+                n "You'd go over and kick Gunner's ass right now if your stomach wasn't in constant agony."
+            
+            else:
+                "Your stomach is still in unrelenting agony so you're just gonna take it easy for now."
+            
+            n "All you can do today is lie in bed and study while idly browsing the web."
+            
+            stop music fadeout 2.0
+                
+            scene bg black with dissolve
+            
+            scene bg codadorm autumn day with dissolve
+            
+            show box with Dissolve(.2):
+                ypos 0
+            
+            n "Your intestines have finally settled and you're feeling well enough to go out."
+            
+            call afterClassOptions from _call_afterClassOptions_2
+            
+        
+    jump chapter3AfterWeekend
+        
+label chapter3AfterWeekend:
+    scene bg codadorm autumn day with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+
+    #knock over rose's cassette player in class on accident, can give her the repair gear if you have it or offer to cashapp her but she doesn't have the app (or a phone)
+    n "Monday again."
+    n "At least your intestines are no longer begging for death after Friday's dinner and you can return to class in peace."
+    
+    scene bg classroom with fade
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    play music "audio/music/mere - schooldaze.ogg" fadein .4
+    
+    n "The classroom is pretty lively by the time you arrive. Everyone's chatting and laughing except for Rose."
+    n "She sits with her head facing towards the window, staring out at the courtyard. A small rectangular box sits on her desk with a wire snaking around and splitting off into two ends that terminate at her ears."
+    n "Weird, it doesn't look like any phone you've seen before."
+    #n "Wait, is that one of those cassette player things for boomers?"
+    n "As you're squeezing between the row of desks you hear something fall to the ground with the sound of clattering plastics and shattering glass."
+    n "The whole room goes silent and all eyes are on you."
+    
+    rose @ say "Hey!"
+    
+    n "Tiny paws pull at your shirt and you come face to face with a pissed-off raccoon."
+    
+    show rose skirt furiouspose at center with dissolve:
+        ypos y_rose
+        xoffset -400
+    
+    n "She's standing atop her desk and only barely matches your height."
+    
+    rose @ say "Pick that up. Now!"
+    
+    n "She points to all the pieces of her contraption scattered across the floor."
+    
+    menu:
+        n "{cps=0}She points to all the pieces of her contraption scattered across the floor.{/cps}"
+        "Refuse":
+            $ rosePoints -= 1
+            
+            player "You've got hand-like paws, pick it up yourself."
+            
+            rose @ say "You're the one who fucking knocked it over!"
+            
+            player "And who's fault is that? Try not leaving your toys hanging precariously over your desk next time."
+    
+            ###knife sprite
+            show rose skirt fistsclenched angry knife
+    
+            rose @ say "I'm going to kill y-"
+        
+            show rothbauer at center with dissolve:
+                ypos y_roth
+                xoffset 400
+        
+            rothbauer @ say "Good morning class! I hope you're all had a nice weekend!"
+            
+            hide rose with dissolve
+            
+            n "Rose silently folds her knife and sits back in her chair."
+            n "She reaches down and picks up the main body of the device. The individual plastic pieces have all popped out of their sockets."
+            n "You can see now it was one of those old portable cassette players. The tape is still inside, albeit spilling out of the cassette itself in an unholy tangled mess."
+            n "Rose sighs and tosses the chassis into her bag, not even bothering with the other pieces strewn about the floor."
+            n "She spends half the class sullenly untangling the tape and spooling it back into the cassette."
+            n "To your surprise, she doesn't stab you after class. She just picked up her bag and left, looking too sad to be angry."
+        
+        "Comply":
+            player "O-okay."
+            
+            n "You drop down to your knees and pick up every bit you find and deposit it onto Rose's desk."
+            
+            show rose skirt armscrossed unsure
+            
+            rose @ say "Ugh, what am I supposed to do with broken pieces of plastic and shards of glass?"
+            
+            show rose skirt armscrossed annoyed
+            
+            rose @ say "Kindly cut your throat open with those if you find a piece that's long enough."
+            
+            player "I'll get right on that."
+            
+            n "Rose slots the pieces back together as you find them, though some are obviously too broken to be repaired."
+            n "You've gathered all the parts, or at least all the ones you can see from this aisle. Wait, there's one more under your desk."
+            n "You reach for it and pass it up to Rose before sitting in your chair."
+            
+            show rose skirt fistsclenched angry
+            
+            rose @ say "Is that the flywheel? God dammit it's cracked to hell. Cheap piece of shit plastic, probably made by inferior human hands..."
+            rose @ say "You're paying for this!"
+            
+            ###make a note that it's a cassette player?
+            
+            if gnugift == True:
+                $ rosePoints += 1
+                $ fixedRosesCassette = True
+                
+                n "Wait a minute, that looks just like the gizmo that based homeless guy gave you."
+                n "You've been carrying it around just like he said and now it finally has a use."
+                
+                player "Wait a second, try using this."
+                
+                show rose skirt handonhip annoyed
+                
+                n "You hold out the wheel to her. She gives you a skeptical look."
+                
+                rose @ say "Why do you have one of these?"
+                
+                player "That psychic hobo told me to hold onto it!"
+                
+                show rose skirt armscrossed dismissive
+                
+                rose @ say "Do you always take advice from crackheads?"
+                
+                show rose skirt armscrossed unsure
+                
+                rose @ say "This probably isn't going to work but I'm desperate enough to try it."
+                
+                n "Rose slots the flywheel into place and wraps a rubber band around it, connecting it to another series of wheels and gears within the cassette box."
+                
+                show rose skirt handonhip shy
+                
+                n "Her eyes go wide when she presses the play button and the rotors spin, pulling the tape along and producing muffled music from the earphones."
+                
+                rose @ say "It... actually works!"
+                
+                show rose handonhip smug
+                
+                rose @ say "That's one hell of a coincidence."
+                
+                player "It's no coincidence, I think that guy could really see the future!"
+                
+                show rose skirt handonhip dismissive
+                
+                rose @ say "I see a future where he steals your kidneys if you meet again."
+                
+                player "You should thank him for giving me that piece to fix your cassette player!"
+                
+                show rose handonhip annoyed
+                
+                rose @ say "No, *you* should watch where you're going next time and avoid knocking over my things in the first place!"
+                
+                n "You mutter under your breath."
+                
+                player "Maybe don't leave fragile objects leaning off your desk..."
+                
+                show rose skirt armscrossed annoyed
+                
+                rose @ say "What was that?"
+                
+                show rothbauer at center with dissolve:
+                    ypos y_roth
+                    xoffset 400
+                
+                rothbauer @ say "Good morning class! Let's get right into it today, why don't we!"
+                
+                n "Thank you professor, you came in at just the right time to get Rose off your back."
+            else:
+                player "For the wheely thing?"
+                
+                show rose skirt fistsclenched angry
+                
+                rose @ say "For the whole thing! It's ruined!"
+                
+                player "Okay okay, so like how much? 5 bucks? 10?"
+                
+                show rose skirt armscrossed annoyed
+                
+                rose @ say "You just destroyed a vintage Walkfan WM-3X Special Edition, of which there are only like a dozen left in the world!"
+                
+                player "So it's priceless is what I'm hearing."
+                
+                show rose none
+                show rose skirt armscrossed furious pendant
+                
+                rose @ say "Well I'm definitely not gonna find another one up for sale!"
+                
+                show rose skirt armscrossed dismissive -pendant
+                
+                rose @ say "I don't know, maybe I can retrofit the guts of a TCM-100 into the shell and pretend it's the same thing."
+                
+                player "And how much for one of those?"
+                
+                show rose skirt handonhip shy
+                
+                rose @ say "$900."
+                
+                player "Nine hundred dollarydoos?!"
+                
+                rose @ say "Yeah, just 900. You're not poor are you?"
+                
+                player "Uhh..."
+                
+                n "900 dollars is a substantial chunk of your life savings."
+                
+                menu:
+                    n "{cps=0}900 dollars is a substantial chunk of your life savings.{/cps}"
+                    "Pay up":
+                        $ rosePoints += 1
+                        
+                        n "This kind of is your fault, even if Rose is being a cunt about it."
+                        
+                        player "You have cashapp?"
+                        
+                        show rose skirt handonhip annoyed
+                        
+                        n "Rose's signature glare becomes even more condescending than usual."
+                        
+                        rose @ say "No, I don't use demonic proprietary junkware like that."
+                        
+                        player "Well I don't walk around with $900 in my pocket every day!"
+                        
+                        show rose skirt handonhip dismissive
+                        
+                        rose @ say "You could have just said you're poor then."
+                        
+                        player "Doesn't your grandpa like, own the university? Why don't you ask him to buy you a million Walkfans?"
+                        
+                        show rose skirt fistsclenched angry
+                        
+                        player "Those things are so old he probably has a bunch lying around from when he was a kid."
+                        player "Pretty sure that tech dates back to the cretaceous period."
+                        
+                        show rothbauer at center with dissolve:
+                            ypos y_roth
+                            xoffset 400
+                        
+                        rothbauer @ say "Did I hear someone mention the cretaceous period?"
+                        
+                        n "Mr. Rothbauer may have just saved your life. Rose looked like she was ready to maul you before he stepped in."
+                        
+                        rothbauer @ say "Oh is that a cassette tape? Ah, I have fond memories of those back in my day!"
+                        rothbauer @ say "Of course they were marketed as the hip new thing despite existing for millions of years. Probably."
+                        rothbauer @ say "They had that technology mastered in the early cretaceous period. At least that's how the theory goes."
+                        rothbauer @ say "The government doesn't want you to know this but so much of modern technology is based on the dinosaurs' achievements."
+                        rothbauer @ say "I'll save it for another day though because we've got a lot to cover today!"
+                        
+                        hide rose with dissolve
+                        
+                        n "You dig out your notebook and avoid looking at Rose for the rest of the class. Hopefully she just forgets about your debt."
+                    "Don't pay":
+                        player "Actually yes, I am poor."
+                        
+                        show rose skirt fistsclenched angry
+                        
+                        rose @ say "Well stop it!"
+                        
+                        player "Stop... being poor?"
+                        
+                        show rose skirt furiouspose
+                        
+                        rose @ say "Yes! If there's one thing that rivals how deplorable humans are, it's poor \"\"\"people.\"\"\""
+                        rose @ say "Being poor isn't just something that happens by misfortune, poverty is literally God telling you that you suck."
+                        rose @ say "Poors just don't have what it takes to have money and power. They'd rather coast by living paycheck to paycheck doing silly things like renting apartments and paying taxes."
+                        
+                        player "Hey, it's not that easy being poor! Imagine if you couldn't afford stuff."
+                        
+                        show rose skirt handonhip annoyed
+                        
+                        rose @ say "Then I'd kill myself."
+                        rose @ say "Consider that a recommendation for you and your kind."
+                        
+                        player "So does this mean you'll let me off the hook for the $900?"
+                        
+                        show rose skirt handonhip dismissive
+                        
+                        rose @ say "*Sigh*"
+                        rose @ say "If your kind weren't so despicable, I might pity you."
+                        rose @ say "There's no point in hounding you for the money, you'll just end up robbing some innocent wealthy person for the money if you get desperate."
+                        rose @ say "Instead all I ask in exchange for you breaking my practically one-of-a-kind vintage cassette player, is that you consider suicide."
+                        
+                        player "Deal!"
+                        
+                        n "Sucker."
+                        n "You already do that every night."
+                        
+                        n "Rose scoffs and shoves the remains of her cassette player into her bag. Shortly afterwards, Mr. Rothbauer arrives to begin the lecture."
+                    
+    scene bg lecturehall with fade
+    
+    play music "audio/music/mere - schooldaze faster.ogg" fadein .4
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    show gunner cheeky1 at center with dissolve:
+        ypos y_gunner
+        xzoom -1
+    
+    gunner @ say "Duuuuude Ava texted me yesterday!"
+    
+    player "So?"
+    
+    gunner @ say "Get this, she texted *me* first! That's how you know she wants to have sex with me!"
+    
+    player "Oh? Congratulations."
+    
+    show gunner annoyed
+    
+    player "But I think she's texted me first before. Does that mean she wants to have sex with me too?"
+    
+    show gunner displeased
+    
+    gunner @ say "Counterpoint: women don't know what they want."
+    
+    show gunner itsover
+    
+    gunner @ say "She was probably confused and hysterical. Many such cases."
+    
+    show gunner mischief
+    
+    gunner @ say "But this time I'm sure she wants big catboy cock."
+    
+    player "And why's that?"
+    
+    gunner @ say "Because she invited me to go \"shooting\" with her this weekend."
+
+    player "Like a photoshoot? Where?"
+    
+    show gunner neutral
+    
+    gunner @ say "Yeah we're gonna hike up this mountain, take some pics of trees or whatever, then I'm gonna shoot my load in her."
+    
+    player "Did either of you explicitly mention that last part?"
+    
+    show gunner eyesclosed catface
+    
+    gunner @ say "No, but it was implied."
+    
+    menu:
+        gunner "{cps=0}No, but it was implied.{/cps}"
+        "Cool, have fun":
+            #$ avaPoints -= 1
+            
+            show gunner neutral
+            
+            player "Cool, have fun with that."
+            player "I'm probably gonna watch boating accident documentaries or something this weekend."
+            
+            gunner @ say "Nice."
+            gunner @ say "I was in a \"boating accident\" once."
+            gunner @ say "And now I have a closet full of untraceable guns."
+        "Doubt":
+            $ avaPoints += 1
+            
+            show gunner neutral
+            
+            player "I doubt that but okay."
+            player "Are you sure she didn't get mixed up and mean to send those messages to me?"
+            
+            gunner @ say "Nah she'd know something was off if she detected the slightest hint of rizz from you."
+            
+    n "*Bzzz bzzz*"
+    n "Oh look you've got a text. You wonder who it could be from."
+            
+    call phone_start from _call_phone_start_17
+    
+    call message_start("Ava", "Hiya [name]! You busy this weekend?", "avaavi.png") from _call_message_start_22 
+    
+    call reply_message("Not sure yet. Why what's up?") from _call_reply_message_145 
+            
+    call message("Ava", "I was just wondering if you'd wanna come hiking in the mountains with Gunner and me ^v^", "avaavi.png") from _call_message_201 
+            
+    call phone_end from _call_phone_end_23         
+    
+    player "Ava just invited me to come with you two."
+    
+    show gunner annoyed
+    
+    gunner @ say "What the fuck?"
+    
+    n "Gunner snaps his pencil in half."
+    n "Damn, it was a mechanical one too. Those are hard to break."
+    
+    show gunner hissing
+    
+    gunner @ say "Dude, say no!!"
+    
+    player "Why? It sounds like a fun time."
+    
+    gunner @ say "I don't want this hike to be a sausagefest! Just tell her you already have plans."
+    
+    show gunner charming
+    
+    n "Gunner slips a $100 bill onto your desk."
+    
+    default gunnerBribeAccepted = False
+    default claireHike = False
+    default avaHike = False
+    
+    menu:
+        n "{cps=0}Gunner slips a $100 bill onto your desk.{/cps}"
+        "Accept his bribe":
+            $ avaPoints -= 1
+            $ claireHike = True
+            
+            $ gunnerBribeAccepted = True
+            
+            $ money = money + 100
+            
+            player "Fine, I didn't wanna go anyway."
+            
+            show gunner cheeky1
+            
+            player "I'll text her and say I already made plans with someone."
+            
+            call phone_start from _call_phone_start_18
+    
+            call message_start("me", "Hey sorry I just remembered I promised to hang out with Rori this weekend", "testimage.png") from _call_message_start_25 
+            
+            call message("Ava", "Aww oki", "avaavi.png") from _call_message_202 
+            call message("Ava", "Maybe next weekend you and I can go somewhere!", "avaavi.png") from _call_message_203 
+            call message("Ava", "just the two of us lol", "avaavi.png") from _call_message_204 
+            
+            call reply_message("Maybe!") from _call_reply_message_146 
+            call reply_message("Have a nice hike! Take some pretty photos!") from _call_reply_message_147 
+            
+            call message("Ava", "I will!", "avaavi.png") from _call_message_205 
+                    
+            call phone_end from _call_phone_end_24         
+            
+            player "Done."
+            player "Good luck with your date."
+            
+            show gunner cutie
+            
+            gunner @ say "Thanks bro, you're a livesaver :3c"
+        
+        "Decline":
+            $ avaHike = True
+
+            show gunner annoyed
+            
+            player "Hmm. No thanks, a hundred dollars isn't worth much compared to a date with Ava."
+        
+            gunner @ say "Name your price then."
+            
+            player "Your entire net worth plus one Zimbabwe dollar."
+            
+            show gunner disgusted
+            
+            gunner @ say "What the?"
+            gunner @ say "But if I acquire one Zimbabwe dollar then that gets added to my net worth so I have to get another one which also adds to my net worth!"
+            gunner @ say "It's an infinite financial loop!"
+            
+            player "Bingo."
+            
+            show gunner displeased
+            
+            gunner @ say "Hmph!"
+            gunner @ say "Fine, I guess I can't stop you from tagging along."
+            gunner @ say "But at the end of the day Ava's will only be falling for *me.*"
+            
+            player "If you say so."
+            
+            call phone_start from _call_phone_start_19
+    
+            call message_start("me", "Yeah that sounds like a great time!", "testimage.png") from _call_message_start_26 
+            
+            call message("Ava", "Yay ^v^", "avaavi.png") from _call_message_206 
+            call message("Ava", "We'll come get you on Saturday", "avaavi.png") from _call_message_207 
+            call message("Ava", "Be sure to bring water and snacks!", "avaavi.png") from _call_message_208 
+            
+            call reply_message("Will do!") from _call_reply_message_148 
+            call reply_message("Can't wait to see a master photographer in action!") from _call_reply_message_149 
+            
+            call message("Ava", "Hehe *snap*", "avaavi.png") from _call_message_209 
+                    
+            call phone_end from _call_phone_end_25         
+            
+            player "Yup, this'll be a weekend to remember!"
+            
+            n "Gunner just glares at you, clearly displeased."
+        
+        "Make it $200":
+            $ avaPoints -= 2
+            $ badEnd += 1
+            $ claireHike = True
+            
+            $ gunnerBribeAccepted = True
+            
+            $ money = money + 1100
+            
+            n "You stash the money into your pocket, but you can definitely get more from him."
+            
+            player "Only $100? I thought you liked Ava more than that."
+            
+            show gunner neutral
+    
+            gunner @ say "Yeah I'm lowballing you lmao"
+            
+            player "Make it $200 and we have a deal."
+            
+            show gunner eyesclosed catface
+            
+            gunner @ say "Easy."
+            
+            n "Gunner opens his wallet and flips through a large stack of crisp green banknotes."
+            
+            show gunner frown1
+            
+            gunner @ say "Oop, this is kinda embarrassing. Do you have change for a $10,000 bill?"
+            
+            player "I didn't even know they made those."
+            
+            show gunner neutral
+            
+            gunner @ say "Ah screw it, let me just send it to you on PayPossum. What's your account name?"
+            
+            n "You give him your email and he types it into his phone. A minute later you get a notification saying you've received $1000."
+            
+            show gunner frown1
+            
+            player "You sent me $1000?"
+            
+            show gunner neutral
+            
+            gunner @ say "Did I? I must have hit too many zeros. Whatevs, you can keep it."
+            
+            player "Man, I should do business with you more often."
+            
+            show gunner determined
+            
+            gunner @ say "Yeah yeah, now text Ava and tell her you can't come."
+            
+            call phone_start from _call_phone_start_20
+    
+            call message_start("me", "Hey sorry I just remembered I promised to hang out with Rori this weekend", "testimage.png") from _call_message_start_27 
+            
+            call message("Ava", "Aww oki", "avaavi.png") from _call_message_210 
+            call message("Ava", "Maybe next weekend you and I can go somewhere!", "avaavi.png") from _call_message_211 
+            call message("Ava", "just the two of us lol", "avaavi.png") from _call_message_212 
+            
+            call reply_message("Maybe!") from _call_reply_message_150 
+            call reply_message("Have a nice hike! Take some pretty photos!") from _call_reply_message_151 
+            
+            call message("Ava", "I will!", "avaavi.png") from _call_message_213 
+                    
+            call phone_end from _call_phone_end_26         
+            
+            player "Done."
+            player "Good luck with your date."
+            
+            show gunner cheeky1
+            
+            gunner @ say "Thanks bro, you're a livesaver :3c"
+            
+    
+    pause .2
+    
+    show gunner with move:
+        xoffset -450
+        
+    show herschel at center with dissolve:
+        ypos y_herschel
+        xoffset 400
+            
+    herschel @ say "Good day class! Today will be an easy day since we'll just have a quiz then go over some homework problems."
+    
+    show gunner annoyed
+    
+    gunner @ say "The fuck? A quiz and *then* a review of the lesson?"
+    gunner @ say "Bitch is *trying* to fail us."
+    
+    herschel @ say "Clear your desks except for a pencil and a scratch sheet of paper!"
+    
+    stop music fadeout 2.0
+    
+    scene bg black with fade
+       
+    n "The rest of the day passes by uneventfully."
+
+    scene bg schoolhallways autumn day with fade
+    
+    play music "audio/ambient/indoors people talking.ogg" fadein .4
+    
+    show box with Dissolve(.2):
+        ypos 0
+
+    n "As you're going up the stairs on your way to literature, you catch a whiff of cigarette smoke."
+    n "Where there's smoke, there's probably a vaguely depressed literature professor dog having a midlife crisis moment."
+    n "Better check the roof. You've got time as long as she's still up there."
+    
+    stop music fadeout 2.0
+    
+    scene bg roof autumn day with dissolve
+    
+    play music "audio/music/vylet - manehattan's finest.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+    
+    $ cafeEvents.append("margaretCafe")
+    
+    n "Your suspicions are confirmed when you see Ms. Ellen leaning on the wall watching the horizon."
+    
+    player "Couldn't wait until you got up on the roof to light up, huh?"
+    
+    show margaret smoking intrigued at center with dissolve:
+        ypos y_margaret
+    
+    margaret @ say "Hm?"
+    
+    player "The stairwell reeks of tobacco."
+    
+    show margaret melancholy
+    
+    margaret @ say "Oh shoot. Ah well, nothing to do about it now."
+    
+    n "She takes a long drag from her cigarette, seemingly amused by her own defiance of the rules."
+    
+    player "So what brings you up here again?"
+    
+    show margaret smoking neutral
+    
+    margaret @ say "Just wanted to admire the view~"
+    margaret @ say "Sure is a long way down, isn't it?"
+    
+    player "You're telling me after I just climbed six flights of stairs."
+    
+    margaret @ say "I guess it's a long way up too."
+    
+    show margaret smoking intrigued shocked
+    
+    margaret @ say "By the way, how are you feeling? I don't have to worry about you falling out of your chair again do I?"
+    
+    show margaret smoking intrigued -shocked
+    
+    player "I don't think so. I got it looked at and the doctor was like \"Yeah I don't know what's wrong with you but these meds will help. Probably.\""
+    
+    margaret @ say "And do they?"
+    
+    player "I think so."
+    player "That doctor also smokes ciggies where they're not allowed."
+    
+    #margaret @ say "Sounds like you've got a type."
+    
+    show margaret smoking melancholy
+    
+    margaret @ say "Ya gotta do what ya gotta do to survive the work day."
+    
+    show margaret smoking sad shocked
+    
+    margaret @ say "...But it does seem a tad irresponsible to smoke in a hospital."
+    
+    show margaret none
+    show margaret smoking intrigued
+    
+    n "There's a brief lull in the conversation as neither of you are sure what to say next."
+    n "You try and think of something while she looks off to the side and blows out smoke."
+    
+    player "Can I ask you a question?"
+    
+    show margaret smoking happy
+    
+    margaret "I'm a professor, it's my job to answer your questions."
+    
+    show margaret smoking neutral
+    
+    n "Perhaps a personal question to get to understand her better."
+    
+    menu:  
+        n "{cps=0}Perhaps a personal question to get to understand her better.{/cps}"
+        "Why did you become a professor?":
+            player "What made you want to become a professor?"
+            
+            show margaret none
+            show margaret sadsmoking
+         
+            margaret @ say "You're acting like this was my first choice of profession."
+            
+            player "Well what was your first choice?"
+            
+            n "She hesitates. Not because she's uncomfortable answering but rather because she's reminiscing."
+            
+            margaret @ say "I wanted to be a writer."
+            
+            player "And instead you became a... professional reader?"
+            
+            show margaret smoking intrigued shocked
+            
+            margaret @ say "Well you know how the saying goes. \"Those who can't do, teach.\""
+            
+            show margaret none
+            show margaret sad smoking
+            
+            player "What do you mean? You couldn't write? But tons of borderline illiterate people write for a living."
+            
+            show margaret none
+            show margaret smoking intrigued
+            
+            margaret @ say "That's part of the problem. You either make it writing at the highest level or you succeed making slop. There's not much room anywhere in between."
+            
+            show margaret smoking melancholy
+            
+            margaret @ say "And guess where my writing skills lie."
+            
+            player "Dang."
+            player "Too smart to write young adult vampire fanfiction disguised as literature, but not smart enough to dethrone Shakespeare."
+            
+            margaret @ say "Unfortunately my circumstances aren't particularly rare. I'm just one of the lucky ones to at least get a job that's at least related to my lit degree."
+            
+            show margaret smoking sad shocked
+            
+            margaret @ say "But I can't say I'm too happy with the result."
+            
+        "Did you ever actually enjoy teaching?":
+            player "You don't seem to have much passion for teaching."
+            player "Was it ever enjoyable for you?"
+            
+            show margaret smoking melancholy
+            
+            margaret @ say "At one point I thought it was. Or at least I tried to convince myself of that."
+            
+            show margaret smoking sad
+            
+            margaret @ say "The thing about abandoning your dreams in favor of some silly career that's meant to be serious, is that you convince yourself that you actually wanted this."
+            margaret @ say "And that all your past hopes weren't realistic. They were just some delusions you had, so now's it time to find happiness in this new thing you thought you'd hate."
+            
+            player "That's kinda bleak. Is becoming a real adult supposed to be like that?"
+            
+            #margaret @ say "From what I gather, yes."
+            #margaret @ say "At least that's the situation most people find themselves in once they grow up."
+            margaret @ say "I don't know if there's any way it's 'supposed' to go, I just know nothing in life has ever worked out the way I wanted it to."
+            margaret @ say "Unfortunately my circumstances aren't particularly rare. I'm just one of the lucky ones to at least get a job that's at least related to my lit degree."
+            margaret @ say "But I can't say I'm too happy with the result."
+            
+        "How did you get into literature?":
+            $ ellenPoints +=1
+            
+            player "How did you get into literature?"
+            
+            margaret @ say "The same way anyone does, I spent my youth reading books."
+            
+            show margaret smoking happy
+            
+            margaret @ say "You read enough of the right literature, and you become captivated by the sheer expanse of imagination and creativity an author can tame."
+            
+            show margaret smoking neutral
+            
+            margaret @ say "Something like a mere painting or photograph only captures a moment in a scene, but a novel gives you a whole world crafted from all kinds of feelings and messages the writer wishes to express."
+            margaret @ say "For the same reason I enjoy watching movies but those really don't have the same impact since they're over and done with so quickly."
+            
+            show margaret smoking happy
+            
+            margaret @ say "Simply put, I just like a good story!"
+            
+            show margaret smoking neutral
+            
+            player "Who doesn't?"
+            player "But I get what you mean. There's a lot you can do in writing to evoke a certain feeling while still giving enough room for interpretation."
+            
+            margaret @ say "Exactly! No two people will read a book the same way! Even going back and rereading a book makes me feel a different way each time as I've grown older."
+            
+            show margaret smoking melancholy
+            
+            margaret @ say "Though at this point I've become so familiar with the required reading for this course, the magic is gone for those books I used to adore."
+            
+            player "If you love stories so much why don't you write some of your own?"
+            
+            show margaret smoking melancholy shocked
+    
+            margaret @ say "That's the problem, hun. I haven't got any to tell."
+            
+            show margaret none
+            show margaret smoking sad
+            
+            player "Surely you could come up with something. You're a literature professor after all! You should know what makes for a good book."
+            
+            margaret @ say "I'm afraid it doesn't work that way. I'm as close to writing a good book as I am directing a blockbuster movie or painting the Sistine Chapel."
+            margaret @ say "Just because I can pick apart good writing from bad doesn't mean I can produce something original."
+            margaret @ say "People can only write what they know, and all I know is reading books and one bad romance."
+            
+            n "Ms. Ellen takes a drag from her cigarette, then adds"
+            
+            show margaret none
+            show margaret smoking intrigued
+            
+            margaret @ say "Not to say I didn't give it a shot, but I'm a much better professor than I am a writer. And I'm a pretty lousy professor."
+            
+            player "So why'd you become one?"
+            
+            n "She has to think for a moment, as if she's been searching for an answer to that question for a long time."
+            
+            show margaret smoking melancholy shocked
+            
+            margaret @ say "I thought if I could have a career being around the books I held so dear that everything would be alright."
+            
+            show margaret none
+            show margaret smoking sad
+            
+            margaret @ say "And that I wouldn't become bitter and begin to resent the only thing in life that brought me joy."
+            
+            player "I'm sorry to hear that. If it means anything, you're my favorite professor."
+            
+            show margaret smoking melancholy
+            
+            margaret @ say "Aww, they say flattery will get you nowhere but..."
+            
+            n "Her tail is wagging. You feel like you've just been standing around and listening to her talk but you must be doing something right."
+            n "Ms. Ellen takes another puff and her grin fades away."
+            
+    show margaret sadsmoking
+            
+    margaret @ say "I was fooled into thinking that becoming a professor would make me feel... prestigious."
+    margaret @ say "When all I do is explain old books to rich brats."
+    
+    player "Some people need books explained to them."
+    
+    margaret @ say "I agree, however..."
+    
+    n "Ms. Ellen reaches the end of her cigarette. She flicks it to the ground, letting it burn out on the concrete."
+    
+    show margaret none
+    show margaret sad
+    
+    margaret @ say "This is not the life I wanted."
+    
+    menu:
+        margaret "{cps=0}This is not the life I wanted.{/cps}"
+        "And that would be...?":
+            player "And that would be...?"
+            
+            show margaret melancholy
+            
+            margaret @ say "Something more... adventurous I'll say."
+            margaret @ say "More travel, less desk work. Something worth writing about."
+        "Most people don't get the life they want":
+            player "Most people don't get the life they want."
+            
+            margaret @ say "That may be true but..."
+            
+    show margaret smoking sad
+            
+    n "She pulls out another cigarette and puts it to her mouth but pauses before lighting it. Seemingly changing her mind, she puts the lighter away."
+    
+    show margaret smoking intrigued shocked
+    
+    margaret @ say "It's about time for class to begin, isn't it?"
+    
+    show margaret none
+    show margaret smoking melancholy
+    
+    margaret @ say "Go ahead and run along now."
+    
+    show margaret smoking neutral
+    
+    margaret @ say "Don't wait up for me. Wouldn't want to get caught coming down from here with a student~"
+    
+    player "Sure thing. See you in class."
+    
+    n "She gives you a wave as you go back to the stairwell. Looking back one last time, you see her light the cigarette in her mouth."
+    
+    stop music fadeout 2.0
+    
+    scene bg lecturehall with fade
+    
+    play music "audio/music/mere - retrograde slowed.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    show margaret neutral at center with dissolve:
+        ypos y_margaret
+        xzoom -1
+        xoffset -100
+    
+    margaret @ say "...So we see that The Odyssey is really a tale about overcoming the many relentless challenges in life and reaping the rewards."
+    margaret @ say "It's as tragic as it is uplifting! And although most of us will never get shipwrecked or fight giant cyclopses..."
+    margaret @ say "...the underlying hero's journey has a universal quality that everyone can relate to and forms the basis for pretty much every story told since."
+    margaret @ say "Be sure to review the key terms we discussed during this module because they will definitely make an appearance on the test!"
+    margaret @ say "That's all for today. Class dismissed!"
+    
+    n "Damn, Ms. Ellen is good at flipping a switch and acting like nothing's wrong when she lectures. If you didn't know any better you'd think she's pretty happy with her life."
+    n "The way she smiles at students and wags her tail on the way out of the lecture hall disguises the Ellen you know on the rooftops."
+    
+    ###demo end
+    #stop music fadeout 1.5
+    
+    #scene bg black with fade
+    
+    #n "That's chapters 1 and 2 and the first half of chapter 3! I hope you enjoyed it!"
+    #n "For access to the rest, please donate to {a=https://www.patreon.com/CodaVN}https://www.patreon.com/CodaVN{/a} or send some fanart you've made to {a=https://x.com/CodaVn}https://x.com/CodaVn{/a}"
+    
+    #jump nothinglol
+    
+    scene bg classroom with dissolve
+    
+    play music "audio/music/mere - retrograde.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+        
+    show celestine neutral at center with dissolve:
+        ypos y_celestine
+    
+    celestine @ say "...On se voit jeudi, la classe!"
+    
+    show celestine excited
+    
+    celestine @ say "You're all doing so well, I'm very proud of you!"
+    
+    show celestine neutral
+    
+    celestine @ say "Keep up your studies and I'm sure you'll all pass with flying colors!"
+    
+    hide celestine with dissolve
+    
+    show claire sweater wave happy at center with dissolve:
+        ypos y_claire
+    
+    claire @ say "Don't you just love French, [name]?"
+    
+    show claire sweater overjoyed 
+    
+    claire @ say "They say it's the language of love~"
+    
+    default dissedClaire = False
+    
+    menu:
+        claire "{cps=0}They say it's the language of love~{/cps}"
+        "I hate it":
+            player "I hate the French with every fiber of my being."
+            
+            show claire sweater flustered
+            
+            claire @ say "Aww don't be such a downer! If not for the French we might not have a class together!"
+            
+            menu:
+                claire "{cps=0}Aww don't be such a downer! If not for the French we might not have a class together!{/cps}"
+                "Now I hate them even more":
+                    $ clairePoints -= 1
+                    $ dissedClaire = True
+                    
+                    player "Yeah now I hate them even more."
+                    
+                    show claire sweater surprised earsup
+            
+                    claire @ say "What's that supposed to mean?"
+                    
+                    player "Uhh..."
+                    
+                    show claire sweater sad
+                    
+                    claire @ say "Oh I get it!"
+                    claire @ say "You were just joking. Haha..."
+                    
+                    n "Aw now you feel bad. Claire's the only reason you aren't failing this class."
+                    n "You should show your appreciation."
+                    
+                    player "Yeah sorry, dumb joke. Hey, you wanna get coffee?"
+                    
+                    show claire sweater surprised earsup
+                    
+                    claire @ say "Right now?"
+                    
+                    player "Whenever you're free."
+                    
+                    show claire sweater laughing
+                    
+                    claire @ say "Right now it is!!"
+                    
+                    #n "Press spacebar to distract her and avoid a dramatic overreaction!"
+                    #n "Oh fug here come the waterworks."
+                    #n "Abort abort abort"
+                    
+                    #player "I mean "
+                    
+                "That's ONE redeeming quality":
+                    show claire sweater happy
+                    
+                    player "I guess that's ONE redeeming aspect of their existence."
+                    player "But hey class is over. You wanna get a coffee?"
+                    
+                    show claire sweater laughing
+                    
+                    claire @ say "Hell yeah!!"
+            
+        "It's nice when you speak it":
+            $ clairePoints += 1
+            
+            show claire sweater happy
+            
+            player "I like whenever you speak it."
+            player "You already sound like it's your native tongue."
+            
+            show claire sweater leaning suggestive
+            
+            claire @ say "Ksksksks merci beaucoup, [name]~"
+            
+            player "Hnnnng that's so hot!"
+            
+            claire @ say "Oui? Wait til you hear what I sound like in bed~"
+            
+            n "What could she possibly mean by this? Does she snore when she sleeps? Maybe you should ask Ava later."
+            
+            show claire sweater surprised earsup
+            
+            claire @ say "By the way, you wanna get coffee with me and Ava today?"
+            
+            n "You've got nothing better to do."
+            
+            player "Yeah, why not?"
+            
+            show claire sweater overjoyed
+            
+            claire @ say "Yay~"
+            
+        "No strong feelings":
+            show claire sweater happy
+            
+            player "I have no strong feelings towards it."
+            player "It's just an elective credit I have to get out of the way."
+    
+            claire @ say "Well I'm glad we just happened to be together in the same class and sit right next to each other and be study partners and get to hang out every other day~"
+            
+            n "Claire has a dumb grin on her face. She's leaning so far into you that her desk is left balancing on two legs."
+            
+            player "Yeah it's pretty cool I guess."
+            
+            show claire sweater surprised earsup
+            
+            claire @ say "You guess??"
+            
+            show claire sweater sad
+            
+            n "Her desk topples back to its original position with a loud thud that reverberates around the entire room."
+            
+            player "I mean uhh... yeah I'm glad to get to see you so often."
+            
+            show claire sweater surprised earsup
+            
+            claire @ say "Really???"
+            
+            player "Yeah. In fact I was thinking maybe we could get coffee?"
+            
+            claire @ say "Right now?"
+            
+            player "Uh yeah?"
+            
+            show claire sweater overjoyed
+            
+            claire @ say "Ohmygosh I have to tell Ava about this!"
+            
+            player "Tell her about what? We're just getting drinks together..."
+            
+            n "Claire pulls out her phone and ignores you while texting up a storm to Ava."
+            
+            show claire sweater flustered
+            
+            claire @ say "Aaaaaa she's already at the cafe! We can meet up!"
+    
+    n "Claire takes your hand and whisks you out of the classroom."
+    
+    stop music fadeout 2.0
+    
+    scene bg cafe autumn day with fade
+    
+    play music "audio/music/mere - coffeeLove.exe.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+    
+    ava @ say "Hey! Over here!"
+    
+    n "You see Ava's wing waving you over once you step foot into the cafe."
+    n "She's sitting at a table with Gunner."
+    
+    if gunnerBribeAccepted == False:
+        n "He's sipping on an iced latte and staring you down."
+        
+    show ava typical happy at center:
+        ypos y_ava
+        xoffset -340
+        xzoom -1
+    show gunner neutral at center:
+        ypos y_gunner
+        xoffset -620
+        xzoom -1
+    show claire sweater happy at center:
+        ypos y_claire
+        xoffset 550
+    
+    with dissolve
+    
+    claire @ say "Heyyyy!!!"
+    claire @ say "How's it goin?"
+    
+    show ava typical excited
+    
+    ava @ say "We're just planning our trip for this weekend! Trying to find the best spots to shoot and whatnot."
+    
+    show ava happy
+    show gunner determined
+    
+    gunner @ say "We're gonna be hiking alllll over the place! Might even camp out there overnight."
+    
+    if gunnerBribeAccepted == False:
+        show gunner neutral
+    
+        player "Oh? Sounds like we have a long trip ahead of us."
+        
+        show claire sweater surprised earsup
+        
+        claire @ say "\"We?\" \"Us?\""
+        
+        show ava excited at hop
+
+        ava @ say "Yeah! Me, Gunner and [name] are going out to the mountains to take photos of the autumn leaves!"
+        
+        show ava typical concerned
+        show claire sweater giggle
+        
+        claire @ say "How did you manage to get *two* cute boys to go out with you?"
+        
+        show ava typical annoyed
+        
+        ava @ say "I-it's not like a date! We're just going as friends!"
+        
+        show claire sweater happy earsup
+        
+        claire @ say "Suuuure~ In that case, can I come along?"
+        
+        show ava typical embarrassed
+        show claire sweater happy -earsup
+        
+        ava @ say "Err..."
+        
+        show gunner itsover
+        
+        gunner @ say "Sorry, we already made our reservations."
+        
+        show gunner neutral
+        show ava typical enamored
+        
+        ava @ say "Right! Our reservations..."
+        
+        show claire sweater sad
+        show ava reaching concerned
+        
+        claire @ say "I see how it is. You just wanna hog all the boys to yourself!"
+        claire @ say "No room for this big bunny in your grand scheme."
+        claire @ say "Well fine! I'll just have my own weekend adventure with a boy or two!"
+        
+        hide claire with dissolve
+        
+        n "Claire storms out of the cafe, leaving you speechless."
+        
+        show gunner disgusted
+        
+        gunner @ say "Damn, what a drama queen."
+        
+        show ava typical neutral
+        show gunner neutral
+        
+        ava @ say "Ugh she gets like this."
+        
+        show ava pose concerned
+        
+        ava @ say "I feel kinda bad though. I didn't mean to exclude her but that doesn't mean we have to do *everything* together all the time, does it?"
+        
+        menu:
+            ava "{cps=0}I feel kinda bad though. I didn't mean to exclude her but that doesn't mean we have to do *everything* together all the time, does it?{/cps}"
+            "You *are* her best friend":
+                player "I mean you kinda are her best friend."
+                player "She probably thought you were getting tired of her."
+                
+                ava @ say "I guess I can see how she'd react that way."
+                ava @ say "I'll talk to her after she's calmed down and see if I can make it up to her."
+                
+                n "Gunner shrugs."
+                
+                show gunner annoyed
+                
+                gunner @ say "Whatever it takes, as long as she doesn't ruin our outting this weekend."
+                
+                show ava profile annoyed
+                
+                ava @ say "You're the one got us into this with your 'reservations' lie!"
+                
+                show gunner displeased
+                
+                gunner @ say "Hey, you didn't want her to come with us either."
+                
+                show ava typical concerned
+                
+                ava @ say "I guess..."
+                
+                player "It's alright if you don't wanna hang out with Claire all the time. She can be kinda overbearing."
+                
+                show ava typical shocked
+                
+                ava @ say "It's not that!"
+                
+                show ava typical concerned 
+                
+                ava @ say "She'd understand if this was a date, but it's not so it looks like I'm pushing her away."
+                ava @ say "She told me people are always pushing her out of their lives, but we actually get along. Now I feel like I've let her down..."
+                
+                show gunner frown1
+                
+                gunner @ say "Man, girl friendship is complicated."
+                
+                player "I mean, how would you feel if I was gonna spend the whole weekend with Ava and Claire and we purposely didn't invite you?"
+                
+                show gunner uncomfy
+                
+                gunner @ say "I guess I'd be a little jelly."
+                
+                show gunner disgusted
+                
+                gunner @ say "Wait... does that mean Claire has a crush on *me*???"
+                
+                show ava angry at hop
+                
+                ava @ say "Definitely not on *you*!"
+                
+                show ava typical agitated
+                show gunner frown1
+                
+                gunner @ say "Oh! So she's into..."
+                
+                n "Gunner raises a brow and looks in your direction."
+                
+                show ava typical neutral
+                
+                ava @ say "It's kinda obvious, isn't it? But I don't think he even knows."
+                
+                player "Knows what?"
+                player "Anyway, that's not the point I was trying to make."
+                player "I just meant that we probably could have done a double date thing but like as friends."
+                
+                ava @ say "Yeah..."
+                
+                gunner @ say "Well too late now. Might as well enjoy ourselves. Claire can come next time I guess."
+                gunner @ say "Anyway, where were we? The trail up to that mountain looked tough but the view should be killer."
+    
+                n "You look down at Gunner's phone showing the map of the area you'll be in and help with the trip planning."
+                
+                stop music fadeout 2.0
+                
+                scene bg codadorm autumn day with fade
+                
+                show box:
+                    ypos 0
+                
+                jump avaGunnerCampScene
+                
+            "She'll get over it":
+                player "She's overreacting. She'll get over it."
+                
+                ava @ say "I sure hope so..."
+                
+                show gunner frown1
+                
+                gunner @ say "Yeah she was acting a little crazy there. What's with her today?"
+                
+                player "I guess she just doesn't like feeling left out?"
+                
+                ava @ say "Who does?"
+                ava @ say "She told me people are always pushing her out of their lives, but we actually get along. Now I feel like I've let her down."
+                ava @ say "Maybe we should have invited her after all..."
+                
+                gunner @ say "Well it's too late for that now."
+                
+                player "Maybe she can come next time?"
+                
+                show gunner itsover
+                
+                gunner @ say "Already have one guy intruding on my time with Ava, what's one more?"
+                
+                player "That's the spirit!"
+                
+                show ava typical angry
+                
+                ava @ say "H-hey, I can choose to spend my time with whoever I want!"
+                
+                show gunner cutie
+                
+                gunner @ say "And yet you still chose me~"
+                
+                player "And me!"
+                
+                show ava typical overjoyed
+                
+                ava @ say "*Chirp~*"
+                
+                show ava typical happy
+                show gunner annoyed
+                
+                gunner @ say "How sweet."
+                
+                show gunner neutral
+                
+                gunner @ say "Anyway, where were we? The trail up to that mountain looked tough but the view should be killer."
+    
+                n "You look down at Gunner's phone showing the map of the area you'll be in and help with the trip planning."
+                
+                stop music fadeout 2.0
+                
+                scene bg codadorm autumn day with fade
+                
+                show box:
+                    ypos 0
+                
+                jump avaGunnerCampScene
+                
+            "Change your plans":
+                $ avaPoints -= 2
+                $ clairePoints += 2
+                $ avaHike = False
+                $ claireHike = True
+                
+                player "Hey you know what? I think I'll go out with Claire this weekend. Wouldn't want her to feel lonely."
+                
+                show gunner cheeky1
+                
+                gunner @ say "Really? That would be so based."
+                
+                show ava typical shocked
+                
+                ava @ say "Are you sure?"
+                
+                player "Yeah it's fine. You'll get Gunner to keep you company and I'll get a big fluffy bunny with H cup tits to enjoy."
+                
+                show ava pose concerned
+                
+                ava @ say "I guess that works out for everyone?"
+                
+                show ava pose annoyed
+                
+                ava @ say "And they're only G cup by the way."
+                
+                gunner @ say "Bigger isn't always better."
+                
+                show ava pose whimsical
+                
+                ava @ say "That's what I'm saying!"
+                
+                show ava typical happy
+                
+                player "Sorry to cancel our plans last minute like this."
+                
+                ava @ say "It's alright! Big bunnies need love too!"
+                
+                show gunner determined
+                
+                gunner @ say "Don't worry, Ava and I will have tons of fun alone in the woods~"
+                
+                show gunner frown1
+                
+                gunner @ say "Did I sound like a serial killer just then?"
+                
+                show ava typical shy
+                
+                ava @ say "You did, but that's kinda hot."
+                
+                show gunner charming
+                
+                gunner @ say "Meow~"
+                
+                ava @ say "Hehehe *chirp~*"
+                
+                player "Okay yeah I'm just gonna go find Claire then while you do your predator/prey LARP."
+                player "Have fun on your trip!"
+                
+                gunner @ say "Oh, we will~"
+                
+                show ava typical excited
+                
+                ava @ say "See ya!"
+                
+                stop music fadeout 2.0
+                
+                scene bg campus autumn day with fade
+                
+                play music "audio/music/vylet - mistress.ogg" fadein .5
+                #play music "audio/music/vylet - camelia.ogg" fadein .5
+                
+                show box with Dissolve(.2):
+                    ypos 0
+                
+                show claire sweater sad at center with dissolve:
+                    ypos y_claire
+                
+                n "You find Claire sulking in the shade under a tree."
+                #n "Orange leaves blow in the wind and get caught in her hair."
+                n "Fallen leaves blow in the wind and get caught in her hair."
+                n "She wipes them away as you approach."
+                
+                show claire sweater surprised earsup
+                
+                claire @ say "[name]...? What are you doing here?"
+                
+                player "You mind if I sit next to you?"
+                
+                show claire sad
+                
+                claire @ say "You actually want to sit next to me?"
+                
+                player "Yeah? Why wouldn't I?"
+                
+                if calledClaireFat > 0 and intoFatChicks == False:
+                    claire @ say "I thought I wasn't your type."
+                    
+                    player "Everyone has their preferences. That doesn't mean we can't be friends."
+                
+                if dissedClaire == True:
+                    claire @ say "Well you said you didn't like having French with me."
+                    
+                    player "Okay that was kinda mean. I said it without thinking."
+                    player "I guess I just don't share your enthusiasm for that class."
+                    player "But I'd probably die of boredom if you weren't in it with me."
+                
+                player "You're my friend, I can't just let you be sulky like this."
+                
+                claire @ say "I thought you didn't care at all..."
+                
+                player "Just cause I don't wanna do everything together doesn't mean I don't enjoy spending time with you."
+                
+                show claire sweater suggestive
+                
+                claire @ say "Aw, you're just sayin' that."
+                
+                player "No really. I canceled my plans with Ava cause I'd rather chill with you this weekend."
+                
+                show claire surprised earsup
+                
+                claire @ say "Wha-"
+                claire @ say "Y-you didn't have to do that!"
+                
+                player "I know. I just wanted to."
+                player "Are you still free?"
+                
+                claire @ say "Um um...!"
+                
+                show claire sweater flustered
+                
+                claire @ say "Yes I'm free! But okay so like um-"
+                
+                show claire sweater derp
+                
+                claire @ say "I texted Rori already inviting him to hang out. I hope you don't mind, but I can't just cancel on him!"
+                
+                player "That's alright, as long as this isn't some triple date thing."
+                
+                claire @ say "No no it's not like that!"
+                
+                show claire sweater giggle
+                
+                claire @ say "I just invited him to go hiking with me!"
+                
+                show claire sweater sad
+                
+                claire @ say "It's perfectly normal to go hiking with your gay friend, okay?!"
+                
+                if clairePoints > 3:
+                    player "I guess that means I won't have any competition."
+                    
+                    show claire sweater surprised earsup
+                
+                    claire @ say "Huh?"
+                    
+                    player "Nothing."
+                
+                player "Yeah I don't mind Rori tagging along."
+                player "I never thought he'd be the hiking type though."
+                
+                show claire sweater happy -earsup
+                
+                claire @ say "Oh he's not. He was reeaallly reluctant to agree but I have my ways of persuading people~"
+                
+                player "Damn, your womanly charm works on homos?"
+                
+                show claire sweater suggestive leaning
+                
+                claire @ say "It's really easy to bully people smaller than you ksksks~"
+                
+                player "So everyone in your case?"
+                
+                claire @ say "Yeah~"
+                
+                show claire sweater pose laughing
+                
+                claire @ say "Don't worry, I won't bully you too much."
+                
+                show claire sweater pose suggestive
+                
+                claire @ say "Unless you want me to~"
+                
+                menu:
+                    claire "{cps=0}Unless you want me to~{/cps}"
+                    "Hahaha nooooo pls don't bully me x3":
+                        $ claireBullyLevel = 2
+                        
+                        player "Hahaha noooo please don't bully little ol' me!"
+                        
+                        claire @ say "Ksksksks don't make it so easy and I won't~"
+                        claire @ say "Or maybe I will anyway... dweeb!"
+                        
+                        player "Hnnnng"
+                        
+                        n "You swear, every day this rabbit finds a new way to push your buttons in all the right ways."
+                        
+                        menu:
+                            n "{cps=0}You swear, every day this rabbit finds a new way to push your buttons in all the right ways.{/cps}"
+                            "This is fine.":
+                                n "That's a fair level of bullying. No need to push further into degenerate territory."
+                                
+                                show claire sweater overjoyed
+                                
+                                claire @ say "Guess I'll be spending the weekend with two dorks!"
+                                
+                                player "Heh yeah..."
+                                
+                                show claire sweater happy
+                                
+                                claire @ say "Don't worry, we'll all have fun~"
+                                claire @ say "I'll figure out where we're going and some stuff to do while we're out in the wild!"
+                                claire @ say "Thanks for comin' over here to cheer me up."
+                                
+                                show claire sweater pose suggestive
+                                
+                                claire @ say "I guess you're good for something after all, humie~"
+                                
+                                player "A-anytime."
+                                
+                                show claire sweater leaning suggestive
+                                
+                                claire @ say "Ksksksks good boy~"
+                                
+                                n "You swear you're about to faint."
+                                
+                                claire @ say "See you around~ It's gonna be a lot more fun hanging out knowing I can bully you a little~"
+                                
+                                player "*Gulp*"
+                                player "Y-yeah for sure."
+                                
+                                hide claire with dissolve
+                                
+                                n "What have you gotten yourself into?"
+                                
+                            "You can bully harder than that":
+                                $ claireBullyLevel = 3
+                                
+                                n "May the lord have mercy on you."
+                                
+                                player "Sounded like you were holding back."
+                                
+                                show claire sweater surprised earsup
+                                
+                                claire @ say "I was. You want more?"
+                                
+                                player "Yes please."
+                                
+                                show claire sweater happy -earsup
+                                
+                                claire @ say "Gimme your wallet."
+                                
+                                n "She said that with no hesitation."
+                                
+                                player "Huh? That wasn't what I was exp-"
+                                
+                                claire @ say "Shut up and gimme your wallet."
+                                
+                                player "B-but"
+                                
+                                claire @ say "Hurry up! I ain't got all day."
+                                
+                                player "O-okay..."
+                                
+                                n "You clumsily fish your wallet out of your pocket and shakily hand it to Claire."
+                                n "She rifles through your bills and tosses your cards in every direction."
+                                
+                                player "Hey! Stop that!"
+                                
+                                n "You reach over and collect your ID and some credit cards."
+                                
+                                show claire sweater laughing
+                                
+                                claire @ say "Wooooow that's all you have? There's barely enough in here to pay for my dinner!"
+                                
+                                show claire sweater giggle
+                                
+                                claire @ say "And carrying change? What are you gonna do with a nickel? I didn't know you were *that* poor! Ksksksks!"
+                                
+                                player "You never know when you'll need an extra 5 cents to cover something!"
+                                
+                                show claire sweater pose suggestive
+                                
+                                claire @ say "You can keep the coins but I'll be taking this~"
+                                
+                                n "She grabs a couple of twenties and stuffs them into her bra."
+                                
+                                $ money -= 60
+                                
+                                player "What the hell! Give that back!"
+                                
+                                claire @ say "Nah, I don't think I will~"
+                                claire @ say "Thanks for the snack money, dweeb~"
+                                
+                                n "Claire plants a smooch into her paw then pushes you to the ground with the same paw."
+                                n "Before you can retaliate (admit it, you wouldn't do anything), she gets up and walks off."
+                                n "At least you get a great view of her rear for your troubles."
+                                
+                                show claire pose laughing
+                                
+                                claire @ say "See you around, loser~"
+                                
+                                hide claire with dissolve
+                                
+                                n "You lie there on the ground wondering what just happened."
+                                n "Well, you got what you asked for."
+                                n "This is a dangerous game, but perhaps you like to live dangerously."
+                                n "And you've never been so hard in your life."
+                                
+                    "Maybe a little bullying is fine":
+                        $ claireBullyLevel = 1
+                        
+                        player "You can bully a little. As long as it's sexy."
+                        
+                        claire @ say "Sexy is what I do best~"
+                        
+                        player "Haha please don't bully me with your fat boobs, that would be the worst haha"
+                        
+                        show claire sweater leaning suggestive
+                        
+                        claire @ say "I'm gonna smother you with 'em~"
+                        
+                        player "Haha nooo anything but that, please don't-"
+                        
+                        n "With lightning speed, Claire is on top of you, hugging you tight."
+                        n "Too tight."
+                        n "You feel the air being squeezed out of your lungs but big bunny boobs are covering your face so you don't really mind."
+                        n "Easily top 5 ways to die."
+                        n "Your vision starts to fade as oxygen deprivation sets in."
+                        
+                        scene bg black with dissolve
+                        
+                        n "That's better."
+                        
+                        claire @ say "Oh my gosh are you alright?"
+                        
+                        scene bg campus autumn day with dissolve
+                        
+                        show box with Dissolve(.2):
+                            ypos 0
+                        
+                        n "Noooo, death's sweet embrace! Come back! You will never have a chance to die in such a satisfying way ever again!"
+                        
+                        show claire sweater surprised earsup at center with dissolve:
+                            ypos y_claire
+                        
+                        claire @ say "If you don't start breathing in 5 seconds Imma start giving you mouth-to-mouth resuscitation."
+                        
+                        player "*gasp*"
+                        player "adsfalsfovewqklkfpjd"
+                        
+                        show claire laughing
+                        
+                        claire @ say "Yay you're alive!"
+                        
+                        show claire flustered
+                        
+                        claire @ say "Maybe a bit brain damaged but living nonetheless!"
+                        
+                        player "I think the brain damage was always there."
+                        
+                        show claire derp
+                        
+                        claire @ say "Sorry, I didn't mean to literally almost kill you with my boobs."
+                        
+                        player "It's alright, I was asking for it."
+                        
+                        show claire giggle
+                        
+                        claire @ say "Ksksksks you wouldn't be the first~"
+                        
+                        n "She hops up to her feet, towering over you."
+                        
+                        show claire none
+                        show claire sweater happy
+                        
+                        claire @ say "I'll figure out where we're going and some stuff to do while we're out in the wild!"
+                        
+                        player "Sounds good. Can't wait!"
+                        
+                        claire @ say "Thanks for comin' over here to cheer me up."
+                        claire @ say "I guess you're good for something after all, humie~"
+                        claire @ say "See you around~"
+                        
+                        show claire sweater pose suggestive earsup
+                        
+                        claire @ say "It's gonna be a lot more fun hanging out knowing I can bully you a little~"
+                                
+                        player "*Gulp*"
+                        player "Y-yeah for sure."
+                        
+                        hide claire with dissolve
+                        
+                        n "What have you gotten yourself into?"
+                        
+                    "Seriously, no bullying":
+                        $ claireBullyLevel = 0
+                        
+                        player "I was bullied enough in middle school, I don't need it here."
+                        
+                        show claire happy -pose at hop
+                        
+                        claire @ say "Okay! No bullying the dear sweet precious [name], just love and praise!"
+                        
+                        player "It's all my fragile ego can take."
+                        
+                        show claire sweater pose suggestive
+                        
+                        claire @ say "No worries, I got you covered~"
+                        
+                        n "Claire pulls you into a warm embrace. This is no ordinary hug, somehow you can feel the genuine affection and care through her soft fur pressing against you."
+                        n "Your breathing slows and a sudden calmness comes over you as you wrap your arm around her, just enjoying the moment while a gentle breeze carries the autumn leaves around you."
+                        n "You had no idea how much you needed this."
+                        n "Eventually Claire eases up, still loosely holding onto you."
+                        
+                        show claire none
+                        show claire sweater happy
+                        
+                        claire @ say "How was that?"
+                        
+                        player "Hfdsafalkds;asd"
+                        player "Gooood"
+                        
+                        show claire giggle
+                        
+                        claire @ say "Good~"
+                        
+                        show claire sweater suggestive
+                        
+                        claire @ say "Anytime you need some bunny love, just ask and you shall receive~"
+                        
+                        player "Noted."
+                        
+                        show claire happy
+                        
+                        claire @ say "And thanks for comin' over here to cheer me up~"
+                        
+                        player "No problem. It's what friends do, right?"
+                        
+                        if clairePoints > 3:
+                            show claire sweater suggestive
+                        
+                            claire @ say "You sure we're just gonna be friends?"
+                            
+                            menu:
+                                claire "{cps=0}You sure we're just gonna be friends?{/cps}"
+                                "What else would we be?":
+                                    player "What else would we be? Enemies?"
+                                    
+                                    show claire surprised earsup
+                                    
+                                    claire @ say "Enemies with benefits maybe?"
+                                    
+                                    player "...What kind of benefits?"
+                                    
+                                    show claire leaning suggestive
+                                    
+                                    n "Claire leans in close with a devious grin."
+                                    
+                                    claire @ say "Sexy benefits~"
+                                    
+                                    player "W-we'll work up to it maybe."
+                                    
+                                    show claire laughing
+                                    
+                                    claire @ say "Good to have a backup plan~"
+                            
+                                "You never know":
+                                    $ clairePoints += 1
+                                    
+                                    player "You never know. Wouldn't it be really funny if we ended up dating?"
+                                    
+                                    show claire laughing
+                                    
+                                    claire @ say "Please Frith let this happen, it would be so fucking funny!"
+                                    
+                                    player "Hahaha I know, right?"
+                                    
+                                    show claire happy
+                                    
+                                    n "Now that you think of it, maybe Claire *is* girlfriend material."
+                                    n "But would she really be down for that?"
+                                    n "It feels too soon to ask her out."
+                        
+                        else:
+                            n "Claire's ear twitches."
+                            
+                            show claire sad
+                            
+                            claire @ say "Haha yeah, friends, that's what we are. Just good friends."
+                            
+                            show claire happy
+                            
+                            claire @ say "...For now!"
+                            
+                            player "What's that supposed to mean?"
+                            
+                            show claire laughing
+                            
+                            claire @ say "Ksksksks you'll find out~"
+                        
+                        show claire happy
+                        
+                        n "Claire stands up and stretches."
+                        
+                        claire @ say "I'll figure out where we're going and some stuff to do while we're out in the wild!"
+                        
+                        player "Sounds good. Can't wait!"
+                        
+                jump claireRoriHikeAltStart
+                        
+    
+    else:
+        player "Hope you two have fun!"
+        
+        show claire sweater overjoyed
+        
+        claire @ say "Yeah, a hiking trip sounds great with this weather!"
+        
+        show claire sad
+        
+        gunner @ say "Sorry but this is just a me and Ava thing."
+        
+        show claire suggestive
+        show ava typical embarrassed
+        
+        claire @ say "Ooh a date????????????"
+        
+        show ava shy
+        show gunner neutral
+        
+        ava @ say "Haha nooo not a date! I invited [name] to come along too but he already has plans."
+        
+        show claire derp
+        
+        claire @ say "Hey a date can include two cute boys! You're cute enough to pull 'em both!"
+        
+        show ava whimsical
+        
+        ava @ say "Oh shush you~"
+        
+        show ava excited
+        show claire happy
+        
+        ava @ say "Speaking of which, what are you doing with Rori this weekend, [name]?"
+        
+        show ava happy
+        
+        n "What *are* you doing with Rori this weekend?"
+        n "You already forgot about your lie from earlier, but you guess you should see if he's free to hang out."
+        
+        player "We're probably just gonna play video games at his dorm or something."
+        
+        show gunner displeased
+        
+        gunner @ say "Lame."
+        
+        show claire surprised earsup
+        
+        claire @ say "Yeah, wouldn't you rather do something more adventurous?"
+        
+        show claire none
+        show claire sweater happy
+        show gunner neutral
+        
+        player "I wouldn't mind, but I dunno about Rori."
+        
+        show claire at hop
+        
+        claire @ say "Leave that to me! I'll convince him to come out adventuring with us!"
+        
+        player "\"Us?\" Now you're tagging along?"
+        
+        show claire flustered
+        
+        claire @ say "What else am I supposed to do when my best roommate is busy gettin' busy with a catboy?"
+        
+        show ava annoyed
+        
+        ava @ say "Hey! We're just hiking and taking photos!"
+        
+        show claire suggestive
+        
+        claire @ say "Suuuure~ Ksksksksks!"
+        
+        show claire happy
+        show ava happy
+        
+        claire @ say "Well, [name]? You down to go on an adventure with me and Rori this weekend?"
+        
+        player "You just stole my hangout buddy and now you're inviting me to come with you?"
+        
+        show claire flustered
+        
+        claire @ say "...Yes."
+        
+        player "Fine. Where are we even going?"
+        
+        show claire overjoyed
+        
+        claire @ say "Ksksksks it's a secret!"
+        
+        show claire happy
+        show gunner determined
+        
+        gunner @ say "Sounds like a date!"
+        
+        show ava concerned
+        
+        ava @ say "Wait, who's dating who?"
+        
+        show gunner neutral
+        show claire derp
+        
+        claire @ say "Well it can't be me and Rori."
+        
+        show ava enamored
+        
+        ava @ say "Rori and [name] then?"
+        
+        gunner @ say "Or [name] and Claire."
+        
+        claire @ say "Or both!"
+        
+        show gunner disgusted
+        show claire happy
+        
+        gunner @ say "Ick."
+        
+        show ava happy
+        
+        player "I'm confident in saying this is certainly not a date."
+        
+        show gunner neutral
+        
+        claire @ say "That works for me!"
+        
+        player "Good, now that that's settled, can we get some drinks?"
+        
+        claire @ say "Oh yeah! That's what we came here for, isn't it?"
+        
+        n "You and Claire order some drinks and chat with Ava and Gunner for a bit."
+        
+        #ava @ say "And I need to pad out my landscape portfolio."
+        #ends with ava running to her club meet/next class
+        
+        stop music fadeout 2.0
+        
+        scene bg black with dissolve
+        
+        n "The next few days go by uneventfully."
+        
+        scene bg codadorm autumn day with dissolve
+        
+        play music "audio/ambient/morning birds.ogg" fadein 0.1
+    
+    #if claireHike == True:
+        ###if you didn't change your plans with Ava, include a segment where you text Rori and arrange the trip
+        #if you go with ava you don't see this scene
+        #if you initially planned to go with ava then changed plans, this scene plays
+        #if you never planned to go with Ava, then Claire mentioned she'd do something with rori at the cafe
+    
+        ###claire may have mentioned it's a camping trip by this point
+        
+        show box:
+            ypos 0
+            
+        n "Today's the day you're supposed to... do something with Claire and Rori."
+        
+        call phone_start from _call_phone_start_21
+        
+        call message_start("Claire", "You ready?", "claireavi.png") from _call_message_start_28 
+        call message("Claire", "For some", "claireavi.png") from _call_message_214 
+        call message("Claire", "A D V E N T U R E ?", "claireavi.png") from _call_message_215 
+
+        call reply_message("I have no idea what we're doing today") from _call_reply_message_152 
+        call reply_message("but yeah i'm ready") from _call_reply_message_153 
+        
+        call message("Claire", "Yay!", "claireavi.png") from _call_message_216 
+        call message("Claire", "Meet me at the quad", "claireavi.png") from _call_message_217 
+        
+        call reply_message("k") from _call_reply_message_154 
+
+        call phone_end from _call_phone_end_27
+        
+        stop music fadeout 2.0
+        
+        scene bg campus autumn day with fade
+        
+        play music "audio/music/vylet - Hard to Say Anything.ogg" fadein .5
+        
+        show box:
+            ypos 0
+        
+        n "Walking up, you spot Rori looking uncomfortable next to an excited Claire waving at you."
+        
+        show rori anxious at center:
+            ypos y_rori
+            xzoom -1
+            xoffset -500
+        show claire flannel happy at center:
+            ypos y_claire
+            xoffset 500
+        with dissolve
+        
+        claire @ say "Over here [name]!!!"
+        
+        player "Sup guys."
+        
+        rori @ say "Hey..."
+        
+        n "He does not look happy to be here."
+        n "Oh right, you sorta dragged him into this."
+        
+        menu:
+            n "{cps=0}Oh right, you sorta dragged him into this.{/cps}"
+            "Ready to have some fun?":
+                n "Maybe if you have a positive attitude he'll enjoy this more."
+                
+                player "You ready to have some fun?"
+                
+                show rori concerned
+                
+                rori @ say "Err, I guess? I still don't know where we're going. Or why we're doing it for that matter."
+                
+                show claire flannel derp
+                
+                claire @ say "The what's and why's aren't important!"
+                claire @ say "What's important is us three are going on a hiking trip!!"
+                
+                show claire happy
+                
+                player "That's it? That's the big secret?"
+                
+                show rori none 
+                show rori armscrossed
+                
+                rori @ say "And you felt the need to bring me along?"
+                
+                claire @ say "Why not! Have you ever been hiking?"
+                
+                show rori sleepy
+                
+                rori @ say "A few times."
+                
+                show claire laughing
+                
+                claire @ say "It's fun isn't it!"
+                
+                show rori concerned
+                
+                rori @ say "..."
+                
+                show claire happy
+                
+                player "It'll be fun with us, trust me."
+                
+                show rori worried
+                
+                rori @ say "If you say so."
+                
+                n "He looks miserable already."
+                
+                #claire @ say "Well let's get this show on the road!"
+            
+            "Sorry for getting you involved in this":
+                n "Poor guy, he didn't ask to get involved in any of this."
+                
+                player "Sorry bro, I just wanted to play some vidya and chill or something."
+                
+                rori @ say "It's alright. Doing that every weekend gets dull. This... shakes it up a little at the very least."
+                
+                claire @ say "That's the spirit! I'll make an outdoorsman out of you, just wait and see!"
+            
+            "How'd Claire convince you to come?":
+                n "You wonder how Claire even managed to get him to join you. Did she threaten him?"
+                
+                player "I know this isn't your thing but we didn't want you to be alone this weekend."
+                player "So uh, how did Claire convince you to come with us?"
+                
+                show claire flustered
+                
+                claire @ say "Uh, we don't have to get into the details...!"
+                
+                show rori armscrossed neutral
+                
+                rori @ say "It was weird, she like... begged me to hang out with her."
+                
+                n "Rori shows you his phone. There's a full screen text message from Claire with her just repeating the word \"PLEASE\""
+                n "There's a few \";^;\" thrown in too."
+                n "So that's Claire's feminine charm at work."
+                n "Maybe that's the best she can do on someone with Rori's preferences."
+                
+                show rori sleepy
+                
+                rori @ say "She seemed desperate so eventually I just gave in."
+                
+                show claire derp
+                
+                claire @ say "What can I say? It worked!"
+                
+        claire @ say "Anyway, let's get going!!!"
+            
+        jump claireRoriHikeContinued
+        
+label claireRoriHikeAltStart:
+    stop music fadeout 2.0
+
+    scene bg black with dissolve
+        
+    n "The next few days go by uneventfully."
+    
+    scene bg codadorm autumn day with dissolve
+    
+    play music "audio/ambient/morning birds.ogg" fadein 0.1
+    
+    show box:
+        ypos 0
+
+    n "Today's the day you're supposed to go on some adventure with Claire and Rori."
+        
+    call phone_start from _call_phone_start_22
+    
+    call message_start("Claire", "You ready", "claireavi.png") from _call_message_start_29 
+    call message("Claire", "For our trip?", "claireavi.png") from _call_message_219 
+
+    call reply_message("Yeah I guess idk about Rori tho") from _call_reply_message_155 
+    
+    call message("Claire", "Don't worry he'll be fine!", "claireavi.png") from _call_message_220 
+    call message("Claire", "Meet us at the quad!", "claireavi.png") from _call_message_221 
+    
+    call reply_message("k") from _call_reply_message_156 
+
+    call phone_end from _call_phone_end_28
+    
+    scene bg campus autumn day with fade
+    
+    play music "audio/music/vylet - Hard to Say Anything.ogg" fadein .5
+    
+    show box:
+        ypos 0
+    
+    n "Walking up, you spot Rori looking uncomfortable next to an excited Claire waving at you."
+    
+    show rori anxious at center:
+        ypos y_rori
+        xzoom -1
+        xoffset -500
+    show claire flannel happy at center:
+        ypos y_claire
+        xoffset 500
+    with dissolve
+
+    claire @ say "Over here [name]!!!"
+    
+    player "Sup guys."
+    
+    rori @ say "Hey..."
+    
+    n "He does not look happy to be here."
+    n "Oh right, you sorta dragged him into this."
+    
+    menu:
+        n "{cps=0}Oh right, you sorta dragged him into this.{/cps}"
+        "Ready to have some fun?":
+            n "Maybe if you have a positive attitude he'll enjoy this more."
+            
+            player "You ready to have some fun?"
+            
+            show rori concerned
+            
+            rori @ say "Err, I guess? I still don't know why you felt the need to invite me on a hiking trip."
+            
+            show claire flannel derp
+            
+            claire @ say "Cause it's good to get outside and do stuff with friends!"
+            
+            show claire happy
+            
+            claire @ say "Have you ever been hiking before?"
+            
+            show rori armscrossed sleepy
+            
+            rori @ say "A few times."
+            
+            claire @ say "It's fun isn't it!"
+            
+            rori @ say "..."
+            
+            player "It'll be fun with us, trust me."
+            
+            show rori armscrossed neutral lookingaway
+            
+            rori @ say "If you say so."
+            
+            n "He looks miserable already."
+            
+            #claire @ say "Well let's get this show on the road!"
+        
+        "Sorry for getting you involved in this":
+            n "Poor guy, he didn't ask to get involved in any of this."
+            
+            player "Sorry bro, I just wanted to play some vidya and chill or something."
+            
+            rori @ say "It's alright. Doing that every weekend gets dull. This... shakes it up a little at the very least."
+            
+            claire @ say "That's the spirit! I'll make an outdoorsman out of you, just wait and see!"
+        
+        "How'd Claire convince you to come?":
+            n "You wonder how Claire even managed to get him to join you. Did she threaten him?"
+            
+            player "I know this isn't your thing but we didn't want you to be alone this weekend."
+            player "So uh, how did Claire convince you to come with us?"
+            
+            show claire flustered
+            
+            claire @ say "Uh, we don't have to get into the details...!"
+            
+            show rori armscrossed neutral
+            
+            rori @ say "It was weird, she like... begged me to hang out with her."
+            
+            n "Rori shows you his phone. There's a full screen text message from Claire with her just repeating the word \"PLEASE\""
+            n "There's a few \";^;\" thrown in too."
+            n "So that's Claire's feminine charm at work."
+            n "Maybe that's the best she can do on someone with Rori's preferences."
+            
+            show rori sleepy
+            
+            rori @ say "She seemed desperate so eventually I just gave in."
+            
+            show claire derp
+            
+            claire @ say "What can I say? It worked!"
+            
+    claire @ say "Anyway, let's get going!!!"
+    
+    jump claireRoriHikeContinued
+        
+label claireRoriHikeContinued:
+    stop music fadeout 2.0
+
+    scene bg forest with fade
+    
+    play music "audio/music/vylet - someday.ogg" fadein .5
+    
+    show box:
+        ypos 0
+    
+    n "Claire took you and Rori far into the woods, well beyond being able to hear cars in the distance."
+    n "She guides you along a seemingly abandoned trail. It's become overgrown but you can see the remnants from when it was frequently hiked."
+    
+    show rori armscrossed concerned at center:
+        ypos y_rori
+        xzoom -1
+        xoffset -525
+    show claire flannel happy at center:
+        ypos y_claire
+        xoffset 525
+    with dissolve
+    
+    rori @ say "Are you sure this is the right way?"
+    
+    n "He looks down at his phone."
+    
+    rori @ say "I don't even get signal anymore."
+    
+    player "Yeah, where are we even going anyway?"
+    
+    show claire laughing
+    
+    claire @ say "I dunno! It's fun to just get lost sometimes!"
+    
+    show rori anxious
+    
+    rori @ say "Lost?!"
+    
+    show claire flustered
+    
+    claire @ say "Just a little!"
+    
+    show claire happy
+    
+    claire @ say "Ooh here's a good spot!"
+    
+    n "You've come to a small clearing where the tree branches and brush have stopped jutting into your sides."
+    
+    player "A good spot for what? It's getting dark so we should probably turn back soon."
+    
+    show claire at hop
+    
+    claire @ say "Nonsense! We're staying the night out here!"
+    
+    show rori yawn surprised
+    
+    rori @ say "What? You didn't mention that before!"
+    
+    show rori none
+    show rori anxious
+    
+    rori @ say "I have to do my gacha dailies and feed my neopets and and and-"
+    
+    claire @ say "Aw that digitimon stuff can wait! This right here is the *real world!*"
+    claire @ say "Don't you wanna get away from everything for a bit and enjoy the calmness of nature?"
+    
+    player "What about food and water?"
+    
+    claire @ say "I got us covered! You think I wouldn't pack snacks for my homies?"
+    
+    show rori sassy
+    
+    rori @ say "And a tent to sleep in?"
+    
+    show claire flustered
+    
+    claire @ say "Who needs a tent? I'll keep us all warm~"
+    
+    player "What if a bear attacks us?"
+    
+    show claire derp
+    
+    claire @ say "Then I'll kick its ass!"
+    
+    n "This is the least prepared you have ever been in the wild but somehow Claire's reassurance puts you somewhat at ease."
+    n "You look to Rori who is visibly disturbed by the idea of spending a night in the woods tonight."
+    
+    show claire happy
+    
+    menu:
+        n "{cps=0}You look to Rori who is visibly disturbed by the idea of spending a night in the woods tonight.{/cps}"
+        "I dunno if this is a good idea":
+            show rori neutral
+                
+            player "I dunno if this is a good idea."
+            player "We didn't sign up for any of this."
+            
+            show claire surprised earsup
+            
+            claire @ say "And yet you followed me several miles into the woods this late?"
+            
+            show rori armscrossed angry
+            
+            rori @ say "We thought you had a plan!"
+            
+            show claire flustered
+            
+            claire @ say "I did! My plan was to find a camping spot and roast some marshmallows with the boys!"
+            
+            show rori armscrossed sleepy
+            
+            rori @ say "You say that like it's that simple."
+            
+            show claire derp
+            
+            claire @ say "It is that easy! We just gotta get a fire started!"
+            
+            show claire laughing
+            
+            claire @ say "What else are you gonna do, hike all the way back in the dark?"
+            
+            show rori none
+            show rori angry
+            
+            rori @ say "I might!"
+            
+            player "That kinda sounds more dangerous than staying here."
+            
+            show claire happy
+            
+            claire @ say "Exactly! So are you gonna help me build a campfire or not?"
+            
+            show rori sleepy
+            
+            n "Rori slumps his shoulders and sighs."
+            
+            rori @ say "Why are women like this?"
+        
+        "It'll be alright":
+            show rori neutral
+            
+            player "It'll be alright. It's just for one night after all. Claire, you sound like you've done this before."
+            
+            claire @ say "Plenty of times!"
+            
+            show rori armscrossed sleepy
+            
+            rori @ say "Well... I guess I don't have much of a choice with the sun going down like this."
+            
+            show rori none
+            show rori armscrossed
+            
+            rori @ say "But we're leaving as soon as the sun rises tomorrow."
+            
+            show claire at hop
+            
+            claire @ say "Deal!"
+            claire @ say "Now let's get started building a campfire!"
+            
+        "Fine, let's do it.":
+            show rori neutral
+            
+            player "I would have preferred if you told us about this ahead of time."
+            
+            show claire flustered
+            
+            claire @ say "Would you have even agreed to come if you knew beforehand?"
+            
+            show rori none
+            show rori armscrossed
+            
+            rori @ say "I wouldn't have."
+            
+            player "I dunno, but we're here now so we might as well make the most of it."
+            
+            show claire happy at hop
+            
+            claire @ say "Exactly! Now let's get that campfire started!"
+            
+    show rori none
+    show rori neutral
+        
+    n "Claire had been grabbing pawfuls of dry grass and small twigs and stuffing them in her pockets the whole way here."
+    n "She clears a spot on the ground and dumps her collection onto the dirt."
+    
+    claire @ say "There's our tinder, now we just need some kindling and fuel to burn!"
+    claire @ say "You boys know what makes for good kindling?"
+    
+    if chosenHobby == "bushcraft":
+        n "Ever since you lied about being into bushcraft, you've been doing research into it and learning a few things."
+        
+        player "I sure do!"
+        player "We're gonna need some dry sticks, starting small and working our way up to branches and logs."
+        
+        show claire suggestive
+        
+        claire @ say "Précisément!"
+        
+        show claire derp
+        
+        claire @ say "We'll start with a tiny little fire and build it up til the logs are hot enough to keep burning."
+        
+    else:
+        n "You and Rori look to each other and both shrug your shoulders."
+        
+        rori @ say "I've never made a fire so..."
+        
+        player "Yeah, fires are so last century."
+        
+        show claire surprised earsup
+        
+        claire @ say "You boys spend too much time in front of your computers!"
+        
+        show claire laughing
+        
+        claire @ say "Well today yer gonna learn some outdoors skills!"
+        
+        show rori none
+        show rori armscrossed
+        
+        rori @ say "But the outdoors suuuuuucks!"
+        
+        show claire suggestive
+        
+        claire @ say "It sucks good though~"
+        
+        show claire happy
+        
+        claire @ say "Making a fire is easy! We just need to get some dry wood!"
+    
+    claire @ say "Gather as much as you can, 'cause we'll need a bunch!"
+    
+    hide claire with dissolve
+    
+    stop music fadeout 2.0
+    
+    n "Claire hops off into the thicket, leaving you and Rori alone."
+    n "The ram sighs."
+    
+    pause .2
+    
+    play music "audio/music/vylet - All That Glimmers.ogg" fadein .5
+    
+    show rori sleepy at center with move:
+        ypos y_rori
+        xoffset 0
+    
+    #menu:
+    #    "Better get moving":
+    #        player "We better get moving. Don't wanna get stuck in the dark without enough firewood."
+            
+    #        rori @ say "Yeah..."
+    #    "You alright?":
+    $ roriPoints += 1
+    
+    player "You alright?"
+    
+    rori @ say "Yeah, I just..."
+    rori @ say "I dunno why I'm putting up with this."
+    rori @ say "I hate being outside with all the bugs and the sun and getting tired walking around with nothing to do."
+    rori @ say "But I guess I don't have a say in the matter."
+    
+    show rori concerned
+    
+    player "Come on, it's just a little weekend adventure. It's not like we're gonna die out here."
+    
+    show rori worried noblush
+    
+    rori @ say "That's not it, it's more like"
+    rori @ say "Like I can't believe I let someone I barely know dictate what I'm doing."
+    
+    show rori armscrossed concerned
+    
+    player "You mean Claire dragging us into this?"
+    player "That's just how she is. She's just trying to have a good time with us."
+    
+    ###testing...
+    #n "start [roriPoints]"
+    
+    #$ roriPoints += 1
+    
+    #n "roripoints after += 1 is [roriPoints]"
+    
+    #$ roriPoints += 1
+    
+    #n "roripoints after += 1 is [roriPoints]"
+    
+    rori @ say "Yeah but she's kinda..."
+    
+    if roriPoints > 3:
+        player "Pushy?"
+        
+        show rori armscrossed surprised
+        
+        rori @ say "Exactly!"
+        
+        show rori none
+        show rori armscrossed angry
+        
+        rori @ say "She's the type of girl who wants to do things *her* way and hardly considers what others want."
+        
+        player "She's not as bad as Gunner."
+        
+        if gunnerRaid == True:
+            player "Claire's not even making us do anything illegal."
+        
+        show rori armscrossed concerned
+        
+        rori @ say "At least Gunner's a guy so he *somewhat* gets me."
+        
+        player "You think Gunner, who regularly calls you a fag, gets you more than Claire?"
+        
+        show rori armscrossed anxious
+        
+        rori @ say "W-well... yeah!"
+        
+        show rori none
+        show rori angry neutral
+        
+        rori @ say "We may not get along that much but he still sees me as a bro."
+        
+        show rori none
+        show rori yawn lookingaway blush
+        
+        rori @ say "Just the kind of bro who's quiet and keeps to himself and does nerd shit."
+        
+        show rori worried
+        
+        rori @ say "Claire on the other hoof doesn't get that at all."
+        
+        show rori sassy
+        
+        rori @ say "Girls are just so fundamentally separated from guys that they can't even begin to comprehend or empathize or care about what *we* want."
+        
+        show rori sleepy
+        
+        rori @ say "At least not on the level of how guys can."
+        
+        player "Is that why...?"
+        
+        show rori none
+        show rori armscrossed
+        
+        rori @ say "Yes that's why I'm gay, so what?"
+        
+        menu:
+            rori "{cps=0}Yes that's why I'm gay, so what?{/cps}"
+            "Me too lol":
+                $ roriPoints += 2
+                $ clairePoints -= 1
+                $ avaPoints -= 1
+                $ ellenPoints -= 1
+                $ rosePoints -= 1
+                
+                $ youGay = True
+                
+                show rori armscrossed concerned blush
+                
+                player "No yeah I totally understand. Girls are weird mysterious creatures from another dimension."
+                player "Bros are where it's at."
+                player "Homos before hoes."
+                
+                show rori none
+                show rori surprised
+                
+                rori @ say "Wait you're gay too?"
+                
+                player "Gay? Hell no, I just like cute boys."
+                
+                show rori supersmug blushing
+                
+                rori @ say "Sounds pretty gay."
+                
+                menu:
+                    rori "{cps=0}Sounds pretty gay.{/cps}"
+                    "Maybe just a little":
+                        player "Maybe just a little."
+                        
+                        show rori smirk lookingaway
+                        
+                        rori @ say "Suuuuure~"
+                        
+                        n "Rori's little tail happily swishes back and forth."
+                        
+                        show rori soyface
+                        
+                        rori @ say "But we should really start gathering firewood before it gets dark!"
+                    "Only for you":
+                        $ roriPoints += 1
+                        
+                        player "Think whatever you want, I'm not gay just because I'd do gay stuff with you."
+                        
+                        show rori surprised
+                        
+                        rori @ say "W-with who??"
+                        
+                        show rori worried
+                        
+                        player "No one."
+                        player "A cute sheepy boi maybe."
+                        
+                        show rori yawn blush
+                        
+                        rori @ say "Baaah~"
+                        
+                        show rori smug blushing
+                        
+                        rori @ say "I'll take that as a compliment..."
+                        
+                        show rori anxious 
+                        
+                        rori @ say "We should really be gathering firewood though! It'll get dark soon!"
+                        
+                hide rori with dissolve
+                        
+                n "The two of your start grabbing sticks and pulling fallen branches out from underneath leaves."
+                n "It might just be the dim lighting playing tricks on you but you could swear Rori was checking you out a few times, especially when you bent over to pick up a twig."
+                
+                
+            "Fair":
+                player "Fair. I guess guys are more straightforward and easy to understand."
+                
+                show rori yawn lookingaway blush
+                
+                rori @ say "Exactly. If I had a boyfriend I could just be like \"Hey you wanna play Team Fortress 2 and jerk each other off?\""
+                
+                show rori sleepy -blush
+                
+                rori @ say "With girls you have to read their freaking mind or they'll get mad at you and belittle you and throw things at you."
+                
+                menu:
+                    rori "{cps=0}With girls you have to read their freaking mind or they'll get mad at you and belittle you and throw things at you.{/cps}"
+                    "Are you speaking from experience?":
+                        player "Are you sure they're really like that? Are you speaking from experience?"
+                        
+                        show rori none
+                        show rori armscrossed
+                        
+                        rori @ say "... I don't wanna get into it right now."
+                        
+                        player "Okay then. How about we just get the firewood now?"
+                        
+                        show rori armscrossed neutral
+                        
+                        rori @ say "Yeah, that sounds good."
+                    "You wanna play Team Fortress 2 and...?":
+                        $ roriPoints += 1
+                        
+                        player "Hey you wanna play Team Fortress 2 and...? Uh... j-j-jerk off..."
+                        
+                        show rori surprised
+                        
+                        rori @ say "OwO"
+                        
+                        show rori worried noblush
+                        
+                        rori @ say "*Ahem*"
+                        
+                        show rori neutral
+                        
+                        rori @ say "I mean, I'd rather be doing anything else than picking up firewood."
+                        
+                        player "We should probably hurry up with that. All I've got are a couple of twigs."
+                        
+                hide rori with dissolve
+        
+            "Girls aren't so bad":
+                $ roriPoints -= 1
+                $ roryPoints += 1
+                
+                player "Girls aren't so bad. They have nice boobs."
+                
+                rori @ say "Not worth it to walk straight into hell for boobs."
+                
+                player "It is for me."
+                
+                show rori armscrossed sleepy
+                
+                rori @ say "You and a lot of other guys."
+                rori @ say "We should probably hurry up with the firewood before it gets too dark."
+                
+                hide rori with dissolve
+        
+    else:
+        player "Kinda what?"
+        
+        show rori sleepy
+        
+        rori @ say "You know..."
+        
+        show rori none
+        show rori armscrossed
+        
+        rori @ say "She's like a lot of girls. Everything revolves around them and they don't really care about what others want."
+        
+        player "I don't think Claire's like that. She probably genuinely thought we'd enjoy this sort of thing."
+        
+        rori @ say "Yeah and she was dead wrong because she doesn't know a thing about us."
+        rori @ say "We're just pawns in her little game so that *she* can have fun."
+        
+        menu:
+            rori "{cps=0}We're just pawns in her little game so that *she* can have fun.{/cps}"
+            "Yeah she went too far this time":
+                player "I agree, she went a little too far this time."
+                player "I'll ask her to be more considerate next time."
+            "It's just a misunderstanding":
+                player "It's just a little misunderstanding. We can ask her to be more considerate next time."
+                
+        rori @ say "Or we could just refuse to go on her next \"adventure\" altogether."
+        
+        player "That too."
+        player "Let's just collect some firewood and survive this night, then forget about all this."        
+                
+        show rori sleepy
+        
+        rori @ say "That's all we can do at this point."
+        
+    hide rori with dissolve
+    
+    stop music fadeout 2.0
+        
+    n "Around the time that you've gathered a good pile of wood in the middle of your camp site, Claire returns carrying a whole tree trunk on her shoulder."
+    n "The ground shakes when she throws it to the ground."
+    
+    play music "audio/music/vylet - Ordinarily.ogg" fadein .5
+    
+    show rori neutral at center:
+        ypos y_rori
+        xzoom -1
+        xoffset -525
+    show claire flannel happy at center:
+        ypos y_claire
+        xoffset 525
+    with dissolve    
+    
+    claire @ say "Ta-dah! I figured y'all would want a place to sit."
+    
+    player "Wow uh, thanks."
+    
+    show rori soyface
+    
+    rori @ say "How'd you lift that?? It must have weighed a ton!"
+    
+    show rori neutral    
+    show claire derp
+    
+    claire @ say "Aw shucks guys, it was nothin'~"
+    
+    show claire happy at hop
+    
+    claire @ say "Looks like we got a good amount of wood to burn! Just gotta start with the-"
+    
+    show claire surprised earsup
+    
+    claire @ say "Hey! Quit eating our tinder!"
+    
+    show rori surprised
+    
+    n "You look to Rori who's munching on some of the dry grass Claire laid out earlier."
+    
+    rori @ say "Sorry... I got hungry."
+    
+    show rori neutral
+    show claire derp
+    
+    claire @ say "How are we gonna toast marshmallows if we can't get our fire started?"
+    
+    show claire happy
+    
+    n "Claire snatches up the remaining tinder and bundles it up into a circle with both her paws."
+    
+    claire @ say "You boys watching? First we take the easiest to burn stuff and bundle it together like a bird's nest..."
+    claire @ say "Once the grass ignites, it'll heat up the tiniest of twigs and once those combust, those will heat up the slightly bigger twigs and so on."
+    
+    show claire surprised earsup
+    
+    claire @ say "Oop, could one of you grab my lighter? I think it's in my back pocket~"
+    
+    menu:
+        claire "{cps=0}Oop, could one of you grab my lighter? I think it's in my back pocket~{/cps}"
+        "Jump at the opportunity":
+            $ clairePoints += 1
+            
+            player "I got it!"
+            
+            show claire suggestive
+            
+            n "Claire grins and sways her hips while you dig around in her back pocket, feeling around for the lighter a little too long."
+            
+            show rori none
+            show rori armscrossed
+            
+            rori @ say "Hurry up before I freeze to death!"
+            
+            if claireBullyLevel > 0:
+                claire @ say "Ksksksks check the other pocket, dweeb~"
+            else:
+                claire @ say "Ksksksks check the other pocket, hun~"
+            
+            n "Turns out you were grabbing around in the wrong pocket."
+            
+            player "Oh. Here it is. Heh."
+            
+            show claire happy
+            show rori neutral
+            
+            claire @ say "Now would you do the honors? Just hold the flame right underneath the bundle!"
+            
+            if claireBullyLevel > 1:
+                claire @ say "Try not to burn yourself, dummy."
+            
+            n "You do as instructed and press down on the lighter switch under the tinder."
+            
+        "Just use your own lighter":
+            $ clairePoints -= 1
+            
+            player "No worries, I'll just use my own!"
+            
+            show claire sad
+            
+            n "Claire frowns as you flip the lid off your lighter with a click and hold the flame underneath the tinder bundle."
+            
+        "Let Rori get it":
+            $ roriPoints -= 1
+            
+            n "You sit with your arms crossed waiting for Rori to do it."
+            
+            show claire suggestive
+            show rori sassy
+            
+            rori @ say "Seriously? Ugh, I'll get it."
+            
+            n "Rori looks away as he sticks his hoof in Claire's back pocket and pulls out the lighter."
+
+            claire @ say "Now would you do the honors? Just hold the flame right underneath the bundle!"
+            
+            n "Rori does as instructed and presses down on the lighter switch under the tinder."
+            
+    show claire happy
+    show rori none
+    show rori neutral
+
+    n "Almost immediately the dry grass combusts into a ball of fire, burning brightly in the darkening woods."
+    n "Claire puts it down in a pile of small twigs but it burns out so quickly it doesn't have a chance to ignite the wood."
+    
+    show rori none
+    show rori sleepy
+    
+    rori @ say "Aww, all that hard work for nothing."
+    
+    show rori neutral
+    show claire suggestive
+    
+    claire @ "Au contrair~"
+    
+    show claire happy
+    
+    n "The bunny gets down on all fours and blows into the smoldering remains of the tinder bundle. Glowing orange embers light up and more smoke rises from it the more she blows."
+    n "With enought breaths, the twigs alight like match sticks, keeping the bundle hot until the bigger sticks reach their combustion point."
+    n "Against all odds, the thickest sticks you gathered burn high into the sky. Despite the cool autumn air around you, the fire is already making you sweat."
+    n "Claire rolls some logs into the blaze and pokes at them with a long stick."
+    
+    show claire laughing
+    
+    claire @ say "And there we have it!"
+    
+    show rori soyface
+    
+    rori @ say "Wow, I did *not* expect that to actually work."
+    
+    show claire happy
+    show rori neutral
+    
+    claire @ say "If it's smokin' ya just gotta give it some air and it'll burn!"
+    
+    player "My caveman ancestors are smiling down at me right now. I have rediscovered fire."
+    
+    show claire flustered
+    
+    claire @ say "Do you like it?"
+    
+    player "I love it! It gives me a weird sense of comfort."
+    
+    show rori yawn lookingaway blush
+    
+    rori @ say "I have a strange urge to hop into it."
+    
+    show claire surprised earsup
+    show rori concerned
+    
+    claire @ say "Hey no sheep in my fire!"
+    
+    show claire derp
+    show rori neutral
+    
+    claire @ say "Grab a stick and let's toast some marshmallows!"
+    
+    n "Claire pulls a bag out from her bra and tosses the sweet sugary treats to you."
+    
+    player "Yay!"
+    
+    show claire happy
+    show rori smirk
+    
+    rori @ say "Finally! I'm starving after all that hiking."
+    
+    n "You have to admit, it's pretty rewarding to come all this way out, build a fire from scratch, and sit back with some toasted marshmallows surrounded by friends."
+    n "Claire gets so distracted telling stories that she accidentally lets her marshmallows ignite before frantically trying to blow out the fire."
+    n "Even Rori lightens up after nomming a few."
+    
+    show rori worried noblush
+    show claire surprised earsup
+    
+    n "Suddenly the two of them snap their heads to the woods, ears perked up. You can't see a thing in the darkness however."
+    
+    player "What? What is it?"
+    
+    rori @ say "Shh! Something's coming!"
+    
+    stop music fadeout 2.0
+    
+    n "Claire stands up, ready to fight."
+    n "Rori sniffs the air."
+    n "A moment later you hear leaves crunching underfoot as something rapidly approaches."
+    n "A flash of white briefly appears before colliding with you, sending your body reeling backward."
+    
+    hide claire
+    hide rori
+    with dissolve
+    
+    n "As you tumble to the ground, you see Claire catch hold of something, pinning it down."
+    
+    play music "audio/music/vylet - Over Equestria.ogg" fadein .5
+    
+    gunner @ say "Get off me you fat fuck!"
+    
+    ava @ say "Ohmygosh [name]! Are you alright??"
+    
+    show rori neutral at offscreenleft
+    
+    n "Dazed and blinded by the fire, you lean up and rapidly blink, trying to make sense of the situation."
+    
+    show ava reaching concerned at center:
+        ypos y_ava
+        xoffset 480
+    with dissolve
+    
+    ava @ say "Sorry! I didn't mean to fly right into you!"
+    
+    show claire flannel surprised earsup at center:
+        ypos y_claire
+        xoffset -650
+        xzoom -1
+    with dissolve
+    
+    claire @ say "Ava? Is that you?"
+    
+    show rori concerned at center:
+        ypos y_rori
+        xoffset -300
+        xzoom -1
+    show gunner displeased at center:
+        ypos y_gunner
+        xoffset 800
+    with dissolve
+    
+    play music "audio/music/vylet - Over Equestria.ogg" fadein .5
+    
+    rori @ say "Gunner? What the hell are you doing here?"
+    
+    gunner @ say "About to get raped by this rabid rabbit apparently."
+    
+    show claire derp
+    
+    claire @ say "Not tonight, sorry."
+    
+    show gunner itsover
+    show claire happy
+    
+    n "Claire rolls off of Gunner. He gets up and brushes himself off."
+    
+    show ava profile overjoyed at hop
+    show gunner frown1
+    
+    ava @ say "Ooh are those marshmallows? Mind if I take one?"
+    
+    n "The bird grabs the stick you had dropped and fixes a new marshmallow to the tip."
+    
+    show ava typical happy
+    show gunner annoyed
+    
+    gunner @ say "Uh, are you forgetting about the crazy guy right behind us?"
+    
+    show ava whimsical
+    
+    ava @ say "Claire will protect us!"
+    
+    show claire surprised earsup
+
+    claire @ say "You're being chased by someone?"
+    
+    show gunner disgusted
+    show ava typical shocked
+    
+    gunner @ say "Yeah this homeless guy invaded our tent and started heckling us for change. We barely managed to escape with our credit scores intact!"
+    
+    show gunner itsover
+    
+    gunner @ say "Then he started ranting about linux and free software licenses... I've never been so scared in my life."
+    
+    show rori worried
+    
+    rori @ say "*cough*"
+    
+    show gunner frown1
+    show claire suggestive
+    
+    claire @ say "Well don't you worry any further, if anyone steps foot in this camp I'll suplex them~"
+    
+    show ava typical smug
+    show claire happy
+    
+    ava @ say "Aww, thanks Claire~"
+    
+    show ava happy
+    
+    player "How do you manage to run into a psychotic computer nerd *this* far into the woods?"
+    
+    show rori sassy
+    
+    rori @ say "*Ahem!!!*"
+    
+    show gunner disgusted
+    
+    gunner @ say "Rori you're lucky you weren't there. This guy would have complained that you weren't running a deblobbed kernel."
+    
+    show rori armscrossed sleepy
+    show gunner frown1
+    
+    rori @ say "Oh he's one of those purists."
+    
+    show ava shocked
+    
+    ava @ say "I have no idea what that means but let's just try and put it all behind us."
+    ava @ say "I'm more surprised to see you all out here!"
+    
+    show ava happy
+    show rori none
+    show rori neutral
+    show gunner neutral
+    show claire derp
+    
+    claire @ say "Well you went off to have your fun camping trip on your own which gave me the idea to do the same with these two!"
+    
+    show claire happy
+    show gunner motivated
+    
+    gunner @ say "Wow, you got Rori to come outside? Did you blackmail him?"
+    
+    show gunner neutral
+    show rori none
+    show rori armscrossed
+    
+    rori @ say "For your information, I was starting to enjoy my time out here!"
+    
+    show rori armscrossed neutral
+    show ava concerned
+    
+    ava @ say "Were you planning on staying the night? Where's your tent?"
+    
+    show claire flustered
+    
+    claire @ say "We were just gonna cuddle puddle~"
+    
+    player "Excuse me? What's a cuddle puddle?"
+    
+    show claire suggestive
+    show ava smug
+    
+    claire @ say "You'll find out~"
+    
+    #do a little skip where they sorta explain it then cuddle puddle
+    
+    jump cuddlepuddle
+            
+
+        
+        #if avaHike == True:
+            #jump avaGunnerCampScene
+        
+label avaGunnerCampScene:
+            play music "audio/ambient/morning birds.ogg" fadein 0.1
+
+            n "Today's the day you're supposed to go hiking with Ava and Gunner."
+            n "They decided it's going to be an overnight trip so you dumped your notebooks and packed all kinds of gear into your school bag."
+            n "Gunner said he'd bring a tent so you load up on snacks and water."
+            
+            call phone_start from _call_phone_start_23
+
+            call message_start("Ava", "Heya! You ready for our trip?", "avaavi.png") from _call_message_start_30 
+
+            call reply_message("Yup, just finished packing") from _call_reply_message_157 
+            call reply_message("Is Gunner still acting pissy because I'm coming?") from _call_reply_message_158 
+            
+            call message("Ava", "Yeahhhh but he'll get over it!", "avaavi.png") from _call_message_222 
+            call message("Ava", "I'm sure we'll all have a great time ^v^", "avaavi.png") from _call_message_223 
+            call message("Ava", "Meet us at the trailhead, k?", "avaavi.png") from _call_message_224 
+            
+            call reply_message("On my way") from _call_reply_message_159 
+            
+            call phone_end from _call_phone_end_29
+            
+            n "Oh boy, a camping trip with a bird who has a crush on you and the cat who has a crush on her, what could go wrong?"
+            
+            stop music fadeout 2.0
+            
+            scene bg campsite with fade
+            
+            play music "audio/music/vylet - Destiny Station.ogg" fadein .4
+            
+            show box with Dissolve(.2):
+                ypos 0
+            
+            n "After hiking all day, you arrived at the peak of a mountain just in time for the golden hour of sunset."
+            n "Ava excitedly flutters around taking photos from atop various tree branches while you and Gunner catch your breath and sit on the edge of the cliff."
+            n "You pick up a rock and toss it down into the chasm. A few seconds later you hear it fall through some foliage and thud against the ground."
+            
+            show gunner cheeky1 at center with dissolve:
+                ypos y_gunner
+                xzoom -1
+            
+            gunner @ say "Damn, we're pretty high up aren't we?"
+            
+            player "Yeah. Can't believe we hiked all this way."
+            player "My legs are killing me."
+            
+            show gunner determined
+            
+            gunner @ say "Heh, sounds like you need to spend more time at the gym."
+            
+            show gunner uncomfy
+            
+            gunner @ say "... But yeah fuck this hike."
+            
+            show gunner wink catface
+            
+            gunner @ say "At least the view makes it all worth it."
+            
+            show gunner neutral
+            
+            n "Gunner looks up at the tree Ava's perched upon, her ass in plain view of you both, perfectly framed between the tree branches."
+            
+            menu:
+                n "{cps=0}Gunner looks up at the tree Ava's perched upon, her ass in plain view of you both, perfectly framed between the tree branches.{/cps}"
+                "Totally worth it":
+                    $ avaPoints += 1
+                    
+                    player "Totally worth it. I'd hike Mount Everest for her."
+                    
+                    show gunner motivated
+                    
+                    gunner @ say "Oh yeah? Well I'd hike K2 with one paw tied behind my back for her!"
+                    
+                    player "Is that all? I'd jump into a volcano for her!"
+                    
+                    gunner @ say "No you wouldn't, because I'd be the one to push you in!"
+                    
+                    ava @ say "Shush up down there! You're distracting me from getting this shot!!"
+                    
+                    show gunner mischief
+                    
+                    gunner @ say "Yeah [name], quiet down or she'll miss her shot!"
+                    
+                    player "You're the one distracting her!"
+                    player "Ava, do you want me to throw Gunner off this cliff for you?"
+                    
+                    ava @ say "Mmh, not yet."
+                    
+                    show gunner displeased
+                    
+                    gunner @ say "I'd like to see you try!"
+                "Meh":
+                    $ avaPoints -= 1
+                    
+                    player "Meh, I've seen better."
+                    
+                    show gunner displeased
+                    
+                    gunner @ say "No you haven't. There doesn't exist an ass better than hers."
+                    
+                    player "Dude, is that the only reason you're into her?"
+                    
+                    show gunner cutie
+                    
+                    gunner @ say "No, but a nice ass *is* number one on my priority list for women."
+                    
+                    ava @ say "Shush up down there! You're distracting me from getting this shot!!"
+                    
+                    show gunner mischief
+                    
+                    gunner @ say "Yeah [name], quiet down or she'll miss her shot!"
+                    
+                    player "You're the one distracting her!"
+                    player "Ava, do you want me to throw Gunner off this cliff for you?"
+                    
+                    ava @ say "Mmh, not yet."
+                    
+                    show gunner displeased
+                    
+                    gunner @ say "I'd like to see you try!"
+                "Ignore her":
+                    n "You ignore the bird in favor of the gorgeous sunset painted before you by nature."
+                    n "The sun allows you some time to stare in its direction without searing your corneas as it falls toward the horizon."
+                    n "Its final burst of warmth mixes with the cool wind blowing from the night side of the planet to provide the coziest atmosphere imaginable."
+                    n "This sure beats arguing with strangers on the internet."
+                    
+            player "Yo Ava, you almost done up there?"
+            
+            ava @ say "Just a few more shots...!"
+            ava @ say "Why don't you boys make yourselves useful and get the tent set up?"
+            
+            gunner @ say "On it!"
+            
+            n "Gunner makes a competition out of it by rapidly putting the frame together on his own, trying to make you look slow and incompetent."
+            n "Not to be outdone, you pull your weight and hook the fabric of the tent through the rods and ground it with the stakes."
+            n "Gunner is practically on top of you putting the rain cover in place."
+            n "His paw \"accidentally\" slips and yanks one of the rods out, hindering your progress."
+            
+            player "Hey! Watch where you're going!"
+            
+            show gunner annoyed
+            
+            gunner @ say "You watch where you're putting the stakes!"
+            
+            menu:
+                gunner "{cps=0}You watch where you're putting the stakes!{/cps}"
+                "Counter sabotage him":
+                    n "Nobody gets away with undoing your hard work!"
+                    n "You let your hand \"accidentally\" loosen one of the straps Gunner put in place, letting the whole rain fly collapse."
+                    
+                    show gunner hissing
+                    
+                    gunner @ say "You bastard! You did that on purpose!"
+                    
+                    player "Dunno what you're talking about."
+                    
+                    show gunner displeased
+                    
+                    gunner @ say "I saw you!"
+                    
+                    player "Stop blaming me and fix your shit!"
+                    
+                    if gunnerPoints < 0:
+                        $ foughtGunner = True
+                    
+                        show gunner pissed
+                    
+                        n "He snarls at you before lunging right over the tent and pouncing right on top of you."
+                        
+                        gunner @ say "I've had it with you antagonizing me all the time!"
+                        
+                        player "You think *I'm* the one antagonizing *you?*"
+                        
+                        gunner @ say "You couldn't just let me go on a date with Ava! You just had to weasel your way in! You're a jealous fuck, you know that!!"
+                        
+                        n "Gunner tries to swipe at your face with his claws but you manage to hold him at bay."
+                        
+                        player "You're such an entitled rich brat! You think the world revolves around you getting together with your crush because you *always* have to have it your way!"
+                        
+                        show gunner annoyed
+                        
+                        gunner @ say "What other way is there?!"
+                        
+                        n "His pointed teeth sink into your arm, causing you to spazz out and throw him off you."
+                        n "He glares at you from a couple of feet away but instantly brightens up as soon as Ava swoops down like nothing even happened."
+                        
+                        show gunner at flipleft
+                        
+                        pause .2
+                        
+                        show gunner neutral with move:
+                            xoffset 450
+                        
+                        show ava typical happy at center:
+                            ypos y_ava
+                            xzoom -1
+                            xoffset -450
+                        with dissolve
+                        
+                        ava @ say "Whew, you should see the view from up there! I got so many great shots!"
+                        
+                        show ava reaching concerned
+                        
+                        ava @ say "You guys alright?"
+                        
+                        gunner @ say "Yup! We were just play fighting. I let [name] win 'cause I'm such a nice guy."
+                        
+                        show gunner eyesclosed smile
+                        
+                        gunner @ say "The tent's all set up too! Just gotta fix the rain fly aaaannnd... done!"
+                        
+                        show gunner cutie
+                        
+                        player "Yeah, just \"play\" fighting. I totally kicked his ass by the way, I dunno if you saw."
+                        
+                        if avaPoints > 4:
+                            show ava pose smug
+                        
+                            ava @ say "I'll take your word for it~"
+                        else:
+                            show ava pose whimsical
+                            
+                            ava @ say "Suuuure, I believe you~"
+                            
+                        show ava none
+                        show ava typical excited
+                        
+                        ava @ say "How about we get dinner started then huddle up inside the tent!"
+                        
+                        show ava happy
+                        show gunner optimistic
+                        
+                        gunner @ say "Sounds good to me!"
+                        
+                        player "Yeah, some food would be nice."
+                        
+                    else:
+                        n "He looks like he's about to pounce on you but decides it's not worth it."
+                        
+                        show gunner itsover
+                        
+                        gunner @ say "Whatever dude. You'd never even get this tent set up without me."
+                        
+                        show gunner frown1
+                        
+                        n "He quietly fixes the rain fly while you do your final checks on your parts."
+                        n "Ava swoops down and nods approvingly."
+                        
+                        show gunner at flipleft
+                        
+                        pause .2
+                        
+                        show gunner with move:
+                            xoffset 450
+                        
+                        show ava typical happy at center:
+                            ypos y_ava
+                            xzoom -1
+                            xoffset -450
+                        with dissolve
+                        
+                        ava @ say "Wow, nice work guys! It looks so comfy!"
+                        
+                        show gunner cutie
+                        
+                        gunner @ say "Heh, it'll be nice and warm inside! Plenty of space for all of us!"
+                        
+                        show gunner eyesclosed smile
+                        
+                        gunner @ say "Plus I splurged and bought the bear-proof fabric version so we can sleep in peace~"
+                        
+                        show gunner optimistic
+                        show ava excited
+                        
+                        ava @ say "Nice! Sounds like you really thought of everything!"
+                        
+                        show ava happy
+                        
+                        gunner @ say "Oh please, when you're this rich you can afford to sleep like royalty, even in these backwater no name woods."
+                        
+                        player "Kinda defeats the purpose of camping, doesn't it?"
+                        
+                        show gunner annoyed
+                        
+                        gunner @ say "Well you're free to sleep outside with all the mosquitoes and cougars and bears and homeless."
+                        
+                        player "...Nah, the tent's fine."
+                "Just fix your section":
+                    n "You're not going to play his immature games. You'll do your part and be done with it."
+                    n "Dammit, he ended up finishing before you and now here comes Ava."
+                    
+                    show gunner at flipleft
+                    
+                    pause .2
+                    
+                    show gunner neutral with move:
+                        xoffset 450
+                    
+                    show ava typical happy at center:
+                        ypos y_ava
+                        xzoom -1
+                        xoffset -450
+                    with dissolve
+                            
+                    ava @ say "Alright, that's enough shooting for today."
+                    
+                    show ava shocked
+                    
+                    ava @ say "Has anyone seen my lens cap?"
+                    
+                    gunner @ say "Nope."
+                    
+                    n "Come to think of it, that rock you threw earlier might not have been a rock."
+                    
+                    player "Yeah no. What's it look like?"
+                    
+                    show ava neutral
+                    
+                    ava @ say "Nevermind, I've got a spare in my bag."
+                    
+                    show ava excited
+                    
+                    ava @ say "Nice work on the tent though! It looks so comfy!"
+                    
+                    show ava happy
+                    
+                    player "It will be once I finish getting this peg into the- argh there we go!"
+                    
+                    show gunner cheeky1
+                    
+                    gunner @ say "Heh, it'll be nice and warm inside! Plenty of space for all of us, plus I splurged and bought the bear-proof edition so we can sleep in peace~"
+                    
+                    show ava overjoyed
+                    
+                    ava @ say "Nice! Sounds like you really thought of everything!"
+                    
+                    show ava happy
+                    show gunner determined
+                    
+                    gunner @ say "Oh please, when you're this rich you can afford to sleep like royalty, even in these backwater no name woods."
+                    
+                    player "Kinda defeats the purpose of camping, doesn't it?"
+                    
+                    show gunner displeased
+                    
+                    gunner @ say "Well you're free to sleep outside with all the mosquitoes and cougars and bears and homeless."
+                    
+                    player "...Nah, the tent's fine."
+
+            scene bg black with dissolve
+            
+            stop music fadeout 2.0
+            
+            n "After a warm meal, the three of you retired to the tent, crawling inside your sleeping bags as the wind outside picked up."
+            n "The constant sound of leaves rustling and twigs snapping made it hard to fall asleep but eventually you could remain awake no longer."
+            
+            scene bg black with fade
+            
+            play music "audio/ambient/outdoors night crickets.ogg" fadein .4
+            
+            n "An unknown amount of time passes before something stirs you awake."
+            n "You can't quite tell what it is at first but at some point you felt as if you weren't alone."
+            n "Aside than Ava and Gunner's presence, you felt as though there was someone else... watching you."
+            n "They could sense it too, judging by their stirring from slumber."
+            
+            show gunner displeased at center with dissolve:
+                ypos y_gunner
+                xoffset 400
+                matrixcolor BrightnessMatrix(-0.15)
+            
+            gunner @ say "Mrrrrp. What time is it?"
+            
+            show gunner disgusted
+            
+            gunner @ say "Wait, what is that?"
+            
+            play music "audio/music/vylet - that butterfly feeling.ogg" fadein .4
+            
+            n "The cat's ears perk up, pointed in the direction of a subtle but steady sound of footsteps trudging through leaves."
+            
+            show ava typical shocked at center with dissolve:
+                ypos y_ava
+                xzoom -1
+                xoffset -400
+                matrixcolor BrightnessMatrix(-0.15)
+            
+            ava @ say "Hmm? Is it morning already?"
+            
+            player "No, it's probably just a deer or something."
+            
+            gunner @ say "FUCK OFF, DEER!!!"
+            
+            n "You get a zombie-like moan in return, followed by hurried footsteps approaching you directly."
+            
+            show gunner frown1
+            
+            gunner @ say "I don't think that's a deer..."
+            
+            player "Way to go, you let him know our position!"
+            
+            show gunner eyesclosed smile
+            
+            gunner @ say "Chill, this ain't no cheap tent for poor people! Even if it's a bear we'll be safe."
+            
+            show gunner neutral
+            show ava enamored
+            
+            ava @ say "Still, all that separates us from a potentially murderous unknown entity all the way out here where no one can hear us scream is a millimeter of fabric..."
+            
+            show gunner frown1
+            
+            n "The three of you hold your collective breath as the creature enters your campsite and begins rummaging through the containers and supplies you left outside the tent."
+            
+            if avaPoints > 4:
+                n "Ava clings to you, subtly shaking while staring at the opaque canvas of the tent that makes it impossible to tell what lies beyond."
+            
+            else:
+                n "Ava clings to Gunner subtly shaking while staring at the opaque canvas of the tent that makes it impossible to tell what lies beyond."
+            
+            n "Only audio cues can clue you in to what's happening outside."
+            n "Latches being flipped open, bags being unzipped, buttons coming undone..."
+            n "What sort of wild animal can do such things with so much precision?"
+            n "Finally a silhouette comes into view in front of the tent, followed by the zipper coming undone."
+            
+            pause .2
+            
+            show gunner annoyed:
+                xoffset 630
+            show ava shocked:
+                xoffset -630
+            with move
+            
+            show fortune at center with dissolve:
+                ypos y_fortune
+            
+            fortune @ say "Hey, you have any change? Change for a poor guy down on his luck? God bless."
+            
+            show gunner disgusted
+            
+            gunner @ say "Holy fuck! It's a hobo!!"
+            
+            n "Gunner springs into action, kicking a pillow at the assailant. It bounces off his head ineffectively."
+            
+            show fortune at flipright
+            
+            fortune @ say "Would you like to buy my book on open source software? I'll sign it if you have a pen."
+            
+            show gunner itsover
+            
+            gunner @ say "It's so over...!"
+            
+            show gunner uncomfy
+            
+            ava @ say "Guys, close your eyes!"
+            
+            show gunner itsover
+            
+            n "Ava grabs her camera and clicks the shutter release button, flashbanging the hobo and blinding him. The three of you take the opportunity to evacuate the tent."
+            
+            scene bg campsite night with fade
+            
+            play music "audio/ambient/outdoors night crickets.ogg" fadein .4
+            
+            show box with Dissolve(.2):
+                ypos 0
+            
+            show gunner displeased at center with dissolve:
+                ypos y_gunner
+                xoffset 400
+                matrixcolor BrightnessMatrix(-0.08)
+            show ava pose concerned at center with dissolve:
+                ypos y_ava
+                xzoom -1
+                xoffset -400
+                matrixcolor BrightnessMatrix(-0.08)
+            with dissolve
+            
+            n "Gunner zips the tent closed, trapping the hobo inside."
+            
+            fortune @ say "W-wait, I'll code printer drivers for food...!"
+            
+            show gunner annoyed
+            
+            gunner @ say "You get what you deserve, poorfag!"
+            
+            player "Was that really necessary?"
+            
+            show gunner displeased
+            
+            gunner @ say "You have to be extremely cautious around these middle class folk. They're wild and unpredictable. They're known to stab you just for something as cheap as a solid gold wristwatch!"
+            
+            show gunner disgusted
+            
+            gunner @ say "I felt my credit score dropping just by being near him."
+            
+            show gunner itsover
+            
+            gunner @ say "I knew I should have bought the hobo-proof tent instead..."
+            
+            show ava typical shocked
+            
+            ava @ say "What do we do now?"
+            
+            show gunner disgusted
+            
+            n "The tent begins to collapse on itself as the hobo thrashes about inside it."
+            
+            gunner @ say "I say we make a break for it before he escapes!"
+            
+            ava @ say "Yeah, let's bail. This is NOT the kind of suave charismatic serial killer I always hoped to encounter."
+            
+            player "Yeah, he's just an average linux developer."
+            
+            fortune @ say "What you're referring to linux is actually GNU/linux or as I've recently taken to calling it, GNU+linux as..."
+            
+            n "You've seemingly enraged him and you can see his hooves pulling the tent fabric apart."
+            n "Now would be a good time to start running."
+            
+            player "OK I think we seriously need to leave."
+            
+            n "Ava takes to the skies while Gunner skitters ahead, leaving you to catch up on your endurance-hunter legs."
+            
+            scene bg forest night with fade
+            
+            play music "audio/ambient/outdoors night crickets.ogg" fadein .4
+            
+            show box with Dissolve(.2):
+                ypos 0
+            
+            #was originally going to be a bear but turns out to be the gnu hobo from earlier
+            #get startled by a bear
+            #claire suplexes the bear
+    
+            n "After catching up to the others and running for your life for a few minutes, you see a light in the distance. Naturally, you're drawn to it. Fire good."
+            n "Gunner reaches it first but immediately gets thrown to the ground and pinned by a large figure."
+            n "Before you can even react, you're dragged down to the ground and held in place as well."
+            
+            play music "audio/music/vylet - Over Equestria.ogg" fadein .5
+            
+            show claire flannel suggestive at center with dissolve:
+                ypos y_claire
+                xoffset 650
+            
+            claire @ say "Well well well, looks like I caught myself two more cuties~"
+            
+            show ava typical angry at offscreenleft:
+                ypos y_ava
+            
+            n "Ava comes to your rescue, pecking at Claire's head."
+            
+            show ava typical angry at center with move:
+                ypos y_ava
+                xzoom -1
+                xoffset 330
+            
+            ava @ say "Get off them! They're *mine!*"
+            
+            show claire flustered
+            
+            claire @ say "Sheesh, you won't even share just a little?"
+            
+            hide claire
+            hide ava
+            with dissolve
+            
+            n "The bunny rolls off of you and Gunner, giving you a chance to look around."
+            
+            #show claire flannel happy at offscreenleft
+            
+            n "Rori is sitting nearby, toasting a marshmallow above a campfire."
+            
+            show rori neutral at center with dissolve:
+                ypos y_rori
+                xoffset -350
+                xzoom -1
+            
+            rori @ say "Oh hey guys. Didn't expect to run into you tonight."
+            
+            show ava typical happy at offscreenright
+            
+            show gunner frown1 at center with dissolve:
+                ypos y_gunner
+                xoffset 730
+            
+            gunner @ say "You and me both! What are you doing all the way out here?"
+            
+            show rori worried noblush
+            
+            rori @ say "Well... Claire wanted to go camping I guess but she said all her other friends were busy so she kinda dragged me along."
+            
+            show rori armscrossed cheery
+            show gunner neutral
+            
+            rori @ say "But it's okay because it actually turned out to be kinda fun!"
+            
+            show rori neutral
+            show ava typical shocked at center with dissolve:
+                ypos y_ava
+                xoffset 400
+            
+            ava @ say "I'm glad at least one of us is having a good time. We got ambushed by this crazy homeless guy! I think we shook him off though."
+            
+            show rori anxious
+            
+            rori @ say "You mean there's some psycho stalking you in these woods?"
+            
+            show ava happy
+            hide claire
+            
+            show claire flannel suggestive at center with dissolve:
+                ypos y_claire
+                xoffset -665
+                xzoom -1
+            
+            claire @ say "Don't worry, I'll protect you all if he shows up!"
+            
+            show claire flustered
+            show rori neutral
+            
+            claire @ say "Did I mention I was a kickboxing champ?"
+            
+            show ava overjoyed
+            show claire happy
+            
+            ava @ say "Ooh our own personal body guard!"
+            
+            show ava happy
+            show gunner itsover
+            
+            gunner @ say "I knew I should have brought a gun."
+            
+            show gunner neutral
+            
+            #claire @ say "Now we can all camp together!"
+            claire @ say "Relax, grab a stick and some marshmallows, then we'll all cuddle puddle once the fire dies down~"
+            
+            player "Excuse me? What's a cuddle puddle?"
+            
+            show claire suggestive
+            
+            claire @ say "You'll find out~"
+            
+            jump cuddlepuddle
+     
+    
+label cuddlepuddle:
+    scene bg forest night with fade
+    
+    play music "audio/music/vylet - sailing away.ogg" fadein .5
+    
+    show box with Dissolve(.2):
+        ypos 0
+
+    n "The smoldering remains of the camp fire barely illuminated anything anymore as the night went on."
+    n "Ava and Gunner's mood lightened up considerably in the comfort of friends. You all felt right at home, joking and chattering away like normal."
+    
+    if mishkaPoints > 0:
+        n "All that's missing is Mishka's coffee to sip on. You wonder if she would have enjoyed camping with you."
+        
+    n "The breeze started to pick up, cooling the forest enough to make you shiver."
+    
+    show rori neutral at center:
+        ypos y_rori
+        xoffset -310
+        xzoom -1
+    show claire flannel happy at center:
+        ypos y_claire
+        xoffset -665
+        xzoom -1
+    show ava typical happy at center:
+        ypos y_ava
+        xoffset 420
+    show gunner neutral at center:
+        ypos y_gunner
+        xoffset 750
+    with dissolve
+    
+    show claire laughing
+
+    claire @ say "*Yaaaawn*"
+    
+    show claire happy
+    
+    claire @ say "It's gettin' pretty late, isn't it?"
+    
+    show ava whimsical
+    
+    ava @ say "Yeah, it's been a long day."
+    
+    show ava happy
+    
+    gunner @ say "I don't think that hobo is coming for us after all."
+    
+    show rori angry neutral
+    
+    rori @ say "We better not get murdered in our sleep because you lured him to us."
+    
+    show claire derp
+    
+    claire @ say "We'll all be fine, I can take on any forest critter~"
+    
+    show rori neutral -angry
+    show claire happy
+    
+    player "Shall we get ready for bed then? I didn't bring a sleeping bag or anything..."
+    
+    if claireBullyLevel > 1:
+        show claire laughing
+        
+        claire @ say "Don't tell me this is your first cuddle puddle! How embarrassing!"
+    
+    elif claireBullyLevel > 0:
+        show claire surprised earsup
+    
+        claire @ say "You seriously think you'll need one?"
+        
+        show claire suggestive 
+        claire @ say "Get down here and snuggle up with this big beautiful bunny~"
+    
+    else:
+        claire @ say "That's alright, I'll keep you warm! Everyone come and get some snuggles, first come first serve!"
+    
+    show claire happy
+    
+    hide claire
+    hide ava
+    hide gunner
+    hide rori
+    with dissolve
+    
+    n "Claire flops onto the ground, grabbing your hand on the way down and dragging you with her."
+    
+    player "Hey what-"
+    
+    n "She ends up lying on her side, holding you as her little spoon and enveloping you in warm, soft bunny."
+    
+    show claire flannel suggestive at center with dissolve:
+        ypos y_claire
+        xzoom -1
+        xoffset -625
+        
+    #show you at center
+    
+    claire @ say "Who's next?"
+    
+    $ cuddlePuddleOrder = ["claire", "player", "", "", ""]
+    
+    menu:
+        claire "{cps=0}Who's next?{/cps}"
+        "Rori":
+            $ roriPoints += 1
+            $ cuddlePuddleOrder[2] = "rori"
+            
+            player "Get over here, Rori!"
+            
+            show rori anxious at center with dissolve:
+                ypos y_rori
+                xoffset 250
+            
+            rori @ say "*Bleat!*"
+            rori @ say "M-me?"
+            
+            player "There's no one else here named Rori, right?"
+            
+            claire @ say "Aw yeah, get some~"
+            
+            show ava typical annoyed at center with dissolve:
+                ypos y_ava
+                xoffset 525
+            
+            ava @ say "Claire shush, he's clearly shy about this."
+            
+            show claire happy
+            
+            claire @ say "Sounds like he just needs a push!"
+            
+            show ava profile whimsical
+            
+            ava @ say "Maybe he'd be more comfortable if the positions were swapped?"
+            
+            show gunner determined at center with dissolve:
+                ypos y_gunner
+                xoffset 720
+            
+            gunner @ say "There's no way Rori is anything but a bottom."
+            
+            menu:
+                gunner "{cps=0}There's no way Rori is anything but a bottom.{/cps}"
+                "I'm bottom-er":
+                    $ cuddlePuddleOrder[2] = "player"
+                    $ cuddlePuddleOrder[1] = "rori"
+                    
+                    player "Oh yeah? What does that make me if I'd bottom for Rori?"
+                    
+                    show ava none
+                    show ava typical enamored
+                    
+                    ava @ say "OvO"
+                    
+                    show gunner disgusted
+                    
+                    gunner @ say "Gaaaaaay"
+                    
+                    show claire suggestive
+                    
+                    claire @ say "Hawt"
+                    
+                    if claireBullyLevel > 1:
+                        show claire laughing
+                    
+                        claire @ say "I knew you were a bottom but not this much!"
+                    
+                    if claireBullyLevel > 2:
+                        show claire suggestive
+                    
+                        claire @ say "I should peg you the first chance I get~"
+                        
+                        show ava shocked
+                            
+                        ava @ say "Claire!"
+                        ava @ say "You can't just say that out loud!"
+                        
+                        claire @ say "Yeah? Why not? Who's gonna stop me?"
+                        
+                        player "Haha you're joking right?"
+                        player "...Right?"
+                        
+                    show ava enamored
+                    show claire happy
+                    show gunner frown1
+                    show rori armscrossed sleepy
+                    
+                    rori @ say "*sigh*"
+                    rori @ say "Move over. I can be a service top."
+                    
+                    n "Rori drags you out of Claire's clutches and takes your spot before pulling you into his grasp."
+                    
+                    pause .2
+                    
+                    show rori with move:
+                        xoffset -400
+                        
+                    show rori at flipright
+                        
+                    n "His fur is much more stiff and coarse than the rabbit's but somehow you feel even more comfortable."
+                    
+                    if claireBullyLevel > 1:
+                        show claire suggestive
+                        
+                        claire @ say "You get him, Rori~ Ksksksks~"                    
+                    
+                    show claire happy
+                    
+                    if roriPoints > 3:
+                        show rori armscrossed smile blush
+                        
+                        rori @ say "You comfy?"
+                    
+                    else:
+                        rori @ say "There, happy?"
+                    
+                    player "Y-ye..."
+                    
+                    show rori none
+                    show rori armscrossed smile
+                    
+                    rori @ say "Good~"
+                    
+                    n "He buries his snout in your hair, his warm breath beating against the back of your neck."
+                    
+                    show ava happy
+                    
+                    claire @ say "Okay, who's next?"
+                    
+                    menu:
+                        claire "{cps=0}Okay, who's next?{/cps}"
+                        "Ava":
+                            $ cuddlePuddleOrder[3] = "ava"
+                            $ cuddlePuddleOrder[4] = "gunner"
+                            
+                            if avaPoints > 3:
+                                show ava overjoyed
+                                
+                                ava @ say "Me me me!"
+                                
+                                pause .2
+                                
+                                show ava happy with move:
+                                    xoffset -100
+                                
+                                show ava at flipright
+                                
+                                n "Ava flutters over and settles in front of you. You wrap your arms around her and snuggle her close."
+                            else:
+                                show ava whimsical
+                                
+                                ava @ say "Guess it's my turn!"
+                                
+                                pause .2
+                                
+                                show ava happy with move:
+                                    xoffset -100
+                                
+                                show ava at flipright
+                                
+                                n "Ava flutters over and settles in front of you. You wrap your arms around her and snuggle her close."
+                                
+                            #if avaSnugglePlus == True:
+                            #    player "Hey, didn't you say next time we snuggled you'd be nude?"
+                            #    
+                            #    ava @ say "W-what??!"
+                            #    ava @ say "Oh yeahhhhh now I recall."
+                            #    ava @ say "I just said there'd be less clothes involved!"
+                            #    
+                            #    player "Then go ahead."
+                            #    
+                            #    ava @ say "Right here?? In front of everyone?!"
+                            #    
+                            #    gunner @ say "What the hell."
+                            #    
+                            #    claire @ say "No judgment in the cuddle puddle!"
+                            #    
+                            #    ava @ say "I guess I did agree to it... But I'm not going nude out here!"
+                            #    ava @ say "So take your pick, topless or bottomless."
+                            #    
+                            #    menu:
+                            #        "Topless":
+                            #            player "Topless."
+                            #            
+                            #            ava @ say "Fine. But I'm keeping my bra on."
+                            #            
+                            #            claire @ say "Coward."
+                            #            
+                            #            n "Ava unbuttons her shirt and tosses it aside."
+                            #            
+                            #            ava @ say "H-hey, quit staring and start cuddling!"
+                            #        "Bottomless":
+                            #            player "Bottomless."
+                            #            
+                            #            ava @ say "Fine. But I'm keeping my panties on."
+                            #            
+                            #            claire @ say "Coward."
+                            #            
+                            #            n "Ava shimmies out of her pants and tosses them aside."
+                            #            
+                            #            ava @ say "H-hey, quit staring and start cuddling!"
+                            #            
+                            gunner @ say "This is so unfair."
+                            
+                            show ava typical smug
+                            
+                            ava @ say "Did you really want my place right in front of [name] that bad?"
+                            
+                            show gunner annoyed
+                            
+                            show gunner behind ava
+                            
+                            gunner @ say "This is the problem with cuddle puddles."
+                            
+                            pause .2
+                            
+                            show gunner with move:
+                                xoffset 100
+                            
+                            show gunner at flipright
+                            
+                            n "Gunner resigns himself to the innermost part of the pile of fluffy critters + you. Claire wraps herself around you all, providing a nice warm blanket."
+                            n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                            scene bg stars with fade
+                            
+                        "Gunner":
+                            $ cuddlePuddleOrder[3] = "gunner"
+                            $ cuddlePuddleOrder[4] = "ava"
+                            
+                            show gunner annoyed
+                            
+                            gunner @ say "Hands off my waifu."
+                            
+                            pause .2
+                            
+                            show gunner with move:
+                                xoffset -100
+                            
+                            show gunner at flipright
+                            
+                            show ava enamored
+                            
+                            n "Gunner slides in next. You're not sure if you're supposed to put your arms around him or what."
+                            
+                            show gunner eyesclosed smile
+                            
+                            gunner @ say "It's not gay if it's a cuddle puddle, everyone knows that."
+                            
+                            show gunner frown1
+                            show claire suggestive
+                            
+                            claire @ say "Formally, yes, but we're all using our imagination here."
+                            
+                            show gunner neutral
+                            show claire happy
+                            show ava smug
+                            
+                            ava @ say "Breeee~"
+                            
+                            pause .2
+                            
+                            show ava with move:
+                                xoffset 100
+                            
+                            show ava at flipright
+                            show ava whimsical
+                            
+                            ava @ say "Here, you can snuggle me to take your mind off [name] being right behind you~"
+                            
+                            n "With Ava taking the final position, Claire wraps herself around the fluffy pile, providing a nice warm blanket."
+                            
+                            n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                            scene bg stars with fade
+                            
+                "Come get topped Rori":
+                    player "Come get topped, Rori! In a non-sexual way."
+                    
+                    show rori surprised
+                    
+                    rori @ say "Of course. This is a cuddle puddle after all. No sexo."
+                    
+                    show rori neutral
+                    
+                    pause .2
+                    
+                    show rori with move:
+                        xoffset -250
+                        
+                    show rori at flipright        
+                    
+                    if roriPoints > 3:
+                        n "He says that and then pushes his butt right up against your crotch as he lays down."
+                    else:
+                        n "You nervously wrap your arms around him."
+                
+                    claire @ say "Who's next?"
+                    
+                    menu:
+                        claire "{cps=0}Who's next?{/cps}"
+                        "Ava":
+                            $ cuddlePuddleOrder[3] = "ava"
+                            $ cuddlePuddleOrder[4] = "gunner"
+                            
+                            show gunner frown1
+                            show ava typical happy
+                            
+                            gunner @ say "Do I have to choose?"
+                            
+                            show claire flustered
+                            
+                            claire @ say "You either let the gay goat snuggle your waifu or you bottom for him."
+                            
+                            show rori none
+                            show rori furious
+                            show claire surprised earsup
+                            
+                            rori @ say "Excuse me, I am a *ram!*"
+                            
+                            show claire happy
+                            show ava excited
+                            
+                            ava @ say "I don't mind going next! I bet Rori's a great snuggler!"
+                            
+                            show rori anxious
+                            show ava happy
+                            
+                            rori @ say "*Gulp*"
+                            rori @ say "Y-yeah..."
+                            
+                            show rori armscrossed anxious
+                            
+                            pause .2
+                            
+                            show ava happy with move:
+                                xoffset -30
+                            
+                            show ava at flipright                            
+                            
+                            n "Ava casually nestles into Rori, who seems reluctant to move his arms around her."
+                            
+                            show ava whimsical
+                            
+                            ava @ say "Lighten up! It's just friendly cuddles!"
+                            
+                            n "She has to practically drag Rori by the hoof to snuggle her."
+                            
+                            show rori armscrossed embarrassed2
+                            
+                            rori @ say "S-sorry..."
+                            
+                            show gunner determined
+                            show ava smug
+                            
+                            gunner @ say "Alright, my turn. Lemme show ya how it's done!"
+                            
+                            show gunner behind ava
+                            
+                            pause .2
+                            
+                            show gunner with move:
+                                xoffset 150
+                            
+                            show gunner at flipright
+                            
+                            n "Gunner slides into the final position of the cuddle puddle, sprawling out like the comfy cat he is."
+                            
+                            if avaPoints < 4:
+                                show ava whimsical
+                            
+                                ava @ say "Pretty cute, isn't he?"
+                                
+                                claire @ say "[name] is cuter~"
+                                
+                                show ava suggestive
+                                
+                                ava @ say "Hmm... maybe~"
+                                
+                                show ava smug
+                                
+                            else:
+                                show ava suggestive
+                                
+                                ava @ say "Aww~ Who's a good kitty?~"
+                                
+                                show gunner charming
+                                show ava smug
+                                
+                                gunner @ say "Meeee~ :3"
+                            
+                            n "Claire wraps herself around the fluffy pile, providing a nice warm blanket for all."
+                            n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                            scene bg stars with fade
+                            
+                        
+                        "Gunner":
+                            $ cuddlePuddleOrder[3] = "gunner"
+                            $ cuddlePuddleOrder[4] = "ava"
+                            
+                            show gunner annoyed
+                            show ava smug
+                        
+                            gunner @ say "This is bullshit, why do I have to bottom for Rori?"
+                            
+                            show ava typical suggestive
+                            
+                            ava @ say "At least you get me all to yourself~"
+                            
+                            show ava smug
+                            
+                            show gunner itsover
+                            
+                            gunner @ say "I guess that makes it worth it."
+                            
+                            pause .2
+                            
+                            show gunner with move:
+                                xoffset 80
+                            
+                            show gunner at flipright  
+                            
+                            show gunner annoyed      
+                            show rori armscrossed angry                    
+                            
+                            gunner @ say "Rori, I swear if you get a boner..."
+                            
+                            show rori sleepy
+                            
+                            rori @ say "Trust me, I won't."
+                            
+                            show ava overjoyed
+                            
+                            ava @ say "Nobody will mind if you do though!"
+                            
+                            show ava happy
+                            show gunner determined
+                            
+                            show gunner behind ava
+                            show rori behind gunner
+                            show claire behind rori
+                            
+                            gunner @ say "Yeah yeah, now get over here, birdie~"
+                            
+                            pause .2
+                            
+                            show ava shy with move:
+                                xoffset 350
+                            
+                            show ava at flipright  
+                            
+                            n "Gunner tries his best to ignore Rori's existence while he snuggles Ava."
+                            #n "Gunner reluctantly gets into position in front of Rori, trying his best to ignore him while he snuggles his bird."
+                            
+                            n "Claire wraps herself around the fluffy pile, providing a nice warm blanket for all."
+                            n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                            scene bg stars with fade
+            
+        "Ava":
+            $ avaPoints += 1
+            $ cuddlePuddleOrder[2] = "ava"
+            
+            show claire happy
+            
+            player "Maybe Ava?"
+            
+            show ava typical happy at center with dissolve:
+                ypos y_ava
+                xoffset 525            
+            
+            if avaPoints > 3:
+                show ava overjoyed
+            
+                ava @ say "I'd love to!"
+                
+                #it's startin' to get a little toasty! Let's have vote to see if the pants stay on!
+            else:
+                ava @ say "Hmmm... alright!"
+                
+            pause .2
+            
+            show ava with move:
+                xoffset -200
+            
+            pause .1
+            
+            show ava:
+                xzoom -1
+            
+            n "Ava nestles in comfortably within your grasp."
+            
+            player "So soft~"
+            
+            show ava shy
+            
+            ava @ say "Breeee~ Thanks~"
+            
+            #if avaSnugglePlus == True:
+            #    player "Hey, didn't you say next time we snuggled you'd be nude?"
+            #    
+            #    ava @ say "W-what??!"
+            #    ava @ say "Oh yeahhhhh now I recall."
+            #    ava @ say "I just said there'd be less clothes involved!"
+            #    
+            #    player "Then go ahead."
+            #    
+            #    ava @ say "Right here?? In front of everyone?!"
+            #    
+            #    gunner @ say "What the hell."
+            #    
+            #    claire @ say "No judgement in the cuddle puddle!"
+            #    
+            #    ava @ say "I guess I did agree to it... But I'm not going nude out here!"
+            #    ava @ say "So take your pick, topless or bottomless."
+            #    
+            #    menu:
+            #        "Topless":
+            #            player "Topless."
+            #            
+            #            ava @ say "Fine. But I'm keeping my bra on."
+            #            
+            #            claire @ say "Coward."
+            #            
+            #            n "Ava unbuttons her shirt and tosses it aside."
+            #            
+            #            ava @ say "H-hey, quit staring and start cuddling!"
+            #        "Bottomless":
+            #            player "Bottomless."
+            #            
+            #            ava @ say "Fine. But I'm keeping my panties on."
+            #            
+            #            claire @ say "Coward."
+            #            
+            #            n "Ava shimmies out of her pants and tosses them aside."
+            #            
+            #            ava @ say "H-hey, quit staring and start cuddling!"
+            #
+            show gunner annoyed at center with dissolve:
+                ypos y_gunner
+                xoffset 575
+                
+            gunner @ say "Lucky bastard..."
+            
+            show ava happy
+            
+            menu:
+                "Gunner next":
+                    n "Gunner slides right in after Ava."
+                    
+                    show gunner behind ava
+                    
+                    pause .2
+                    
+                    show gunner with move:
+                        xoffset 70
+                        
+                    pause .1
+                    
+                    show gunner:
+                        xzoom -1
+                        
+                    show gunner charming
+                    
+                    gunner @ say "What? It's only natural I'd get this spot."
+                    
+                    show gunner displeased
+                    
+                    player "Why, so you can snuggle sheep butt?"
+                    
+                    show rori armscrossed worried at center with dissolve:
+                        ypos y_rori
+                        xoffset 650
+                    
+                    rori @ say "Y'know, I could just sleep over there, it's fine really."
+                    
+                    claire @ say "Nope! The rules state that everyone has to get in on the cuddle puddle!"
+                    
+                    show rori armscrossed neutral
+                    
+                    rori @ say "Really? What rules?"
+                    
+                    show claire derp
+                    
+                    claire @ say "Just get in before ya freeze to death!"
+                    
+                    show claire happy
+                    show rori armscrossed angry
+                    
+                    rori @ say "Ugh, fine."
+                    
+                    pause .2
+                    
+                    show rori with move:
+                        xoffset 400
+                    
+                    pause .1
+                    
+                    show rori:
+                        xzoom -1
+                    
+                    n "Claire wraps herself around the fluffy pile, providing a nice warm blanket for all."
+                    n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                    scene bg stars with fade
+                            
+                "Rori next":
+                    player "Rori? You wanna join us?"
+                    
+                    show rori anxious at center with dissolve:
+                        ypos y_rori
+                        xoffset 775
+                    
+                    rori @ say "W-what? Why me?"
+                    
+                    show gunner hissing
+                    
+                    gunner @ say "What kinda game are you playing, [name]? That spot is obviously reserved for me!"
+                    
+                    show gunner displeased
+                    show ava excited
+                    
+                    ava @ say "I don't mind! Everyone deserves a fair chance in the cuddle puddle!"
+                    
+                    show rori armscrossed embarrassed2
+                    show ava happy
+                    
+                    rori @ say "O-okay..."
+                    
+                    pause .2
+                    
+                    show rori with move:
+                        xoffset 100
+                        
+                    pause .1
+                    
+                    show rori:
+                        xzoom -1
+                    
+                    n "Rori hesitantly flops onto his side in front of Ava. She pulls him closer in a friendly embrace but you can tell he's uncomfortable."
+                    
+                    show rori none
+                    show rori armscrossed concerned blush
+                    
+                    rori @ say "Alright, I guess it's your turn now Gunner."
+                    
+                    gunner @ say "Is this really what you all wanted to see?"
+                    
+                    claire @ say "Yup."
+                    
+                    ava @ say "Yes."
+                    
+                    menu:
+                        "Yeah":
+                            player "Yeah, it's pretty funny."
+                        "Not really":
+                            player "It's not really what I had in mind but it's too late to change the order now."
+                                    
+                    show gunner itsover
+                    
+                    gunner @ say "Fujoshis, I swear..."
+                    
+                    show gunner frown1
+                    
+                    n "Gunner rolls his eyes and slides in in front of Rori."
+                    
+                    pause .2
+                    
+                    show rori behind gunner
+                    show gunner with move:
+                        xoffset 275
+                    
+                    pause .1
+                    
+                    show gunner:
+                        xzoom -1
+                    
+                    show gunner annoyed
+                    
+                    gunner @ say "Just don't get any funny ideas, ram."
+                    
+                    show rori armscrossed sleepy
+                    
+                    rori @ say "Trust me, you're not my type."
+                    
+                    n "Claire wraps herself around the fluffy pile, providing a nice warm blanket for all."
+                    n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                    scene bg stars with fade
+                            
+        "Gunner":
+            $ gunnerPoints -= 1
+            $ avaPoints += 1
+            $ cuddlePuddleOrder[2] = "gunner"
+        
+            show claire happy
+            
+            player "Get over here, Gunner!"
+            
+            show gunner disgusted at center with dissolve:
+                ypos y_gunner
+                xoffset 575
+            
+            gunner @ say "What!? Why? I wanna cuddle puddle with Ava!"
+            
+            show gunner frown1
+            
+            claire @ say "I vote for Gunner next."
+            
+            show ava typical suggestive at center behind gunner with dissolve:
+                ypos y_ava
+                xoffset 275
+            
+            ava @ say "Me too!"
+            
+            show ava typical smug
+            
+            show rori armscrossed silly at center with dissolve:
+                ypos y_rori
+                xoffset 775
+            
+            rori @ say "Yeah, Gunner's next."
+            
+            show rori armscrossed smile
+            show gunner annoyed
+            
+            gunner @ say "Fine fine. It's not gay if it's a cuddle puddle, everyone knows that."
+            
+            pause .2
+            
+            show gunner with move:
+                xoffset -180
+                
+            pause .1
+            
+            show gunner at flipright
+            
+            menu:
+                "Rori next":
+                    $ roriPoints -= 1
+                    $ cuddlePuddleOrder[3] = "rori"
+                    $ cuddlePuddleOrder[4] = "ava"
+                    
+                    player "Good, because Rori's next."
+                    
+                    show ava enamored
+                    show rori anxious
+                    
+                    rori @ say "W-what?"
+                    rori @ say "Why me??"
+                    
+                    player "Because it's funny."
+                    
+                    show gunner disgusted
+                    
+                    gunner @ say "...Seriously?"
+                    
+                    show gunner annoyed
+                    show claire derp
+                    
+                    claire @ say "Come on, we don't judge!"
+                    
+                    show ava overjoyed
+                    
+                    ava @ say "Three boys in a row though OvO"
+                    
+                    show ava shy
+                    show claire suggestive
+                    
+                    claire @ say "Keep your pants on, girl~"
+                    
+                    #ava @ say "Hey, cuddle puddles were traditionally done pantsless in the past!"
+                    
+                    #claire @ say "Okay then, would you like to hold a vote to remove pants from the equation?"
+                    
+                    #ava @ say "M-maybe next time..!"
+                    
+                    ###
+                    
+                    show rori armscrossed sleepy
+                    
+                    rori @ say "Ugh fine whatever, I'll do it."
+                    rori @ say "'scuse me, Ava."
+                    
+                    hide ava with dissolve
+                    
+                    pause .2
+                    
+                    show rori with move:
+                        xoffset 150
+                    
+                    pause .1
+                    
+                    show rori at flipright
+                    
+                    claire @ say "That leaves you last, birdie! Enjoy some ram snuggles~"
+                    
+                    show ava typical shy at center with dissolve:
+                        ypos y_ava
+                        xoffset 350
+                        xzoom -1
+                    
+                    ava @ say "Well... I can't say I ever expected this."
+                    
+                    show ava excited
+                    
+                    ava @ say "But anything goes when you're in the cuddle puddle!"
+                    
+                    show ava happy
+                    
+                    rori @ say "This feels like the least optimal configuration... no offense Ava."
+                    
+                    show ava whimsical
+                    
+                    ava @ say "Don't worry about it haha. At least I don't have to worry about anything sticking me from behind *chirp!*"
+                    
+                    show gunner displeased
+                    
+                    n "Gunner desperately tries to reach his paws over Rori and to touch Ava's feathers."
+                    
+                    gunner @ say "It's not faaaaaiiiirrr!"
+                    
+                    rori @ say "Tell me about it."
+                    
+                    n "Claire wraps herself around the fluffy pile, providing a nice warm blanket for all."
+                    
+                    n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                    scene bg stars with fade
+                            
+                "Ava next":
+                    $ cuddlePuddleOrder[3] = "ava"
+                    $ cuddlePuddleOrder[4] = "rori"
+                    
+                    show gunner cutie
+                    
+                    gunner @ say "But Ava's coming up in front of me >:3"
+                    
+                    show ava excited
+                    
+                    ava @ say "Gladly!"
+                    
+                    show ava happy
+                    
+                    pause .2
+                    
+                    show ava with move:
+                        xoffset 100
+                        
+                    pause .1
+                    
+                    show ava at flipright
+                    
+                    n "Ava nestles in in front of Gunner, being pulled in for some tight snuggles."
+                    
+                    ava @ say "*Chirp!* Rori you're next!"
+                    
+                    show rori anxious
+                    
+                    rori @ say "S-sure um... this is kinda new to me so..."
+                    
+                    show ava overjoyed
+                    
+                    ava @ say "No need to be shy! C'mere!"
+                    
+                    show ava happy
+                    
+                    pause .2
+                    
+                    show rori with move:
+                        xoffset 370
+                        
+                    pause .1
+                        
+                    show rori at flipright
+                    
+                    n "Ava welcomes him in with open wings, nuzzling him as he joins the cuddle puddle."
+                    
+                    show rori armscrossed embarrassed2
+                    
+                    rori @ say "This feels so awkward."
+                    
+                    n "Claire wraps herself around the fluffy pile, providing a nice warm blanket for all."
+                    n "You have a great view of the stars in the sky from down here. You stare up at them in awe while enjoying your friends' company."
+                            
+                    scene bg stars with fade
+    
+    play music "audio/music/vylet - showtime.ogg" fadein .4
+    
+    show box with Dissolve(.2):
+        ypos 0
+                            
+    claire @ say "Everyone comfy?"
+            
+    n "A collection of murmured agreement fills the air. You have to admit, this is a pretty nice arrangement. You can hardly feel the cold night air at all."
+    
+    player "It's cozy but... does anyone else feel a bit cringe doing this?"
+    
+    rori @ say "Just a bit."
+    
+    gunner @ say "Yeah kinda."
+    
+    ava @ say "What makes you say that? I feel alright!"
+    
+    claire @ say "Hey, we live in a post-cringe society! We're just a bunch of friends snuggling to stay warm in the woods is all!"
+    claire @ say "Y'know, I'm really happy to have a group of friends who'll do this with me."
+    claire @ say "I always got excluded from the cuddle puddle at sleepovers."
+    
+    ava @ say "No way, me too!"
+    ava @ say "I dunno what everyone's problem was with me, so this is like my first time!"
+    
+    rori @ say "Really? I thought only the quiet unpopular guys like me never got invited to them."
+    
+    player "I never had the opportunity either so this is me losing my cuddle orgy virginity too."
+    
+    claire @ say "Ahem, this is a cuddle *puddle* not an orgy, [name]."
+    
+    player "Sorry."
+    
+    gunner @ say "You guys have seriously never done this? I've been in at least a dozen puddles."
+    
+    claire @ say "Nope! Never had a boyfriend either. Or a girlfriend. Didn't really have friends at all in high school come to think of it."
+    
+    ava @ say "Same! I was always so focused on studies but... I guess people just tended to not like me for some reason."
+    
+    rori @ say "Wow, I guess we have more in common than I thought. You two always seemed like the preppy popular girls in school."
+    
+    player "Yeah I thought femcels were a myth."
+    
+    ava @ say "We're cursed I tell you!"
+    
+    gunner @ say "How can *you* be a femcel when I'm literally right here? Female celibacy is always voluntary."
+    
+    ava @ say "W-well that's because..."
+    ava @ say "I can't decide if you're the right one for me!"
+    ava @ say "I mean I *do* like you but... maybe there's someone else I like more?"
+    
+    gunner @ say "Aw man..."
+    
+    ava @ say "It's super confusing I know, and I'm not equipped to understand these feelings either."
+    ava @ say "I'm not saying we don't have a future together, I'm just trying to navigate the whole thing in my head before I go diving in!"
+    
+    claire @ say "I get you Ava, you may have feelings for Gunner but how could anyone resist [name]?~"
+    claire @ say "I gotta snatch up that last human boy on Earth before someone else does!"
+    
+    rori @ say "Is that the only reason you're into him?"
+    
+    claire @ say "W-well it may have been before I got to know him..!"
+    claire @ say "But now I see him as a sweet kindhearted lovable goofball who's mine!!!"
+    claire @ say "The first time ever I held a boy's hand was with [name]! We're meant to be together!"
+    
+    player "Wait you have a crush on me?"
+    
+    n "The whole group groans in frustration."
+    
+    gunner @ say "Dude..."
+    
+    ava @ say "From day one this bunny has been trying to get you in her bed."
+    
+    rori @ say "Even I could tell she's dying to make you her boyfriend."
+    
+    claire @ say "I guess the jig is up huh?"
+    claire @ say "Yeah it's kinda true!"
+    claire @ say "I want you [name]~"
+    
+    $ claireCommitted = True
+    
+    n "Wow, that's a lot to take in. You never would have imagined such a thing, even in your wildest dreams."
+    
+    player "This is kinda blowing my mind. This whole time I thought you were just being friendly!"
+    
+    gunner @ say "How oblivious can you be?!"
+    
+    player "Sorry, I dropped out of school and lived in almost complete isolation since I was like 13. I don't really have a great source of context for this sort of thing."
+    if clairePoints > 4:
+        player "You're really nice Claire but all this time since I arrived in Harmonia I've just been figuring out myself and stuff."
+    else:
+        player "You're really nice Claire, but I'll have to think about us being together."
+    player "I'm not shooting you down just yet but I don't wanna get your hopes up."
+    
+    claire @ say "Wow uh"
+    claire @ say "Y-yeah that's fair haha"
+    claire @ say "Don't worry about it, this doesn't affect our friendship at all we can still be friends"
+    claire @ say "I was just throwin' it out there that I like you ya know?"
+    
+    player "I appreciate the straightforwardness."
+    
+    if avaPoints > 3:
+        $ avaCommitted = True
+        
+        ava @ say "Yeah if it wasn't clear I'm kinda into you too. [name]."
+        
+        player "I kinda figured. But now two chicks are into me? Why??"
+        
+        ava @ say "I just think you're really sincere and smart and you're fun to be around."
+        ava @ say "Is that a normal reason to be into a guy? I'm not sure."
+    
+    if roriPoints > 3:
+        $ roriCommitted = True
+        
+        rori @ say "While we're at it, I might as well say I think you're pretty swell, [name], and I've thought about asking you out."
+        
+        player "Holy moly, that's a bombshell!"
+        player "Am I being pranked right now?"
+        
+        rori @ say "No dude, you're chill. I'd totally kiss and play video games or do whatever gay couples do."
+    
+    gunner @ say "You're telling me none of you nerds have ever been in a relationship before?"
+    
+    player "Sorry not everyone can be Chad Thundercock with a gazillion dollars to attract a mate."
+    
+    gunner @ say "Hey, girls don't like me for my money, it's my charm that does all the heavy lifting."
+    
+    rori @ say "What charm?"
+    
+    gunner @ say "You know. Being smooth. Suave. Cool. Handsome and muscular. Funny. Pretending to be sensitive but not too much of a pussy."
+    
+    rori @ say "Ugh. Is that really what girls are into?"
+    
+    ava @ say "Plenty of girls like a regular, genuine guy!"
+    
+    rori @ say "Yeah but it's so hard to even just *talk* to girls. I always feel like I'm gonna scare them off by being too nerdy or say something awkward."
+    rori @ say "You'd probably never hang out with me if not for this being an established friend group."
+    
+    claire @ say "I invited you to come camping with me alone, didn't I?"
+    
+    rori @ say "Well yeah but, that's only because you got kicked out of Ava and Gunner's plans."
+    rori @ say "I guess I just don't feel a sort of comradery with females. Like we just don't have enough in common to really be on the same side."
+    rori @ say "They're just this weird intimidating creature that looks down on you for no reason?"
+    
+    ava @ say "Aww Rori, I had no idea you felt that way."
+    ava @ say "We see you as our friend, but you have to admit you *are* pretty shy. Maybe if you opened up more you'd feel more welcome."
+    
+    rori @ say "Yeah thanks, but I've seen what happens when guys \"open up\" to girls."
+    
+    gunner @ say "Hey, a lot of girls are like that but not all of them."
+    gunner @ say "I feel like Ava's one of the good ones. Claire's fine too, just not my type."
+    gunner @ say "There was a girl I dated in high school who was everything I didn't know I needed. Nicest girl you can imagine."
+    gunner @ say "Only problem was that she was a human, so you can guess how that ended."
+    
+    player "..."
+    player "I'm sorry dude."
+    player "That really sucks."
+    
+    gunner @ say "Yeah. What can you do though?"
+    
+    player "You know, I haven't really thought much about it. By \"it\" I mean like my legacy and stuff that I'll leave behind as the last human."
+    
+    claire @ say "Have you considered getting this rabbit pregnant?"
+    
+    ava @ say "Humans can't impregnate rabbits."
+    
+    claire @ say "You don't know that! Maybe nobody has tried hard enough!"
+    
+    gunner @ say "Can't humans get a few different species pregnant? Like mules?"
+    
+    rori @ say "Mules can't get pregnant."
+    
+    gunner @ say "You know what I mean. Hybrid species."
+    
+    rori @ say "I've only heard of humans hybridizing with possums."
+    
+    player "I guess that's an option if I really cared to keep humanity sorta going on for 1 more generation."
+    player "I meant more like what my dreams and goals are. What I wanna get out of my life."
+    player "Because right now I haven't really got anything."
+    
+    rori @ say "Whatever it ends up being, I'm happy to be a part of that journey!"
+    
+    ava @ say "Same! You guys are like, something special."
+    
+    gunner @ say "This is definitely one of my more memorable friend groups."
+    
+    claire @ say "Crazy to think we've only known each other for like 2 months but it feels like 2 years."
+    
+    player "Aww, thanks guys~"
+    player "I didn't really know what I was getting into coming to this university but you're more than I could have asked for."
+    
+    n "Claire squeezes the cuddle puddle together tightly."
+    
+    claire @ say "I love you guys~"
+    
+    ava @ say "Love you too, Claire~"
+    
+    gunner @ say "I'm kinda jealous how girls can say they love each other, but when homies say it, it's kinda gay."
+    
+    rori @ say "Yeah. It's too much, even for me."
+    
+    player "How about we just say we enjoy each others' company?"
+    
+    gunner @ say "That works for me."
+    
+    rori @ say "*Yaaawn*"
+    rori @ say "Sorry, I'm gettin' a bit sleepy."
+    rori @ say "Goodnight guys. I enjoy your company~"
+    
+    claire @ say "Nini Rori!"
+    
+    ava @ say "I can barely keep my eyes open too. Night guys!"
+    
+    claire @ say "Nini Ava!"
+    
+    gunner @ say "I'll keep an eye half open in case that hobo returns but yeah, goodnight everyone."
+    
+    claire @ say "Nini Gunner!"
+    
+    player "*Yawn*"
+    player "I guess it's our turn now huh?"
+    
+    claire @ say "Yup!"
+    
+    stop music fadeout 2.0
+    
+    if clairePoints > 3:
+    
+        claire @ say "...Unless you wanna stay up and chat a bit more?"
+        
+        menu:   
+            claire "{cps=0}...Unless you wanna stay up and chat a bit more?{/cps}"
+            "Stay up" if clairePoints > 8:
+                $ clairePoints += 1
+                $ stayedUpWithClaire = True
+                $ romanticFantasy = True
+                
+                ###only 1 scene per char can be shown in 1 playthrough
+                
+                play music "audio/music/vylet - do you remember the song she sang.ogg" fadein .4
+                
+                n "You keep your voice low to not disturb the others."
+                
+                player "Yeah I don't mind chatting with you some more."
+                
+                n "Claire leans over and rests her chin on your head."
+                
+                claire @ say "I just wanted to say I'm glad we met and stuff."
+                claire @ say "And even if you end up rejecting my romantic advances, I still wanna be close friends with you."
+                
+                player "Yeah that sounds good."
+                player "I honestly don't know yet if we'd make a good couple but you guys have been the closest friends I've ever had."
+                
+                claire @ say "Aww~"
+                
+                if claireBullyLevel > 0:
+                    claire @ say "That's as adorable as it is pathetic~"
+                    
+                    player "Hey!"
+                    
+                    claire @ say "What? You thought I'd stop bullying you just because we're having a heart-to-heart? Ksksksks!"
+                    
+                    if claireBullyLevel > 1:
+                        claire @ say "Honestly I should just force you to be my boyfriend~ It's not like you'd do anything to stop me~"
+                        
+                n "The bunny adjusts her snuggling position around everyone and nuzzles your head."
+                
+                claire @ say "Y'know, you're the only one I'm interested in but I'm curious if I have any competition."
+                claire @ say "I know you and Ava have a thing going on but I'm not sure how that's gonna work out with Gunner in the picture."
+                
+                menu:
+                    claire "{cps=0}I know you and Ava have a thing going on but I'm not sure how that's gonna work out with Gunner in the picture.{/cps}"
+                    "I'm hoping she'll choose me":
+                        player "She seems really indecisive but I'm hoping she'll choose me in the end."
+                        
+                        if avaPoints > 3:
+                            claire @ say "I'd say you have a good chance! She talks about you a lot when it's just us in our dorm~"
+                            
+                            player "Really? What does she say?"
+                            
+                            claire @ say "She likes how sincere you are compared to Gunner. How you're more down to earth and stuff."
+                            
+                            player "I guess not being an obnoxious rich prick is finally paying off for once."
+                        else:
+                            claire @ say "Hm, I'll be honest I think she's one move away from tying the knot with Gunner."
+                            claire @ say "It's hard to beat rich and athletic."
+                            #douchebag dudebro
+                            
+                            player "Fug."
+                            
+                        claire @ say "Yeah."
+                        claire @ say "It's still to early to say for sure though!"
+                        
+                        if intoFatChicks == False:
+                            claire @ say "Maybe I'd have a better chance if I was as skinny as her..."
+                            
+                            player "Don't worry, tons of guys want nothing more than a big beautiful bunny."
+                            
+                            claire @ say "Ksksksks I hope to meet one like you~"
+                        
+                    "I don't really care":
+                        $ avaPoints -= 1
+                        
+                        player "I don't really care one way or another."
+                        player "Maybe if she asked me out I'd give her a shot but I don't wanna put in that much energy trying to compete with Gunner."
+                        
+                        claire @ say "Fair. It's hard to beat rich and athletic. Can't really blame her for going for that type of guy."
+                        
+                        if intoFatChicks == True:
+                            claire @ say "Maybe you'd be more interested in her if she weighed more than a sack of feathers! Ksksksks!"
+                            
+                            player "What's that supposed to mean??"
+                            
+                            claire @ say "Nothing! Just that you have a type~"
+                            
+                            player "I can't help enjoying thick curvy women. It's in my DNA."
+                            
+                            if reallyIntoFatChicks == True:
+                                claire @ say "Would ya believe me if I told you I lost about a hundred pounds over the past year?"
+                                
+                                player "No way."
+                                
+                                claire @ say "It's true~"
+                                claire @ say "Ksksksks maybe I'll put all that weight back on just for you~"
+                                
+                                player "Hnnnng that would be nice."
+                                
+                                if claireBullyLevel > 0:
+                                    claire @ say "You're such a freak~"
+                                
+                claire @ say "Ok ok ok so what's going on with you and Rori? Are you...?"
+                
+                player "I'm not gay!"
+                
+                menu:
+                    player "{cps=0}I'm not gay!{/cps}"
+                    "Are you really?":
+                        if roriPoints > 3:
+                            player "But I would fuck that ram."
+                            
+                            claire @ say "I see the way he looks at you~ He'd probably let you~"
+                    
+                        player "I mean..."
+                        player "Rori is sweet and all. We have a lot in common. I dunno, maybe I'd go out with him? Just to give it a chance?"
+                    
+                        if claireBullyLevel > 1:
+                            claire @ say "Ksksksks I knew it, you're a fag~"
+                            
+                            player "...Maybe~"
+                            
+                            claire @ say "Cute UwU"
+                            
+                        if roriPoints > 3:
+                            claire @ say "I could see you two being a couple! A couple of nerds ksksks~"
+                        
+                        if roriPoints <= 3:
+                            claire @ say "Yeah I dunno if he really feels the same way about you. Maybe you need to be more open with him?"
+                            
+                            player "Hm, yeah I guess I should try and win him over more."
+                    
+                    "Seriously, not gay.":
+                        player "Rori's cool and all but I haven't really thought about going out with him."
+                        player "I just wanna be bros."
+                
+                        claire @ say "Well if you change your mind, I've got a $50 bet with Ava that you'll go gay!"
+                        
+                        player "Yeah I don't think you're getting that $50."
+                        
+                claire @ say "Well is there anyone else you might be interested in?"
+                
+                menu:
+                    claire "{cps=0}Well is there anyone else you might be interested in?{/cps}"
+                    "Maybe...":
+                        player "Maybe but..."
+                        
+                        claire @ say "But...?"
+                        
+                        player "Ok don't make fun of me but there's a girl I always enjoy seeing but it's hard to explain my feelings."
+                        
+                        claire @ say "Who?"
+                        
+                        menu:
+                            claire "{cps=0}Who?{/cps}"
+                            "Rose":
+                                $ rosePoints += 1
+                                
+                                player "I don't think you've met her. She's this goth raccoon in my history class."
+                                player "She's always mean to me but that's kinda hot??"
+                                
+                                if claireBullyLevel > 0:
+                                    claire @ say "Ksksksks I knew it, you have a fetish for being bullied~"
+                                    
+                                    player "I do not!"
+                                    player "She doesn't really bully me, it's more like she wants to be on her own."
+                                    player "...Okay maybe she does insult me frequently but that's besides the point."
+                                    
+                                claire @ say "What's her name?"
+                                
+                                player "Rose. Rose Kaczynski."
+                                
+                                claire @ say "No way, the dean's granddaughter??"
+                                
+                                player "Yeah, her."
+                                
+                                claire @ say "Ooh, you'd never have to work for a good grade in your life if you got with her~"
+                                
+                                player "Psh as if that's ever gonna happen. She flat out doesn't like me. At all."
+                                
+                                claire @ say "Ya just gotta get your foot in the door! Show her what a cool guy you are!"
+                                
+                                player "That's the hard part."
+                            
+                            "Mishka":
+                                $ mishkaPoints += 1
+                            
+                                player "So I go to the cafe on campus pretty often and like... Mishka is always just so kind to me."
+                                player "And she's just so cute I just wanna give her a hug but she seems so shy and distant I dunno if she'd ever let me."
+                                
+                                claire @ say "Aww, who wouldn't wanna give sweet little Mishka a hug!"
+                                claire @ say "But yeah I don't know much about her either."
+                                
+                                player "I kinda wish we could hang out with her more often as a group. She seems lonely."
+                                
+                                claire @ say "We should invite her to more stuff!"
+                                claire @ say "Maybe you two will get closer that way!"
+                                
+                                player "Yeah, that'd be nice."
+                                
+                            "Miss Ellen":
+                                $ ellenPoints += 1
+                        
+                                player "Uh well... How do I put it..."
+                                player "My Literature professor is kinda hot."
+                                
+                                claire @ say "Oh my~"
+                                claire @ say "I had no idea you were into older women! How am I supposed to compete with that!"
+                                
+                                player "It's not that..!"
+                                player "Okay maybe her MILF vibes have won me over but there's something more to it."
+                                player "I like how... mature she is?"
+                                player "Like she's older and wiser but it's really easy to chat with her. I've never been able to talk with older people like that before."
+                                player "She speaks to me like I'm a friend."
+                                
+                                claire @ say "Aww that does sound pretty sweet~"
+                                claire @ say "I guess if we're talking about teacher crushes... Mrs. Celestine though~"
+                                claire @ say "Probably never gonna happen but how can I not think about what kind of antics she's been up to on her travels!"
+                                claire @ say "And she's the only professor who goes barefoot?? Who does that?!"
+                                
+                                player "I think my math professor does too."
+                                player "But she's like 50 billion years old."
+                                
+                                claire @ say "Aw."
+                                
+                                menu:
+                                    claire "{cps=0}Aw.{/cps}"
+                                    "But yeah Mrs. Celestine is hot":
+                                        $ celestineHot = True
+                                    
+                                        player "But yeah, a provocative French speaking, short dress wearing, paw beans exposed teacher... I can see the appeal."
+                                        
+                                        claire @ say "Maybe I should go shoeless too."
+                                        
+                                        player "Nice. Free the paws."
+                                    "I'm not really into Mrs. Celestine":
+                                        player "I guess Mrs. Celestine is cute but I hardly even know her."
+                                        player "She's not for me but who am I to judge?"
+                                        
+                                        claire @ say "I'm just saying! Since you brought it up, if I had to fuck one of my teachers she'd be high on the list!"
+                                
+                                
+                    "Nah":
+                        player "No, not really. I'm just taking things one day at a time."
+                        
+                        claire @ say "Fair enough! Ya never know what might happen!"
+                        
+                        player "I enjoy a good surprise."
+                    
+                n "Claire sighs and relaxes her grip on the cuddle puddle."
+                
+                claire @ say "It was kinda nice getting to talk openly with you like this."
+                claire @ say "I can't see the future so I have no idea what's in store for us."
+                claire @ say "But I imagine we'll become closer friends over the next few years while we study!"
+                
+                player "Yeah! I'd love that."
+                
+                claire @ say "And you and I might even start dating!"
+                claire @ say "But if not that's okay too!"
+                claire @ say "I'd rather you just be happy, whatever it takes to get there!"
+                
+                player "Thanks. I hope you get a happy ending too."
+                
+                #claire @ say "As long as you consider throwing this bun in the mix every now and then with your partner in bed~ Ksksksksk!"
+                
+                #$ randumb = renpy.random.randint(0, 4)
+                #
+                #if randumb == 0:
+                #    player "I guess it'd even out the gayness ratio if it's you, me, and Rori."
+                #    
+                #    claire @ say "Exactly! We can help Rori get over his phobia of women!"
+                #    claire @ say "...Or we can sandwich you between me and him."
+                #    
+                #    player "Yeah that could work- wait then I'd be bottoming for Rori!"
+                #    
+                #    claire @ say "Yeah? And?"
+                #    
+                #if randumb == 1:
+                #    #ava
+                #    player ""
+                #if randumb == 2:
+                #    #mishka
+                #if randumb == 3:
+                #    #rose
+                #if randumb == 4:
+                #    #ellen
+                #
+                    
+                #if clairePoints > 5:
+                #    player "I think I'd want you all to myself~"
+                #    
+                #    claire @ say "OwO"
+                #    
+                ##elif clairePoints > 3:
+                #    #player ""
+                #    
+                #else:
+                #    player "No promises."
+                #    
+                #    claire @ say "Aww..."
+                
+                claire @ say "Yeah..."
+                claire @ say "Real talk though, I'm not just a horny rabbit who wants to fuck the last human."
+                claire @ say "That's just one part of my... romantic fantasy."
+                claire @ say "I think we've all got one of those."
+                claire @ say "Mine involves doing as much stuff as possible, trying new things, and living a fulfilling life right by my partner's side."
+
+                player @ say "That does sound pretty nice."
+                player @ say "I'm not sure what mine is. I have a vague feeling of what I want but I couldn't begin to describe it."
+                
+                claire @ say "That's okay! You'll find it in due time!"
+                
+                player "I hope so."
+                player "*Yaaawn*"
+                player "Getting sleepy now."
+                
+                claire @ say "Same!"
+                claire @ say "About time we got some rest."
+                    
+            "Go to bed":
+                player "I can barely keep my eyes open."
+                
+                claire @ say "Ah I see. Must've been all that hiking!"
+                claire @ say "No matter, we can chat whenever!"
+        
+        claire @ say "Nini [name]!"
+        
+        player "Goodnight Claire."
+        
+        n "You close your eyes, sandwiched between your fluffy friends, finding comfort in their warmth."
+        
+        scene bg black with fade
+    
+    else:
+        claire @ say "Nini [name]!"
+        
+        player "Goodnight Claire."
+
+        n "You close your eyes, sandwiched between your fluffy friends, finding comfort in their warmth."
+        
+        scene bg black with fade
+        
+    jump chapter4
